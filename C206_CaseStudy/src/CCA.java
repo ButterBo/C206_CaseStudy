@@ -1,28 +1,62 @@
 
-public class CCA {
+public class CCA extends ccaCategory {
 
-	private int cca_id;
-	private String name;
+	private String cca_title;
+	private String description;
+	private int class_size;
+	private String cca_day_of_the_week;
+	private int time;
 	private String venue;
-	private String time;
 	
-	public CCA(int cca_id, String name, String venue, String time) {
-		this.cca_id = cca_id;
-		this.name = name;
-		this.venue = venue;
+	public CCA(String title, int id, String cca_title, String description, int class_size, String cca_day_of_the_week,
+			int time, String venue) {
+		super(title, id);
+		this.cca_title = cca_title;
+		this.description = description;
+		this.class_size = class_size;
+		this.cca_day_of_the_week = cca_day_of_the_week;
 		this.time = time;
+		this.venue = venue;
 	}
 
-	public int getCca_id() {
-		return cca_id;
+	public String getCca_title() {
+		return cca_title;
 	}
 
-	public String getName() {
-		return name;
+	public void setCca_title(String cca_title) {
+		this.cca_title = cca_title;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public int getClass_size() {
+		return class_size;
+	}
+
+	public void setClass_size(int class_size) {
+		this.class_size = class_size;
+	}
+
+	public String getCca_day_of_the_week() {
+		return cca_day_of_the_week;
+	}
+
+	public void setCca_day_of_the_week(String cca_day_of_the_week) {
+		this.cca_day_of_the_week = cca_day_of_the_week;
+	}
+
+	public int getTime() {
+		return time;
+	}
+
+	public void setTime(int time) {
+		this.time = time;
 	}
 
 	public String getVenue() {
@@ -33,13 +67,5 @@ public class CCA {
 		this.venue = venue;
 	}
 
-	public String getTime() {
-		return time;
-	}
-
-	public void setTime(String time) {
-		this.time = time;
-	}
-	
 	
 }

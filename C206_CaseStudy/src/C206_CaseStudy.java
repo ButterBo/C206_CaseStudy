@@ -12,5 +12,13 @@ public class C206_CaseStudy {
 		}
 
 	}
+	
+	public static void startmenu() {
+		System.out.println("RESOURCE CENTRE APP");
+		Helper.line(80, "-");
+		System.out.println("1. Login");
+		System.out.println("2. Register");
+		Helper.line(80, "-");
+	}
 
 }
