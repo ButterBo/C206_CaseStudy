@@ -17,7 +17,7 @@ public class Student {
 	
 	private int studentID;
 	private int registerID;
-	private String[] CCA;
+	private String CCA;
 	
 	
 	public Student(int studentID, int registerID) {
@@ -37,10 +37,10 @@ public class Student {
 	public void setRegisterID(int registerID) {
 		this.registerID = registerID;
 	}
-	public String[] getCCA() {
+	public String getCCA() {
 		return CCA;
 	}
-	public void setCCA(String[] cCA) {
+	public void setCCA(String cCA) {
 		CCA = cCA;
 	}
 	
