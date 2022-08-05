@@ -11,7 +11,20 @@ public class C206_CaseStudy {
 			C206_CaseStudy.startmenu();
 			option = Helper.readInt("Enter an option: ");
 			
+			//for Login Testing (Zahid)
+			Student s1 = new Student(123,321);
+			
 			if (option == 1) {
+				//For user input
+				int studentIDInput;
+				int registerIDInput;
+				
+				Helper.line(30, "-");
+				System.out.println("LOGIN");
+				Helper.line(30, "-");
+				
+				int username = Helper.readInt("Student ID: ");
+				int password = Helper.readInt("Register ID: ");
 				
 			} else if (option == 2) {
 				
