@@ -18,7 +18,7 @@ public class C206_CaseStudy {
 		s1.setCCA("Football");
 		StudentList.add(s1);
 
-		//option(menu) option2(loggedInMenu) option3(ccaMenu) option(ccaDetailsMenu)(Zahid)
+		//variables for choices in option(menu) option2(loggedInMenu) option3(ccaMenu) option(ccaDetailsMenu)(Zahid)
 		int option = 0;//menu
 		int option2 = 0;//logged in menu
 		int option3 = 0;//cca menu
