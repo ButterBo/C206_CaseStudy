@@ -17,7 +17,57 @@ public class Parent extends Student {
 		this.parentEmail = parentEmail;
 		this.contactNo = contactNo;
 	}
+
+	public String getStudentName() {
+		return studentName;
+	}
+
+	public void setStudentName(String studentName) {
+		this.studentName = studentName;
+	}
+
+	public String getClassroom() {
+		return classroom;
+	}
+
+	public void setClassroom(String classroom) {
+		this.classroom = classroom;
+	}
+
+	public String getClassroomTeacher() {
+		return classroomTeacher;
+	}
+
+	public void setClassroomTeacher(String classroomTeacher) {
+		this.classroomTeacher = classroomTeacher;
+	}
+
+	public String getParentName() {
+		return parentName;
+	}
+
+	public void setParentName(String parentName) {
+		this.parentName = parentName;
+	}
+
+	public String getParentEmail() {
+		return parentEmail;
+	}
+
+	public void setParentEmail(String parentEmail) {
+		this.parentEmail = parentEmail;
+	}
+
+	public int getContactNo() {
+		return contactNo;
+	}
+
+	public void setContactNo(int contactNo) {
+		this.contactNo = contactNo;
+	}
 	
-	
-	// student ID, name, grade and class, classroom teacher, parent’s name, parent’s email address, contact No, register ID
+	public String toString() {
+		String output = String.format("%-10s %-10s %-10s %-10s %-10s %-10d", this.studentName, this.classroom, this.classroomTeacher, this.parentName, this.parentEmail, this.contactNo);
+		return output;
+	}
 }
