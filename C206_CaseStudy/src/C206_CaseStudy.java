@@ -6,6 +6,7 @@ public class C206_CaseStudy {
 		// TODO Auto-generated method stub
 		ArrayList<CCA> CCAList = new ArrayList<CCA>();
 		ArrayList<Student> StudentList = new ArrayList<Student>();
+		ArrayList<Administrator> Lecturer = new ArrayList<Administrator>();
 
 		// Test CCA variable (Zahid)
 		CCA cca1 = new CCA("Sports",0, "Football","Play with our feet is fun", 1,"Mondays and Wednesdays", 1600, "Field");
@@ -17,7 +18,11 @@ public class C206_CaseStudy {
 		Student s1 = new Student(123,321);
 		s1.setCCA("Football");
 		StudentList.add(s1);
-
+		
+		//For CCA lecturer (Sean)
+		Administrator admin1 = new Administrator("Sports",0, "Football","Play with our feet is fun", 1,"Mondays and Wednesdays", 1600, "Field", "2104", "David", "I wanna sleep.");
+		Lecturer.add(admin1);
+		
 		//option(menu) option2(loggedInMenu) option3(ccaMenu) option(ccaDetailsMenu)(Zahid)
 		int option = 0;//menu
 		int option2 = 0;//logged in menu
@@ -54,6 +59,18 @@ public class C206_CaseStudy {
 							Helper.line(30, "-");
 							System.out.println("CCA");
 							Helper.line(30, "-");
+							Helper.line(30, "-");
+							System.out.println(""+CCAList.get(0).getCca_title());
+							Helper.line(30, "-");
+							System.out.println("Description: "+CCAList.get(0).getDescription());
+							System.out.println("CCA vacancy: "+CCAList.get(0).getClass_size()+"/50");
+							System.out.println("Days: "+CCAList.get(0).getCca_day_of_the_week());
+							System.out.println("Time: "+CCAList.get(0).getTime());
+							System.out.println("Venue: "+CCAList.get(0).getVenue());
+							Helper.line(30, "-");
+							System.out.println("1. Register for CCA");
+							System.out.println("2. View CCA");
+							System.out.println("9. Exit");
 							
 							for(int i = 0; i < CCAList.size();i++) {
 								System.out.println((i+1) +". "+ CCAList.get(i).getCca_title());
@@ -63,18 +80,7 @@ public class C206_CaseStudy {
 							
 							if(option3 == 1) {
 								//CCA Description(Zahid)
-								Helper.line(30, "-");
-								System.out.println(""+CCAList.get(0).getCca_title());
-								Helper.line(30, "-");
-								System.out.println("Description: "+CCAList.get(0).getDescription());
-								System.out.println("CCA vacancy: "+CCAList.get(0).getClass_size()+"/50");
-								System.out.println("Days: "+CCAList.get(0).getCca_day_of_the_week());
-								System.out.println("Time: "+CCAList.get(0).getTime());
-								System.out.println("Venue: "+CCAList.get(0).getVenue());
-								Helper.line(30, "-");
-								System.out.println("1. Register for CCA");
-								System.out.println("2. View CCA");
-								System.out.println("9. Exit");
+								
 								option4 = Helper.readInt("Enter an option: ");
 								
 								if(option4 == 1) {
@@ -105,29 +111,43 @@ public class C206_CaseStudy {
 					System.out.println("Student ID or Register ID is incorrect, please try again.");
 				}
 
-			}
-
-		}
-		if (option == 2) {
+		} else if (option == 2) {
 			//(Register Codes) pls do
-		} 
-		else if (option == 9) {
-			System.out.println("Bye bye, have a nice day");
-		} 
-		else {
+		}  else if (option == 3) {
+			
+		}else {
 			System.out.println("Invalid option");
 		}
 	}
-
+		System.out.println("Bye bye, have a nice day");
+	}
 public static void startmenu() {
+	//Sean
 	C206_CaseStudy.setHeader("RESOURCE CENTRE APP");
 	Helper.line(80, "=");
 	System.out.println("Main Menu");
 	Helper.line(80, "=");
 	System.out.println("1. Login");
 	System.out.println("2. Register");
+	System.out.println("3. Staff Login");
 	System.out.println("9. Exit");
 	Helper.line(80, "=");
+}
+
+public static void staffLogin() {
+	//Sean
+	Helper.line(80, "=");
+	System.out.println("Staff Login");
+	Helper.line(80, "=");
+	String name = Helper.readString("Enter Staff ID(or enter 9 to return to previous page)");
+	if(name.equals("9")) {
+		
+	}
+	Helper.line(80, "=");
+}
+
+public static String toDoStaff(String yeet) {
+	
 }
 
 public static void loggedinmenu() {
@@ -140,6 +160,7 @@ public static void loggedinmenu() {
 	System.out.println("9. Exit");
 	Helper.line(80, "=");
 }
+
 
 public static void setHeader(String header) {
 	Helper.line(80, "-");
