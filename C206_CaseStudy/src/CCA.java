@@ -65,7 +65,5 @@ public class CCA extends ccaCategory {//Made by Sean
 
 	public void setVenue(String venue) {
 		this.venue = venue;
-	}
-
-	
+	}	
 }

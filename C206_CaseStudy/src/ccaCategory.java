@@ -7,7 +7,6 @@ public class ccaCategory {
 	public ccaCategory(String title, int id) {
 		this.cat_title = title;
 		this.cat_id = id;
-
 	}
 
 	public String getCat_title() {

@@ -25,27 +25,28 @@ public class Student {
 		this.studentID = studentID;
 		this.registerID = registerID;
 	}
+	
 	public int getStudentID() {
 		return studentID;
 	}
+	
 	public void setStudentID(int studentID) {
 		this.studentID = studentID;
 	}
+	
 	public int getRegisterID() {
 		return registerID;
 	}
+	
 	public void setRegisterID(int registerID) {
 		this.registerID = registerID;
 	}
+	
 	public String getCCA() {
 		return CCA;
 	}
+	
 	public void setCCA(String cCA) {
 		CCA = cCA;
 	}
-	
-	
-	
-	
-
 }
