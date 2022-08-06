@@ -1,3 +1,18 @@
+/*
+ * I declare that this code was written by me. 
+ * I do not copy or allow others to copy my code. 
+ * I understand that copying code is considered as plagiarism.
+ * 
+ * Student Name: Nicole
+ * Student ID: 21009632
+ * Class: C206-2D-E66K
+ * Date/Time created: Sunday 07-08-2022 06:16
+ */
+
+/**
+ * @author Nicole
+ *
+ */
 
 public class Parent extends Student {
 
