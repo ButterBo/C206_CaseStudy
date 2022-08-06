@@ -23,7 +23,10 @@ public class C206_CaseStudy {
 		Administrator admin1 = new Administrator("Sports",0, "Football","Play with our feet is fun", 1,"Mondays and Wednesdays", 1600, "Field", "2104", "David", "I wanna sleep.");
 		Lecturer.add(admin1);
 		
-		//option(menu) option2(loggedInMenu) option3(ccaMenu) option(ccaDetailsMenu)(Zahid)
+
+
+		//variables for choices in option(menu) option2(loggedInMenu) option3(ccaMenu) option(ccaDetailsMenu)(Zahid)
+
 		int option = 0;//menu
 		int option2 = 0;//logged in menu
 		int option3 = 0;//cca menu
