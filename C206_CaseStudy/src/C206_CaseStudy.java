@@ -124,6 +124,7 @@ public class C206_CaseStudy {
 	}
 		System.out.println("Bye bye, have a nice day");
 	}
+	
 public static void startmenu() {
 	//Sean
 	C206_CaseStudy.setHeader("RESOURCE CENTRE APP");
@@ -154,7 +155,6 @@ public static String toDoStaff(String yeet) {
 }
 
 public static void loggedinmenu() {
-
 	// Add more options for the log in menu(Zahid)
 	C206_CaseStudy.setHeader("Main Menu");
 	Helper.line(80, "=");
