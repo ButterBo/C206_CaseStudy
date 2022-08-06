@@ -19,9 +19,9 @@ public class C206_CaseStudy {
 		StudentList.add(s1);
 
 		//option(menu) option2(loggedInMenu) option3(ccaMenu) option(ccaDetailsMenu)(Zahid)
-		int option = 0;
-		int option2 = 0;
-		int option3 = 0;
+		int option = 0;//menu
+		int option2 = 0;//logged in menu
+		int option3 = 0;//cca menu
 		int option4 = 0;
 
 		while (option != 9) {
