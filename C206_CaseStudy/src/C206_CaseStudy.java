@@ -18,7 +18,7 @@ public class C206_CaseStudy {
 		s1.setCCA("Football");
 		StudentList.add(s1);
 
-		//option(menu) option2(loggedinmenu) option3(ccamenu) option(ccadetailsmenu)(Zahid)
+		//option(menu) option2(loggedInMenu) option3(ccaMenu) option(ccaDetailsMenu)(Zahid)
 		int option = 0;
 		int option2 = 0;
 		int option3 = 0;
@@ -120,7 +120,6 @@ public class C206_CaseStudy {
 	}
 
 public static void startmenu() {
-	// Zahid
 	C206_CaseStudy.setHeader("RESOURCE CENTRE APP");
 	Helper.line(80, "=");
 	System.out.println("Main Menu");
