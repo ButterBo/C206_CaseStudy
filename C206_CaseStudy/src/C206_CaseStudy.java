@@ -6,6 +6,7 @@ public class C206_CaseStudy {
 		// TODO Auto-generated method stub
 		ArrayList<CCA> CCAList = new ArrayList<CCA>();
 		ArrayList<Student> StudentList = new ArrayList<Student>();
+		ArrayList<Parent> parentList = new ArrayList<Parent>();
 		ArrayList<Administrator> Lecturer = new ArrayList<Administrator>();
 
 		// Test CCA variable (Zahid)
@@ -19,12 +20,15 @@ public class C206_CaseStudy {
 		s1.setCCA("Football");
 		StudentList.add(s1);
 		
+		//for Login Testing (Nicole)
+		Parent p1 = new Parent(123, 123, "Sponge", "C123", "Mr. Sqaurepants", "Bob", "spongebob@gmail.com", 1234578);
+		p1.setCCA("Basketball");
+		parentList.add(p1);
+		
 		//For CCA lecturer (Sean)
 		Administrator admin1 = new Administrator("Sports",0, "Football","Play with our feet is fun", 1,"Mondays and Wednesdays", 1600, "Field", "2104", "David", "I wanna sleep.");
 		Lecturer.add(admin1);
 		
-
-
 		//variables for choices in option(menu) option2(loggedInMenu) option3(ccaMenu) option(ccaDetailsMenu)(Zahid)
 
 		int option = 0;//menu
@@ -38,18 +42,27 @@ public class C206_CaseStudy {
 
 			if (option == 1) {
 
-				Helper.line(30, "-");
+				System.out.println("");
+				Helper.line(80, "-");
 				System.out.println("LOGIN");
-				Helper.line(30, "-");
+				Helper.line(80, "-");
 
 				//User Input
 				int studentIDInput = Helper.readInt("Student ID: ");
 				int registerIDInput = Helper.readInt("Register ID: ");
 
 				//Check if login details correct (Zahid)
-
-				if(studentIDInput == StudentList.get(0).getStudentID() == true && registerIDInput == StudentList.get(0).getRegisterID() == true) {
-
+				boolean check = false; // Added this and for loop for checking, and also made changes to if statement (Nicole)
+				
+				for (int i = 0; i < StudentList.size(); i++) {
+					if ((studentIDInput == StudentList.get(i).getStudentID()) && (registerIDInput == StudentList.get(i).getRegisterID())) {
+						check = true;
+						break;
+					}
+				}
+				
+				if (check) {
+				
 					//This is the login menu yall add your menu items here(Zahid)
 					C206_CaseStudy.loggedinmenu();
 					
@@ -59,116 +72,112 @@ public class C206_CaseStudy {
 						if (option2 == 1) {
 							
 							//view/register CCA menu(Zahid)
-							Helper.line(30, "-");
+							Helper.line(80, "-");
 							System.out.println("CCA");
-							Helper.line(30, "-");
-							Helper.line(30, "-");
-							System.out.println(""+CCAList.get(0).getCca_title());
-							Helper.line(30, "-");
-							System.out.println("Description: "+CCAList.get(0).getDescription());
-							System.out.println("CCA vacancy: "+CCAList.get(0).getClass_size()+"/50");
-							System.out.println("Days: "+CCAList.get(0).getCca_day_of_the_week());
-							System.out.println("Time: "+CCAList.get(0).getTime());
-							System.out.println("Venue: "+CCAList.get(0).getVenue());
-							Helper.line(30, "-");
-							System.out.println("1. Register for CCA");
-							System.out.println("2. View CCA");
-							System.out.println("9. Exit");
+							Helper.line(80, "-");
 							
-							for(int i = 0; i < CCAList.size();i++) {
-								System.out.println((i+1) +". "+ CCAList.get(i).getCca_title());
+							// Added for loops (Nicole)
+							for (int i = 0; i < CCAList.size(); i++) {
+								System.out.println((i+1) + ". " + CCAList.get(i).getCca_title());
 							}
 							
+							System.out.println("");
 							option3 = Helper.readInt("Enter an option: ");
 							
-							if(option3 == 1) {
+							int ccaOption = 0;
+							
+							for (int i = 0; i < CCAList.size(); i++) {
+								if (option3 == (i+1)) {
+									Helper.line(80, "-");
+									System.out.println("Description: "+CCAList.get(i).getDescription());
+									System.out.println("CCA vacancy: "+CCAList.get(i).getClass_size()+"/50");
+									System.out.println("Days: "+CCAList.get(i).getCca_day_of_the_week());
+									System.out.println("Time: "+CCAList.get(i).getTime());
+									System.out.println("Venue: "+CCAList.get(i).getVenue());
+									ccaOption = option3 - 1;
+								}
+							}
+							
+							System.out.println("\n1. Register for CCA");
+							System.out.println("9. Exit\n");
+							
+							option4 = Helper.readInt("Enter an option: ");
+							
+							if (option4 == 1) {
 								//CCA Description(Zahid)
-								
-								option4 = Helper.readInt("Enter an option: ");
-								
+
 								if(option4 == 1) {
-									s1.setCCA(CCAList.get(0).getCca_title());
-									CCAList.get(0).setClass_size(CCAList.get(0).getClass_size()+1);
+									s1.setCCA(CCAList.get(ccaOption).getCca_title());
+									CCAList.get(ccaOption).setClass_size(CCAList.get(ccaOption).getClass_size()+1);
 									System.out.println("CCA successfully Added");
 								}
-								else if(option4 ==2) {
-									Helper.line(30, "-");
-									System.out.println(""+CCAList.get(0).getCca_title());
-									Helper.line(30, "-");
-									System.out.println("Vacancy: "+CCAList.get(0).getClass_size()+"/50");
-									Helper.line(30, "-");
-									for(int i = 0; i < StudentList.size();i++) {
-										if(StudentList.get(i).getCCA().equals(CCAList.get(0).getCca_title()))
-										System.out.println((i+1) +". "+ StudentList.get(i).getStudentID());
-									}
+								
+								else {
+									
 								}
-
 							}
+							
 						}
 						else if(option2 == 2) {
 							//add other menu item
 						}
-					} 
-				}
-				else {
+					}
+					
+				} else {
 					System.out.println("Student ID or Register ID is incorrect, please try again.");
 				}
-
+				
 		} else if (option == 2) {
 			//(Register Codes) pls do
+			
 		}  else if (option == 3) {
 			
-		}else {
+		} else {
 			System.out.println("Invalid option");
 		}
+			
 	}
 		System.out.println("Bye bye, have a nice day");
 	}
-	
-public static void startmenu() {
-	//Sean
-	C206_CaseStudy.setHeader("RESOURCE CENTRE APP");
-	Helper.line(80, "=");
-	System.out.println("Main Menu");
-	Helper.line(80, "=");
-	System.out.println("1. Login");
-	System.out.println("2. Register");
-	System.out.println("3. Staff Login");
-	System.out.println("9. Exit");
-	Helper.line(80, "=");
-}
 
-public static void staffLogin() {
-	//Sean
-	Helper.line(80, "=");
-	System.out.println("Staff Login");
-	Helper.line(80, "=");
-	String name = Helper.readString("Enter Staff ID(or enter 9 to return to previous page)");
-	if(name.equals("9")) {
-		
+	public static void startmenu() {
+		// Sean
+		C206_CaseStudy.setHeader("RESOURCE CENTRE APP");
+		System.out.println("1. Login");
+		System.out.println("2. Register");
+		System.out.println("3. Staff Login");
+		System.out.println("9. Exit \n");
 	}
-	Helper.line(80, "=");
-}
 
-public static String toDoStaff(String yeet) {
-	
-}
+	public static void staffLogin() {
+		// Sean
+		Helper.line(80, "-");
+		System.out.println("Staff Login");
+		Helper.line(80, "-");
+		String name = Helper.readString("Enter Staff ID(or enter 9 to return to previous page)");
+		if (name.equals("9")) {
 
-public static void loggedinmenu() {
-	// Add more options for the log in menu(Zahid)
-	C206_CaseStudy.setHeader("Main Menu");
-	Helper.line(80, "=");
-	System.out.println("1. View/Register for CCA");
-	System.out.println("2. ?");
-	System.out.println("9. Exit");
-	Helper.line(80, "=");
-}
+		}
+		Helper.line(80, "-");
+	}
 
+	public static String toDoStaff(String yeet) {
 
-public static void setHeader(String header) {
-	Helper.line(80, "-");
-	System.out.println(header);
-	Helper.line(80, "-");
-}
+		return "";
+	}
+
+	public static void loggedinmenu() {
+		// Add more options for the log in menu(Zahid)
+		Helper.line(80, "-");
+		System.out.println("1. View/Register for CCA");
+		System.out.println("2. ?");
+		System.out.println("9. Exit \n");
+	}
+
+	public static void setHeader(String header) {
+		Helper.line(80, "-");
+		System.out.println(header);
+		Helper.line(80, "-");
+	}
 
 }
