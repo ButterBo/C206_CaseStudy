@@ -134,11 +134,96 @@ public class C206_CaseStudy {
 						adminMenu(Lecturer, adminId);
 						choice = Helper.readInt("Enter option: ");
 						if(choice == 1) {
-							
+							boolean loop = true;
+							while(loop == true) {
+								boolean leave = false;
+								String ccaName = Helper.readString("Enter new CCA name: ");
+								String leaveAdd = Helper.readString("Do you want to exit adding CCA (Y/N): ");
+								if(leaveAdd.equalsIgnoreCase("y")) {
+									loop = false;
+								} else {
+									if(!ccaName.isEmpty()) {
+										String description = Helper.readString("Enter CCA's description: ");
+										
+										if(!description.isEmpty()) {
+											String size = Helper.readString("Enter CCA's class size: ");
+											
+											if(!size.isEmpty()) {
+												String day = Helper.readString("Enter when the CCA will occur(weekdays): ");
+												if(!day.equalsIgnoreCase("saturaday") || !day.equalsIgnoreCase("sunday") && !day.isEmpty()) {
+													int time = 0;
+													time = Helper.readInt("Enter what time the CCA will occur(24HR): ");
+													if(time!=0) {
+														
+														String venue = Helper.readString("Enter where the CCA will occur(weekdays): ");
+														
+														if(!venue.isEmpty()) {
+															String category = Helper.readString("Enter CCA category: ");
+															int categoryID = Helper.readInt("Enter CCA category ID: ");
+															boolean allow = false;
+															for (int s =0;s<CCAList.size();s++) {
+																if(CCAList.get(s).getCat_id()!=categoryID) {
+																	allow = true;
+																	break;
+																}
+															}
+															
+															if(allow==true) {
+																CCA newCCA = new CCA(category, categoryID, ccaName, description, size, day, time, venue);
+															}
+															
+														} else {
+															System.out.println("CCA venue is empty, please try again");
+														}
+														
+													} else {
+														System.out.println("CCA time is empty, please try again");
+													}
+														
+												} else {
+													System.out.println("CCA cannot be empty and cannot occur during the weekend, Please try again");
+												}
+													
+											} else {
+												System.out.println("CCA description is empty, please try again");
+											}
+										} else {
+											System.out.println("CCA description is empty, please try again");
+										}
+									} else {
+										System.out.println("CCA name is empty, please try again");
+									}
+								}
+							}
+												
 						} else if (choice == 2) {
 							
 						} else if (choice == 3) {
 							
+						} else if (choice == 4) {
+							// Parent details (Nicole)
+							if (parentList.size() != 0) {
+								while (option2 != 9) {
+									if (parentList.size() != 0) {
+										parentMenu(parentList);
+	
+										option2 = Helper.readInt("Enter an option: ");
+	
+										if (option2 == 1) {
+											option3 = Helper.readInt("Enter student ID to delete from parent list: ");
+	
+											for (int i = 0; i < parentList.size(); i++) {
+												if (parentList.get(i).getStudentID() == option3) {
+													parentList.remove(i);
+													System.out.println("\nParent has been remove from list.");
+													break;
+												}
+											}
+										} else { System.out.println("Invalid option"); }
+									} else { break; }
+								}
+							} else { System.out.println("There are no registered parents."); 
+							}
 						} else {
 							System.out.println("Invalid option, please try again");
 							choice = Helper.readInt("Enter option: ");
@@ -150,30 +235,6 @@ public class C206_CaseStudy {
 				} else {
 					System.out.print("Invalid Id and Password");
 				}
-				
-			} else if (option == 4) { 
-				// Parent details (Nicole)
-				if (parentList.size() != 0) {
-					while (option2 != 9) {
-						if (parentList.size() != 0) {
-							parentMenu(parentList);
-
-							option2 = Helper.readInt("Enter an option: ");
-
-							if (option2 == 1) {
-								option3 = Helper.readInt("Enter student ID to delete from parent list: ");
-
-								for (int i = 0; i < parentList.size(); i++) {
-									if (parentList.get(i).getStudentID() == option3) {
-										parentList.remove(i);
-										System.out.println("\nParent has been remove from list.");
-										break;
-									}
-								}
-							} else { System.out.println("Invalid option"); }
-						} else { break; }
-					}
-				} else { System.out.println("There are no registered parents."); }
 			} else { System.out.println("Invalid option"); }
 		} System.out.println("Bye bye, have a nice day"); }
 
@@ -190,6 +251,7 @@ public class C206_CaseStudy {
 		System.out.println("1. Add CCA");
 		System.out.println("2. View CCA");
 		System.out.println("3. Delete CCA");
+		System.out.println("4. Parent details");
 		System.out.println("9. Logout\n");
 		Helper.line(140, "-");
 	}
