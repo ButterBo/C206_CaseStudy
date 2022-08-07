@@ -493,7 +493,7 @@ public class C206_CaseStudy {
 		System.out.println(output);
 	}
 	
-	public static void addParent(ArrayList<Parent> parentList) {
+	public static void addParent(ArrayList<Parent> parentList) { //Registration for parent -Nicole
 		int studentID = Helper.readInt("Please enter your child's studentID: ");
 		String studentName = Helper.readString("Please enter your child's name: ");
 		String classroom = Helper.readString("Please enter your child's classroom code: ");
