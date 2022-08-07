@@ -480,7 +480,7 @@ public class C206_CaseStudy {
 		System.out.println("STUDENT PARENT DETAILS LIST");
 		Helper.line(140, "-");
 
-		System.out.println(C206_CaseStudy.viewAllParents(parentList));
+		System.out.println(C206_CaseStudy.viewAllParent(parentList));
 		Helper.line(140, "-");
 
 		System.out.println("\n1. Delete parent from list");
