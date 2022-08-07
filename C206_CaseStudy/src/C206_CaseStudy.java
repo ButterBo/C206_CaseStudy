@@ -136,74 +136,11 @@ public class C206_CaseStudy {
 						choice = Helper.readInt("Enter option: ");
 						if(choice == 1) {
 							boolean loop = true;
-							while(loop != false) {
-								boolean leave = false;
-								String ccaName = Helper.readString("Enter new CCA name: ");
-								String leaveAdd = Helper.readString("Do you want to exit adding CCA (Y/N): ");
-								if(leaveAdd.equalsIgnoreCase("y")) {
-									loop = false;
-								} else {
-									if(!ccaName.isEmpty()) {
-										String description = Helper.readString("Enter CCA's description: ");
-										
-										if(!description.isEmpty()) {
-											int size = Helper.readInt("Enter CCA's class size: ");
-											
-											if(size!=0) {
-												String day = Helper.readString("Enter when the CCA will occur(weekdays): ");
-												if(!day.equalsIgnoreCase("saturaday") || !day.equalsIgnoreCase("sunday") && !day.isEmpty()) {
-													int time = 0;
-													time = Helper.readInt("Enter what time the CCA will occur(24HR): ");
-													if(time!=0) {
-														
-														String venue = Helper.readString("Enter where the CCA will occur(weekdays): ");
-														
-														if(!venue.isEmpty()) {
-															String category = Helper.readString("Enter CCA category: ");
-															int categoryID = Helper.readInt("Enter CCA category ID: ");
-															boolean allow = false;
-															for (int s =0;s<CCAList.size();s++) {
-																if(CCAList.get(s).getCat_id()!=categoryID) {
-																	allow = true;
-																	break;
-																}
-															}
-															
-															if(allow==true) {
-																CCA newCCA = new CCA(category, categoryID, ccaName, description, size, day, time, venue);
-																CCAList.add(newCCA);
-																System.out.println(ccaName+" has been successfully added to database");
-																leave = true;
-																loop = false;
-															} else {
-																System.out.println("Category ID has already been taken");
-															}
-															
-														} else {
-															System.out.println("CCA venue is empty, please try again");
-														}
-														
-													} else {
-														System.out.println("CCA time is empty, please try again");
-													}
-														
-												} else {
-													System.out.println("CCA cannot be empty and cannot occur during the weekend, Please try again");
-												}
-													
-											} else {
-												System.out.println("CCA description is empty, please try again");
-											}
-										} else {
-											System.out.println("CCA description is empty, please try again");
-										}
-									} else {
-										System.out.println("CCA name is empty, please try again");
-									}
-								}
-							}
+							addCCA(CCAList, loop);
 												
 						} else if (choice == 2) {
+							
+							viewCCAList(CCAList);
 							
 						} else if (choice == 3) {
 							
@@ -245,6 +182,116 @@ public class C206_CaseStudy {
 				}
 			} else { System.out.println("Invalid option"); }
 		} System.out.println("Bye bye, have a nice day"); }
+
+
+	/**
+	 * @param CCAList
+	 */
+	private static void viewCCAList(ArrayList<CCA> CCAList) {
+		Helper.line(140, "-");
+		for(int v =0 ; v<CCAList.size();v++) {
+			Helper.line(140, "+");
+			String viewCCA = String.format("Category: %s\n", CCAList.get(v).getCat_title());
+			viewCCA += String.format("Category ID: %d", CCAList.get(v).getCat_id());
+			viewCCA += String.format("CCA: %s", CCAList.get(v).getCca_title());
+			viewCCA += String.format("Desciption: %s", CCAList.get(v).getDescription());
+			viewCCA += String.format("Class Size: %d", CCAList.get(v).getClass_size());
+			viewCCA += String.format("Day of the week: %s", CCAList.get(v).getCca_day_of_the_week());
+			viewCCA += String.format("Time: ", CCAList.get(v).getTime());
+			viewCCA += String.format("Venue: ", CCAList.get(v).getVenue());
+			System.out.println(viewCCA);
+			Helper.line(140, "+");
+		}
+		Helper.line(140, "-");
+	}
+
+
+	/**
+	 * @param CCAList
+	 * @param loop
+	 */
+	private static void addCCA(ArrayList<CCA> CCAList, boolean loop) {
+		Helper.line(140, "-");
+		while(loop != false) {
+			boolean leave = false;
+			String ccaName = Helper.readString("Enter new CCA name: ");
+			String leaveAdd = Helper.readString("Do you want to exit adding CCA (Y/N): ");
+			if(leaveAdd.equalsIgnoreCase("y")) {
+				loop = false;
+			} else {
+				if(!ccaName.isEmpty()) {
+					String description = Helper.readString("Enter CCA's description: ");
+					
+					if(!description.isEmpty()) {
+						int size = Helper.readInt("Enter CCA's class size: ");
+						
+						if(size!=0) {
+							String day = Helper.readString("Enter when the CCA will occur(weekdays): ");
+							if(!day.equalsIgnoreCase("saturaday") || !day.equalsIgnoreCase("sunday") && !day.isEmpty()) {
+								int time = 0;
+								time = Helper.readInt("Enter what time the CCA will occur(24HR): ");
+								if(time!=0) {
+									
+									String venue = Helper.readString("Enter where the CCA will occur(weekdays): ");
+									
+									if(!venue.isEmpty()) {
+										String category = Helper.readString("Enter CCA category: ");
+										int categoryID = Helper.readInt("Enter CCA category ID: ");
+										boolean allow = false;
+										allow = checkCategoryID(CCAList, categoryID, allow);
+										
+										if(allow==true) {
+											CCA newCCA = new CCA(category, categoryID, ccaName, description, size, day, time, venue);
+											CCAList.add(newCCA);
+											System.out.println(ccaName+" has been successfully added to database");
+											leave = true;
+											loop = false;
+										} else {
+											System.out.println("Category ID has already been taken");
+										}
+										
+									} else {
+										System.out.println("CCA venue is empty, please try again");
+									}
+									
+								} else {
+									System.out.println("CCA time is empty, please try again");
+								}
+									
+							} else {
+								System.out.println("CCA cannot be empty and cannot occur during the weekend, Please try again");
+							}
+								
+						} else {
+							System.out.println("CCA description is empty, please try again");
+						}
+					} else {
+						System.out.println("CCA description is empty, please try again");
+					}
+				} else {
+					System.out.println("CCA name is empty, please try again");
+				}
+			}
+		}
+		Helper.line(140, "-");
+	}
+
+
+	/**
+	 * @param CCAList
+	 * @param categoryID
+	 * @param allow
+	 * @return
+	 */
+	private static boolean checkCategoryID(ArrayList<CCA> CCAList, int categoryID, boolean allow) {
+		for (int s =0;s<CCAList.size();s++) {
+			if(CCAList.get(s).getCat_id()!=categoryID) {
+				allow = true;
+				break;
+			}
+		}
+		return allow;
+	}
 
 
 	/**
