@@ -96,9 +96,8 @@ public class C206_CaseStudy {
 								// CCA Description(Zahid)
 
 								if (option4 == 1) {
-									s1.setCCA(CCAList.get(ccaOption).getCca_title());
-									CCAList.get(ccaOption).setClass_size(CCAList.get(ccaOption).getClass_size() + 1);
-									System.out.println("CCA successfully Added");
+									// Register CCA for student(Zahid)
+									C206_CaseStudy.registerStudent(CCAList,s1,ccaOption);
 								}
 
 								else {
@@ -599,5 +598,11 @@ public class C206_CaseStudy {
 				parentList.add(parentNew);
 			
 		}
+	}
+	
+	public static void registerStudent(ArrayList<CCA> CCAList,Student s1, int ccaOption) {
+		s1.setCCA(CCAList.get(ccaOption).getCca_title());
+		CCAList.get(ccaOption).setClass_size(CCAList.get(ccaOption).getClass_size() + 1);
+		System.out.println("CCA successfully Added");
 	}
 }
