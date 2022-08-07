@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 public class C206_CaseStudy {
 
@@ -105,6 +106,9 @@ public class C206_CaseStudy {
 
 						} else if (option2 == 2) {
 							// add other menu item
+							
+							
+
 						}
 					}
 
@@ -114,6 +118,11 @@ public class C206_CaseStudy {
 
 			} else if (option == 2) {
 				// (Register Codes) pls do
+				
+				
+				// Registration for parent (Nicole)
+				C206_CaseStudy.addParent(parentList);
+				
 
 			} else if (option == 3) { 
 				String lecId = Helper.readString("Enter administrator ID: ");
@@ -169,13 +178,8 @@ public class C206_CaseStudy {
 										if (option2 == 1) {
 											option3 = Helper.readInt("Enter student ID to delete from parent list: ");
 	
-											for (int i = 0; i < parentList.size(); i++) {
-												if (parentList.get(i).getStudentID() == option3) {
-													parentList.remove(i);
-													System.out.println("\nParent has been remove from list.");
-													break;
-												}
-											}
+											deleteParent(parentList, option3);
+											
 										} else { System.out.println("Invalid option"); }
 									} else { break; }
 								}
@@ -194,6 +198,21 @@ public class C206_CaseStudy {
 				}
 			} else { System.out.println("Invalid option"); }
 		} System.out.println("Bye bye, have a nice day"); }
+
+
+	/**
+	 * @param parentList
+	 * @param option3
+	 */
+	public static void deleteParent(ArrayList<Parent> parentList, int option) {
+		for (int i = 0; i < parentList.size(); i++) {
+			if (parentList.get(i).getStudentID() == option) {
+				parentList.remove(i);
+				System.out.println("\nParent has been remove from list.");
+				break;
+			}
+		}
+	}
 
 
 	/**
@@ -465,5 +484,38 @@ public class C206_CaseStudy {
 			output += parentList.get(i).toString();
 		}
 		System.out.println(output);
+	}
+	
+	public static void addParent(ArrayList<Parent> parentList) {
+		int studentID = Helper.readInt("Please enter your child's studentID: ");
+		String studentName = Helper.readString("Please enter your child's name: ");
+		String classroom = Helper.readString("Please enter your child's classroom code: ");
+		String teacher = Helper.readString("Please enter your child's teacher name: ");
+		String parentName = Helper.readString("Please enter your name: ");
+		String parentEmail = Helper.readString("Please enter your email address: ");
+		int contactNo = Helper.readInt("Please enter your contact number: ");
+			
+		boolean exists = false;
+		
+		for (int i = 0; i < parentList.size(); i++) {
+			if (parentList.get(i).getStudentID() == studentID) {
+				exists = true;
+				break;
+			}
+		}
+		
+		if (exists) {
+			System.out.println("You have already registered using this student ID!");
+		} else {
+			String contact = contactNo + "";
+			if (contact.length() == 8) {
+				Random rand = new Random();
+				int registrationID = 10000 + rand.nextInt(90000);
+				System.out.println("Your registration ID is " + registrationID);
+				
+				Parent parentNew = new Parent(studentID, registrationID, studentName, classroom, teacher, parentName, parentEmail, contactNo);
+				parentList.add(parentNew);
+			}
+		}
 	}
 }
