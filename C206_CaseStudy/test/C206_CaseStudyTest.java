@@ -68,6 +68,50 @@ public class C206_CaseStudyTest {
 		assertTrue("C206_CaseStudy_SampleTest ",true);
 	}
 	
+//	yulong
+	@Test
+	public void testViewAllStudent() { 
+
+		assertNotNull("Check that there is StudentList to add to", StudentList);
+
+		String allStudent = C206_CaseStudy.viewAllStudent(StudentList);
+		String testOutput = "";
+		assertEquals("Check that the list of Student retrieved from C206_CaseStudy is empty", testOutput, allStudent);
+		
+		C206_CaseStudy.addStudent(StudentList);
+		C206_CaseStudy.addStudent(StudentList);
+		assertEquals("Test if after adding s1 and s2 to StudentList, the size is now 2", 2, StudentList.size());
+		
+		
+
+		allStudent = C206_CaseStudy.viewAllParent(parentList);
+		
+		testOutput = String.format("%-15s %-15s %-15s %-15s %-20s %-15s %-25s %-15s \n", 123, 123, "Sponge", "C123", "Mr. Sqaurepants", "Bob", "spongebob@gmail.com", 1234578);
+		testOutput += String.format("%-15s %-15s %-15s %-15s %-20s %-15s %-25s %-15s \n", 234, 432, "John", "C234", "Mr. Cena", "Nathan", "johnathan@gmail.com", 87654321);
+		
+		assertEquals("Test if the expected output is the same as the list of Student retrieved from C206_CaseStudy", testOutput, allStudent);
+	}
+	
+//	yulong
+	@Test   
+	public void testDeleteStudent() {
+		assertNotNull("Test if there is Student arraylist to delete from", StudentList);
+
+		C206_CaseStudy.addStudent(StudentList);
+
+		boolean deleted = C206_CaseStudy.deleteStudent(StudentList, 1);
+		assertTrue("Test if Student has been deleted", deleted);
+		assertEquals("Test that Student list size is now 1 after deleting", 1, StudentList.size());
+		
+
+		deleted = C206_CaseStudy.deleteStudent(StudentList, 3);
+		assertFalse("Test if non-existing Student is not deleted", deleted);
+		assertEquals("Test that Student list size is still 1", 1, StudentList.size());
+
+		deleted = C206_CaseStudy.deleteStudent(StudentList, 1);
+		assertFalse("Test that Student was deleted", deleted);
+		assertEquals("Test that Student list size is now 0", 0, StudentList.size());
+	}
 	@Test
 	public void testAddParent() { //Nicole
 		assertNotNull("Test if there is valid Parent arraylist to add to", parentList);
@@ -137,5 +181,20 @@ public class C206_CaseStudyTest {
 		
 		assertEquals("check that categorylist size is 0", 0, CategoryList.size());
 	}
-	public void testLogin
+	
+	@Test
+	public void testAddCategory() {
+		// Item list is not null, so that can add a new item - boundary
+		assertNotNull("Check if there is valid category arraylist to add to", CategoryList);
+	
+		C206_CaseStudy.addCategory(CategoryList, c1);
+		assertEquals("Check that Category arraylist size is 1", 1, CategoryList.size());
+		assertSame("Check that category is added", c1, CategoryList.get(0));
+		
+		//Add another item. test The size of the list is 2? -normal
+	
+		C206_CaseStudy.addCategory(CategoryList, c2);
+		assertEquals("Check that Category arraylist size is 2", 2, CategoryList.size());
+		assertSame("Check that Category is added", c2, CategoryList.get(1));
+	}
 }
