@@ -117,7 +117,7 @@ public class C206_CaseStudy {
 				}
 
 			} else if (option == 2) {
-				// (Register Codes) pls do
+				// (Register Codes) (yulong)
 				
 				
 				// Registration for parent (Nicole)
@@ -204,7 +204,17 @@ public class C206_CaseStudy {
 				 
 		}  
 }
-
+	
+//	yulong
+	public static void deleteStudent(ArrayList<Student> StudentList, int option) {
+		for (int i = 0; i < StudentList.size(); i++) {
+			if (StudentList.get(i).getStudentID() == option) {
+				StudentList.remove(i);
+				System.out.println("\nStudent has been remove from the list.");
+				break;
+			}
+		}
+	}
 
 	/**
 	 * @param parentList
@@ -425,14 +435,12 @@ public class C206_CaseStudy {
 
 	/**
 	 * @param StudentList
-	 * @return
 	 */
-	private static Student generateRandomStudent(ArrayList<Student> StudentList) {
+	private static void generateRandomStudent(ArrayList<Student> StudentList) {
 		// for Login Testing (Zahid)
 		Student s1 = new Student(123, 321);
 		s1.setCCA("Football");
 		StudentList.add(s1);
-		return s1;
 	}
 
 
@@ -448,10 +456,6 @@ public class C206_CaseStudy {
 		CCAList.add(cca1);
 		CCAList.add(cca2);
 	}
-
-	
-
-		
 
 	public static void startmenu() {
 		// Sean
@@ -481,6 +485,16 @@ public class C206_CaseStudy {
 		Helper.line(140, "-");
 		System.out.println(header);
 		Helper.line(140, "-");
+	}
+	
+//	yulong
+	public static void viewAllStudent(ArrayList<Student> StudentList) { 
+		String output2 = String.format("%-15s %-15s %-15s %-15s %-20s %-15s %-25s %-15s \n", "STUDENT ID", "REGISTER ID");
+
+		for (int i = 0; i < StudentList.size(); i++) {
+			output2 += StudentList.get(i).toString();
+		}
+		System.out.println(output2);
 	}
 
 	public static void viewAllParents(ArrayList<Parent> parentList) { // Made by Nicole
