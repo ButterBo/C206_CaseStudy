@@ -384,7 +384,7 @@ public class C206_CaseStudy {
 		System.out.println("STUDENT PARENT DETAILS LIST");
 		Helper.line(140, "-");
 
-		C206_CaseStudy.viewAllParents(parentList);
+		System.out.println(C206_CaseStudy.viewAllParents(parentList));
 		Helper.line(140, "-");
 
 		System.out.println("\n1. Delete parent from list");
@@ -505,14 +505,14 @@ public class C206_CaseStudy {
 		System.out.println(output2);
 	}
 
-	public static void viewAllParents(ArrayList<Parent> parentList) { // Made by Nicole
+	public static String viewAllParents(ArrayList<Parent> parentList) { // Made by Nicole
 		String output = String.format("%-15s %-15s %-15s %-15s %-20s %-15s %-25s %-15s \n", "STUDENT ID", "REGISTER ID",
 				"STUDENT NAME", "CLASSROOM", "TEACHER", "PARENT NAME", "PARENT EMAIL", "CONTACT NO");
 
 		for (int i = 0; i < parentList.size(); i++) {
 			output += parentList.get(i).toString();
 		}
-		System.out.println(output);
+		return output;
 	}
 	
 	public static Parent inputParent() { //Registration for parent -Nicole

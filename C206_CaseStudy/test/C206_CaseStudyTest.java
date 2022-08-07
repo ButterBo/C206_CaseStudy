@@ -43,5 +43,30 @@ public class C206_CaseStudyTest {
 		assertEquals("Test that Parent arraylist size is now 2", 2, parentList.size());
 		assertSame("Test that new Parent that is added is the same as 2nd item of the list", p2, parentList.get(1));
 	}
+	
+	@Test
+	public void testRetrieveAllChromebook() {
+
+		// test if the list of chromebooks retrieved from the SourceCentre is empty
+		String allChromebook = C206_CaseStudy.viewAllParents(parentList);
+		String testOutput = "";
+		assertEquals("Check that viewAllParents is not empty", testOutput, allChromebook);
+
+		// Given an empty list, after adding 2 items, test if the size of the list is 2
+		ResourceCentre.addChromebook(chromebookList, cb1);
+		ResourceCentre.addChromebook(chromebookList, cb2);
+		assertEquals("Test if that Chromebook arraylist size is 2?", 2, chromebookList.size());
+
+		// test if the expected output string same as the list of chromebooks retrieved
+		// from the SourceCentre
+		allChromebook = ResourceCentre.retrieveAllChromebook(chromebookList);
+
+		testOutput = String.format("%-10s %-30s %-10s %-10s %-20s\n", "CB0011", "My Google Chromebook 1st", "Yes", "",
+				"Mac OS");
+		testOutput += String.format("%-10s %-30s %-10s %-10s %-20s\n", "CB0012", "SAMSUNG Chromebook 4+", "Yes", "",
+				"Win 10");
+
+		assertEquals("Check that ViewAllChromebookList", testOutput, allChromebook);
+	}
 
 }
