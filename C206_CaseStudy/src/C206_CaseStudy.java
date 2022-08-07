@@ -263,7 +263,7 @@ public class C206_CaseStudy {
 	/**
 	 * @param CCAList
 	 */
-	private static void viewCCAList(ArrayList<CCA> CCAList) {
+	public static void viewCCAList(ArrayList<CCA> CCAList) {
 		Helper.line(140, "-");
 		for(int v =0 ; v<CCAList.size();v++) {
 			Helper.line(140, "+");

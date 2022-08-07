@@ -22,14 +22,25 @@ public class C206_CaseStudyTest {
 	private Parent p2;
 
 	private ArrayList<Parent> parentList;
+<<<<<<< HEAD
 
 	private ArrayList<Administrator> lectureList;
 	private ArrayList<CCA> ccaList;
 	private ArrayList<Category> ccaCategoryList;
+=======
+	
+<<<<<<< HEAD
+=======
+>>>>>>> branch 'master' of https://github.com/ButterBo/C206_CaseStudy.git
 
 	
+<<<<<<< HEAD
 	
 
+=======
+>>>>>>> branch 'master' of https://github.com/ButterBo/C206_CaseStudy.git
+	@Before
+>>>>>>> branch 'master' of https://github.com/ButterBo/C206_CaseStudy.git
 	public void setUp() throws Exception {
 
 		admin1 = new Administrator("Sports", 0, "Football", "Play with our feet is fun", 1,
@@ -41,7 +52,14 @@ public class C206_CaseStudyTest {
 
 		p1 = new Parent(123, 123, "Sponge", "C123", "Mr. Sqaurepants", "Bob", "spongebob@gmail.com", 1234578);
 		p2 = new Parent(234, 432, "John", "C234", "Mr. Cena", "Nathan", "johnathan@gmail.com", 87654321);
+<<<<<<< HEAD
+=======
+		
+<<<<<<< HEAD
+=======
+>>>>>>> branch 'master' of https://github.com/ButterBo/C206_CaseStudy.git
 
+>>>>>>> branch 'master' of https://github.com/ButterBo/C206_CaseStudy.git
 	}
 
 	@Test
@@ -49,6 +67,13 @@ public class C206_CaseStudyTest {
 		assertNotNull("Check if CCA arraylist is not empty", ccaList);
 		
 		C206_CaseStudy.addCCA(ccaList, "Yeet", cca1 );
+		assertEquals("Check that CCA arraylist size is 1", 1, ccaList.size());
+		assertSame("Check if cca is addedd", cca1, ccaList.get(0));
+	}
+	
+	@Test
+	public void viewCCA() {
+		assertNotNull("Check if CCA arraylist is not empty", ccaList);
 	}
 	
 	@After
