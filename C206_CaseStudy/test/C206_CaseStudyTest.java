@@ -7,19 +7,43 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class C206_CaseStudyTest {
+<<<<<<< HEAD
+	private Administrator admin1;
+	private CCA cca1;
+	
+	private ArrayList<Administrator> lectureList;
+	private ArrayList<CCA> ccaList;
+=======
 	private Parent p1;
 	private Parent p2;
 
 	private ArrayList<Parent> parentList;
 	
+>>>>>>> branch 'master' of https://github.com/ButterBo/C206_CaseStudy.git
 	
 	@Before
 	public void setUp() throws Exception {
+<<<<<<< HEAD
+		admin1 = new Administrator("Sports", 0, "Football", "Play with our feet is fun", 1,
+				"Mondays and Wednesdays", 1600, "Field", "2104", "David", "I wanna sleep.");
+		cca1 = new CCA("Sports", 1, "Bouldering", "Climbing is fun!", 1, "Tuesdays and Thursdays", 1600,
+				"Rock Wall");
+		lectureList = new ArrayList<Administrator>();
+		ccaList = new ArrayList<CCA>();
+=======
 		p1 = new Parent(123, 123, "Sponge", "C123", "Mr. Sqaurepants", "Bob", "spongebob@gmail.com", 1234578);
 		p2 = new Parent(234, 432, "John", "C234", "Mr. Cena", "Nathan", "johnathan@gmail.com", 87654321);
 		
+>>>>>>> branch 'master' of https://github.com/ButterBo/C206_CaseStudy.git
 	}
 
+	@Test
+	public void testAddCCA() {
+		assertNotNull("Check if CCA arraylist is not empty", ccaList);
+		
+		C206_CaseStudy.addCCA(ccaList, "Yeet", cca1 );
+	}
+	
 	@After
 	public void tearDown() throws Exception {
 	}
