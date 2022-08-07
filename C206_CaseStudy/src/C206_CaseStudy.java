@@ -1,8 +1,6 @@
 import java.util.ArrayList;
 import java.util.Random;
 
-import ga.Student;
-
 public class C206_CaseStudy {
 
 	public static void main(String[] args) {
@@ -88,6 +86,7 @@ public class C206_CaseStudy {
 							}
 
 							System.out.println("\n1. Register for CCA");
+							System.out.println("\n2. View Students in CCA");
 							System.out.println("9. Exit\n");
 
 							option4 = Helper.readInt("Enter an option: ");
@@ -100,8 +99,8 @@ public class C206_CaseStudy {
 									C206_CaseStudy.registerStudent(CCAList,s1,ccaOption);
 								}
 
-								else {
-
+								else if (option4 == 2){
+									
 								}
 							}
 
@@ -190,10 +189,13 @@ public class C206_CaseStudy {
 								}
 							} else { System.out.println("There are no registered parents."); 
 							}
+						} else {
+							System.out.println("Invalid option, please try again");
+							choice = Helper.readInt("Enter option: ");
 						}
-						
+					}
+				
 					
-
 					
 				} else {
 					System.out.print("Invalid Id and Password");
@@ -203,9 +205,8 @@ public class C206_CaseStudy {
 			} else { 
 				System.out.println("Invalid option");
 			}
-			}
 				 
-		 
+		}  
 }
 	
 /**
@@ -215,7 +216,6 @@ public class C206_CaseStudy {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 
 //	yulong
 	public static void deleteStudent(ArrayList<Student> StudentList, int option) {
@@ -618,4 +618,14 @@ public class C206_CaseStudy {
 		CCAList.get(ccaOption).setClass_size(CCAList.get(ccaOption).getClass_size() + 1);
 		System.out.println("CCA successfully Added");
 	}
+	public static void viewStudentsCCA(ArrayList<Student> studentList,ArrayList<CCA> CCAList, int ccaOption) {
+		String CCA = CCAList.get(ccaOption).getCca_title();
+		
+		for(int i = 0; i < studentList.size();i++) {
+			if(studentList.get(i).getCCA().equals(CCA)) {
+				System.out.println((i+1) + ": "+studentList.get(i).getStudentID()+"\n");
+			}
+		}
+	}
 }
+
