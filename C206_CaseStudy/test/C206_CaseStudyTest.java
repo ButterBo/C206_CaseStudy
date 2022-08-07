@@ -7,19 +7,39 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class C206_CaseStudyTest {
+
+	private Administrator admin1;
+	private CCA cca1;
+	private Category c1;
+	private Category c2;
 	private Parent p1;
 	private Parent p2;
 
 	private ArrayList<Parent> parentList;
-	
-	
-	@Before
+	private ArrayList<Administrator> lectureList;
+	private ArrayList<CCA> ccaList;
+	private ArrayList<Category> ccaCategoryList;
+
 	public void setUp() throws Exception {
+
+		admin1 = new Administrator("Sports", 0, "Football", "Play with our feet is fun", 1,
+				"Mondays and Wednesdays", 1600, "Field", "2104", "David", "I wanna sleep.");
+		cca1 = new CCA("Sports", 1, "Bouldering", "Climbing is fun!", 1, "Tuesdays and Thursdays", 1600,
+				"Rock Wall");
+		lectureList = new ArrayList<Administrator>();
+		ccaList = new ArrayList<CCA>();
+
 		p1 = new Parent(123, 123, "Sponge", "C123", "Mr. Sqaurepants", "Bob", "spongebob@gmail.com", 1234578);
 		p2 = new Parent(234, 432, "John", "C234", "Mr. Cena", "Nathan", "johnathan@gmail.com", 87654321);
-		
 	}
 
+	@Test
+	public void testAddCCA() {
+		assertNotNull("Check if CCA arraylist is not empty", ccaList);
+		
+		C206_CaseStudy.addCCA(ccaList, "Yeet", cca1 );
+	}
+	
 	@After
 	public void tearDown() throws Exception {
 	}
@@ -69,4 +89,15 @@ public class C206_CaseStudyTest {
 		assertEquals("Check that ViewAllChromebookList", testOutput, allChromebook);
 	}
 
+	@Test   //yongxuan
+	public void testDeleteCategory() {
+		//test if category list is not null but empty -boundary
+		assertNotNull ("test if there is valid category arrayList to retrieve item", ccaCategoryList);
+		
+		//given an empty list, after adding 2 items, test if the size of the list is 0 -normal
+		C206_CaseStudy.addCategory(ccaCategoryList, c1);
+		C206_CaseStudy.addCategory(ccaCategoryList, c2);
+		
+		assertEquals("check that categorylist size is 0", 0, ccaCategoryList.size());
+	}
 }

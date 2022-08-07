@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.Random;
 
+import ga.Student;
+
 public class C206_CaseStudy {
 
 	public static void main(String[] args) {
@@ -117,8 +119,10 @@ public class C206_CaseStudy {
 				}
 
 			} else if (option == 2) {
-				// (Register Codes) (yulong)
-				
+				// Registration for parent (Yulong)
+				Parent studentNew = inputStudent();
+				C206_CaseStudy.addParent(parentList, studentNew);
+				System.out.println("You have successfully registered!");
 				
 				// Registration for parent (Nicole)
 				Parent parentNew = inputParent();
@@ -190,6 +194,29 @@ public class C206_CaseStudy {
 						}
 						
 					
+
+					
+				} else {
+					System.out.print("Invalid Id and Password");
+				}
+			}else if(option==9){
+				System.out.println("Bye bye, have a nice day");
+			} else { 
+				System.out.println("Invalid option");
+			}
+			}
+				 
+		 
+}
+	
+/**
+	 * @return
+	 */
+	private static Parent inputStudent() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 //	yulong
 	public static void deleteStudent(ArrayList<Student> StudentList, int option) {
@@ -287,8 +314,7 @@ public class C206_CaseStudy {
 										
 										if(allow==true) {
 											CCA newCCA = new CCA(category, categoryID, ccaName, description, size, day, time, venue);
-											CCAList.add(newCCA);
-											System.out.println(ccaName+" has been successfully added to database");
+											addCCA(CCAList, ccaName, newCCA);
 											leave = true;
 											loop = false;
 										} else {
@@ -319,6 +345,17 @@ public class C206_CaseStudy {
 			}
 		}
 		Helper.line(140, "-");
+	}
+
+
+	/**
+	 * @param CCAList
+	 * @param ccaName
+	 * @param newCCA
+	 */
+	static void addCCA(ArrayList<CCA> CCAList, String ccaName, CCA newCCA) {
+		CCAList.add(newCCA);
+		System.out.println(ccaName+" has been successfully added to database");
 	}
 
 
@@ -481,15 +518,15 @@ public class C206_CaseStudy {
 	
 //	yulong
 	public static void viewAllStudent(ArrayList<Student> StudentList) { 
-		String output2 = String.format("%-15s %-15s %-15s %-15s %-20s %-15s %-25s %-15s \n", "STUDENT ID", "REGISTER ID");
+		String output = String.format("%-15s %-15s %-15s %-15s %-20s %-15s %-25s %-15s \n", "STUDENT ID", "REGISTER ID");
 
 		for (int i = 0; i < StudentList.size(); i++) {
-			output2 += StudentList.get(i).toString();
+			output += StudentList.get(i).toString();
 		}
-		System.out.println(output2);
+		System.out.println(output);
 	}
 
-	public static String viewAllParents(ArrayList<Parent> parentList) { // Made by Nicole
+	public static String viewAllParent(ArrayList<Parent> parentList) { // Made by Nicole
 		String output = String.format("%-15s %-15s %-15s %-15s %-20s %-15s %-25s %-15s \n", "STUDENT ID", "REGISTER ID",
 				"STUDENT NAME", "CLASSROOM", "TEACHER", "PARENT NAME", "PARENT EMAIL", "CONTACT NO");
 
@@ -497,6 +534,32 @@ public class C206_CaseStudy {
 			output += parentList.get(i).toString();
 		}
 		return output;
+	}
+	
+//	yulong (student register(add))
+	public static void addStudent(ArrayList<Student> StudentList) {
+		int studentID = Helper.readInt("Enter student ID > ");
+		int registerID = Helper.readInt("Enter register ID > ");
+			
+		boolean exists = false;
+		
+		for (int i = 0; i < StudentList.size(); i++) {
+			if (StudentList.get(i).getStudentID() == studentID) {
+				exists = true;
+				break;
+			}
+		}
+		
+		if (exists) {
+			System.out.println("You have already registered using this student ID!");
+		} else {
+				Random rand = new Random();
+				registerID = 10000 + rand.nextInt(90000);
+				System.out.println("Your register ID is " + registerID);
+				
+				Student studentNew = new Student(studentID, registerID);
+				StudentList.add(studentNew);
+			}
 	}
 	
 	public static Parent inputParent() { //Registration for parent -Nicole
