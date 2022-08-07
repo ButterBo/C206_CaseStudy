@@ -55,7 +55,7 @@ public class C206_CaseStudyTest {
 	}
 	
 	@Test
-	public void testAddParent() { // Nicole
+	public void testAddParent() { //Nicole
 		assertNotNull("Test if there is valid Parent arraylist to add to", parentList);
 
 		C206_CaseStudy.addParent(parentList, p1);
