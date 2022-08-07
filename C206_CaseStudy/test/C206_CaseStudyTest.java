@@ -19,6 +19,11 @@ public class C206_CaseStudyTest {
 
 	private ArrayList<Parent> parentList;
 	
+<<<<<<< HEAD
+=======
+
+	
+>>>>>>> branch 'master' of https://github.com/ButterBo/C206_CaseStudy.git
 	@Before
 	public void setUp() throws Exception {
 
@@ -32,6 +37,10 @@ public class C206_CaseStudyTest {
 		p1 = new Parent(123, 123, "Sponge", "C123", "Mr. Sqaurepants", "Bob", "spongebob@gmail.com", 1234578);
 		p2 = new Parent(234, 432, "John", "C234", "Mr. Cena", "Nathan", "johnathan@gmail.com", 87654321);
 		
+<<<<<<< HEAD
+=======
+
+>>>>>>> branch 'master' of https://github.com/ButterBo/C206_CaseStudy.git
 	}
 
 	@Test
@@ -59,7 +68,7 @@ public class C206_CaseStudyTest {
 	}
 	
 	@Test
-	public void testAddParent() {
+	public void testAddParent() { //Nicole
 		assertNotNull("Test if there is valid Parent arraylist to add to", parentList);
 
 		C206_CaseStudy.addParent(parentList, p1);
@@ -73,28 +82,47 @@ public class C206_CaseStudyTest {
 	}
 	
 	@Test
-	public void testRetrieveAllChromebook() {
+	public void testViewAllParent() { // Nicole
 
-		// test if the list of chromebooks retrieved from the SourceCentre is empty
-		String allChromebook = C206_CaseStudy.viewAllParents(parentList);
+		assertNotNull("Check that there is parentList to add to", parentList);
+
+		String allParents = C206_CaseStudy.viewAllParent(parentList);
 		String testOutput = "";
-		assertEquals("Check that viewAllParents is not empty", testOutput, allChromebook);
+		assertEquals("Check that the list of parents retrieved from C206_CaseStudy is empty", testOutput, allParents);
+		
+		C206_CaseStudy.addParent(parentList, p1);
+		C206_CaseStudy.addParent(parentList, p2);
+		assertEquals("Test if after adding p1 and p2 to parentList, the size is now 2", 2, parentList.size());
+		
+		
 
-		// Given an empty list, after adding 2 items, test if the size of the list is 2
-		ResourceCentre.addChromebook(chromebookList, cb1);
-		ResourceCentre.addChromebook(chromebookList, cb2);
-		assertEquals("Test if that Chromebook arraylist size is 2?", 2, chromebookList.size());
+		allParents = C206_CaseStudy.viewAllParent(parentList);
+		
+		testOutput = String.format("%-15s %-15s %-15s %-15s %-20s %-15s %-25s %-15s \n", 123, 123, "Sponge", "C123", "Mr. Sqaurepants", "Bob", "spongebob@gmail.com", 1234578);
+		testOutput += String.format("%-15s %-15s %-15s %-15s %-20s %-15s %-25s %-15s \n", 234, 432, "John", "C234", "Mr. Cena", "Nathan", "johnathan@gmail.com", 87654321);
+		
+		assertEquals("Test if the expected output is the same as the list of Parents retrieved from C206_CaseStudy", testOutput, allParents);
+	}
+	
+	@Test
+	public void testDeleteParent() { // Nicole
 
-		// test if the expected output string same as the list of chromebooks retrieved
-		// from the SourceCentre
-		allChromebook = ResourceCentre.retrieveAllChromebook(chromebookList);
+		assertNotNull("Test if there is Parent arraylist to delete from", parentList);
 
-		testOutput = String.format("%-10s %-30s %-10s %-10s %-20s\n", "CB0011", "My Google Chromebook 1st", "Yes", "",
-				"Mac OS");
-		testOutput += String.format("%-10s %-30s %-10s %-10s %-20s\n", "CB0012", "SAMSUNG Chromebook 4+", "Yes", "",
-				"Win 10");
+		C206_CaseStudy.addParent(parentList, p1);
 
-		assertEquals("Check that ViewAllChromebookList", testOutput, allChromebook);
+		boolean deleted = C206_CaseStudy.deleteParent(parentList, 1);
+		assertTrue("Test if parent has been deleted", deleted);
+		assertEquals("Test that parent list size is now 1 after deleting", 1, parentList.size());
+		
+
+		deleted = C206_CaseStudy.deleteParent(parentList, 3);
+		assertFalse("Test if non-existing parent is not deleted", deleted);
+		assertEquals("Test that parent list size is still 1", 1, parentList.size());
+
+		deleted = C206_CaseStudy.deleteParent(parentList, 1);
+		assertFalse("Test that parent was deleted", deleted);
+		assertEquals("Test that parent list size is now 0", 0, parentList.size());
 	}
 
 }
