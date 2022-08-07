@@ -185,26 +185,10 @@ public class C206_CaseStudy {
 								}
 							} else { System.out.println("There are no registered parents."); 
 							}
-						} else {
-							System.out.println("Invalid option, please try again");
-							choice = Helper.readInt("Enter option: ");
 						}
-					}
-				
+						
 					
-					
-				} else {
-					System.out.print("Invalid Id and Password");
-				}
-			}else if(option==9){
-				System.out.println("Bye bye, have a nice day");
-			} else { 
-				System.out.println("Invalid option");
-			}
-				 
-		}  
-}
-	
+
 //	yulong
 	public static void deleteStudent(ArrayList<Student> StudentList, int option) {
 		for (int i = 0; i < StudentList.size(); i++) {
