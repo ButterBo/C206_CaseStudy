@@ -144,7 +144,19 @@ public class C206_CaseStudy {
 							
 						} else if (choice == 3) {
 							
-
+							Helper.line(140, ".");
+							System.out.println("Delete CCA");
+							Helper.line(140, ".");
+							displayCCAName(CCAList);
+							String del = Helper.readString("Do you want to remove a CCA (Y/N): ");
+							if (del.equalsIgnoreCase("n")) {
+								break;
+							} else {
+								int removeCCA = Helper.readInt("Enter CCA number from table : ");
+								if(removeCCA>-1) {
+									CCAList.remove(removeCCA-1);
+								}
+							}
 						} else if (choice == 4) {
 							// Parent details (Nicole)
 							if (parentList.size() != 0) {
@@ -182,6 +194,17 @@ public class C206_CaseStudy {
 				}
 			} else { System.out.println("Invalid option"); }
 		} System.out.println("Bye bye, have a nice day"); }
+
+
+	/**
+	 * @param CCAList
+	 */
+	private static void displayCCAName(ArrayList<CCA> CCAList) {
+		String display = "";
+		for (int num = 0;num<CCAList.size();num++) {
+			display += String.format("%d: %s ", num+1, CCAList.get(num).getCca_title());
+		}
+	}
 
 
 	/**
