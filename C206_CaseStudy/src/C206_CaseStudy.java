@@ -467,6 +467,9 @@ public class C206_CaseStudy {
 		System.out.println("2. Register");
 		System.out.println("3. Staff Login");
 		System.out.println("4. Parent details");
+		System.out.println("5. Add CCA category");
+		System.out.println("6. View CCA category");
+		System.out.println("7. Delete CCA category");
 		System.out.println("9. Exit \n");
 	}
 
