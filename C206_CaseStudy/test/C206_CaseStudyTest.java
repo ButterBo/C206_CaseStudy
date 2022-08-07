@@ -10,30 +10,26 @@ public class C206_CaseStudyTest {
 
 	private Administrator admin1;
 	private CCA cca1;
-<<<<<<< HEAD
+
 	private Category c1;
 	private Category c2;
-=======
+
 	
 	private ArrayList<Administrator> lectureList;
 	private ArrayList<CCA> ccaList;
 
->>>>>>> branch 'master' of https://github.com/ButterBo/C206_CaseStudy.git
 	private Parent p1;
 	private Parent p2;
 
 	private ArrayList<Parent> parentList;
-<<<<<<< HEAD
+
 	private ArrayList<Administrator> lectureList;
 	private ArrayList<CCA> ccaList;
 	private ArrayList<Category> ccaCategoryList;
 
-=======
+	
 	
 
-	
-	@Before
->>>>>>> branch 'master' of https://github.com/ButterBo/C206_CaseStudy.git
 	public void setUp() throws Exception {
 
 		admin1 = new Administrator("Sports", 0, "Football", "Play with our feet is fun", 1,
@@ -45,11 +41,7 @@ public class C206_CaseStudyTest {
 
 		p1 = new Parent(123, 123, "Sponge", "C123", "Mr. Sqaurepants", "Bob", "spongebob@gmail.com", 1234578);
 		p2 = new Parent(234, 432, "John", "C234", "Mr. Cena", "Nathan", "johnathan@gmail.com", 87654321);
-<<<<<<< HEAD
-=======
-		
 
->>>>>>> branch 'master' of https://github.com/ButterBo/C206_CaseStudy.git
 	}
 
 	@Test
