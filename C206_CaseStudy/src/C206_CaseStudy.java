@@ -133,6 +133,16 @@ public class C206_CaseStudy {
 					while (choice != 9) {
 						adminMenu(Lecturer, adminId);
 						choice = Helper.readInt("Enter option: ");
+						if(choice == 1) {
+							
+						} else if (choice == 2) {
+							
+						} else if (choice == 3) {
+							
+						} else {
+							System.out.println("Invalid option, please try again");
+							choice = Helper.readInt("Enter option: ");
+						}
 					}
 					
 					
