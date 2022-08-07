@@ -82,7 +82,7 @@ public class Parent extends Student {
 	}
 	
 	public String toString() {
-		String output = String.format("%-10s %-10s %-10s %-10s %-10s %-10d", this.studentName, this.classroom, this.classroomTeacher, this.parentName, this.parentEmail, this.contactNo);
+		String output = String.format("%-15s %-15s %-15s %-15s %-20s %-15s %-25s %-15d", this.getStudentID(), this.getRegisterID(), this.studentName, this.classroom, this.classroomTeacher, this.parentName, this.parentEmail, this.contactNo);
 		return output;
 	}
 }
