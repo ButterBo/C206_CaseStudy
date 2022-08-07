@@ -137,5 +137,20 @@ public class C206_CaseStudyTest {
 		
 		assertEquals("check that categorylist size is 0", 0, CategoryList.size());
 	}
-	public void testLogin
+	
+	@Test
+	public void testAddCategory() {
+		// Item list is not null, so that can add a new item - boundary
+		assertNotNull("Check if there is valid category arraylist to add to", CategoryList);
+	
+		C206_CaseStudy.addCategory(CategoryList, c1);
+		assertEquals("Check that Category arraylist size is 1", 1, CategoryList.size());
+		assertSame("Check that category is added", c1, CategoryList.get(0));
+		
+		//Add another item. test The size of the list is 2? -normal
+	
+		C206_CaseStudy.addCategory(CategoryList, c2);
+		assertEquals("Check that Category arraylist size is 2", 2, CategoryList.size());
+		assertSame("Check that Category is added", c2, CategoryList.get(1));
+	}
 }

@@ -205,20 +205,81 @@ public class C206_CaseStudy {
 							choice = Helper.readInt("Enter option: ");
 						}
 					}
-				
-					
-					
-				} else {
-					System.out.print("Invalid Id and Password");
+					else if (choice == 5) { //add category Yong Xuan
+
+				        public static ccaCategory inputCategory() {
+
+				          String categoryName = Helper.readString("Enter new CCA Category : ");
+				          int categoryID = Helper.readInt("Enter new ID: ");
+				          ccaCategory category = new ccaCategory(categoryName, categoryID);
+				          return category;
+				        }
+
+				        public static void addCategory(ArrayList<ccaCategory> ccaCategoryList, ccaCategory category) {
+
+				          ccaCategoryList.add(category);
+				        }
+
+				      } else if(choice==6) {
+
+				        public static String retrieveAllCategory(ArrayList<ccaCategory> ccaCategoryList) {
+				          String output = "";
+
+				          for (int i = 0; i < ccaCategoryList.size(); i++) {
+
+				            output += String.format("%-84s\n", ccaCategoryList.get(i).toString());
+
+				          }
+				          return output;
+				        }
+
+
+
+				        public static void viewAllCategory(ArrayList<ccaCategory> ccaCategoryList) {
+				          System.out.println("CCA CATEGORY LIST");
+				          String output = String.format("%-10s %-30d\n", "CATEGORY NAME", "CATEGORY ID");
+				          output += retrieveAllCategory(ccaCategoryList);
+				          System.out.println(output);
+				        }
+
+				      } else if(choice==7) {
+
+				        public static void deleteCategory(ArrayList<ccaCategory> ccaCategoryList) {
+				          C206_CaseStudy.viewAllCategory(ccaCategoryList);
+				          int delete = Helper.readInt("Enter ID to delete > ");
+
+
+
+				          for (int i = 0; i < ccaCategoryList.size(); i++) {
+				            int id = ccaCategoryList.get(i).getCat_id();
+
+				            if (id == delete) {
+				              ccaCategoryList.remove(i);
+				              System.out.println("Category deleted");
+				            } else {
+				              System.out.println("Invalid Category ID");
+				            }                      
+
+				          }
+
+
+				        } 
+				      } else if (option==9) {
+				        System.out.println("Bye bye, have a nice day");
+
+				      } else {
+
+				      
+				        System.out.println("Invalid option, please try again");
+				        choice = Helper.readInt("Enter option: ");
+				      }
+
+				    }
+				  }
 				}
-			}else if(option==9){
-				System.out.println("Bye bye, have a nice day");
-			} else { 
-				System.out.println("Invalid option");
-			}
-				 
-		}  
-}
+					
+					
+	
 	
 /**
 	 * @return
