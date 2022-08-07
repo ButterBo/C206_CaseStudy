@@ -137,4 +137,5 @@ public class C206_CaseStudyTest {
 		
 		assertEquals("check that categorylist size is 0", 0, CategoryList.size());
 	}
+	public void testLogin
 }

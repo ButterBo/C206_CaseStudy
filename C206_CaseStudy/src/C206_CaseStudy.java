@@ -13,7 +13,7 @@ public class C206_CaseStudy {
 
 		generateRandomCCA(CCAList);
 
-		Student s1 = generateRandomStudent(StudentList);
+		generateRandomStudent(StudentList);
 
 		generateRandomParent(parentList);
 
@@ -47,7 +47,17 @@ public class C206_CaseStudy {
 										// (Nicole)
 
 				check = studentLogin(StudentList, studentIDInput, registerIDInput, check);
-
+				
+				
+				for(int i = 0; i<StudentList.size();i++) {
+					
+					if (StudentList.get(i).getStudentID() == studentIDInput && StudentList.get(i).getRegisterID() == registerIDInput) {
+						check = true;
+						Student s1 = new Student(studentIDInput, registerIDInput);
+						break;
+					}
+				}
+					
 				if (check) {
 
 					// This is the login menu yall add your menu items here(Zahid)
@@ -466,11 +476,11 @@ public class C206_CaseStudy {
 	/**
 	 * @param StudentList
 	 */
-	private static void generateRandomStudent(ArrayList<Student> StudentList) {
+	private static void generateRandomStudent(ArrayList<Student> studentList) {
 		// for Login Testing (Zahid)
 		Student s1 = new Student(123, 321);
 		s1.setCCA("Football");
-		StudentList.add(s1);
+		studentList.add(s1);
 	}
 
 
