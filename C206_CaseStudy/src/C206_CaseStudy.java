@@ -233,14 +233,18 @@ public class C206_CaseStudy {
 	 * @param parentList
 	 * @param option3
 	 */
-	public static void deleteParent(ArrayList<Parent> parentList, int option) {
+	public static boolean deleteParent(ArrayList<Parent> parentList, int option) {
+		
+		boolean deleted = false;
 		for (int i = 0; i < parentList.size(); i++) {
-			if (parentList.get(i).getStudentID() == option) {
+			if (parentList.get(i).getStudentID() == (option-1)) {
 				parentList.remove(i);
 				System.out.println("\nParent has been remove from list.");
+				deleted = true;
 				break;
 			}
 		}
+		return deleted;
 	}
 
 
@@ -259,7 +263,7 @@ public class C206_CaseStudy {
 	/**
 	 * @param CCAList
 	 */
-	private static void viewCCAList(ArrayList<CCA> CCAList) {
+	public static void viewCCAList(ArrayList<CCA> CCAList) {
 		Helper.line(140, "-");
 		for(int v =0 ; v<CCAList.size();v++) {
 			Helper.line(140, "+");
