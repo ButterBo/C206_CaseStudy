@@ -136,7 +136,7 @@ public class C206_CaseStudy {
 						choice = Helper.readInt("Enter option: ");
 						if(choice == 1) {
 							boolean loop = true;
-							while(loop == true) {
+							while(loop != false) {
 								boolean leave = false;
 								String ccaName = Helper.readString("Enter new CCA name: ");
 								String leaveAdd = Helper.readString("Do you want to exit adding CCA (Y/N): ");
@@ -147,9 +147,9 @@ public class C206_CaseStudy {
 										String description = Helper.readString("Enter CCA's description: ");
 										
 										if(!description.isEmpty()) {
-											String size = Helper.readString("Enter CCA's class size: ");
+											int size = Helper.readInt("Enter CCA's class size: ");
 											
-											if(!size.isEmpty()) {
+											if(size!=0) {
 												String day = Helper.readString("Enter when the CCA will occur(weekdays): ");
 												if(!day.equalsIgnoreCase("saturaday") || !day.equalsIgnoreCase("sunday") && !day.isEmpty()) {
 													int time = 0;
@@ -171,6 +171,12 @@ public class C206_CaseStudy {
 															
 															if(allow==true) {
 																CCA newCCA = new CCA(category, categoryID, ccaName, description, size, day, time, venue);
+																CCAList.add(newCCA);
+																System.out.println(ccaName+" has been successfully added to database");
+																leave = true;
+																loop = false;
+															} else {
+																System.out.println("Category ID has already been taken");
 															}
 															
 														} else {
