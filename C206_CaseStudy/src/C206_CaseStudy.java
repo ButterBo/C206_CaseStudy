@@ -129,19 +129,19 @@ public class C206_CaseStudy {
 				}
 				
 				if (status == true) {
-					Helper.line(140, "-");
-					String welcome = String.format("Instrutor page\nWelcome %s",Lecturer.get(adminId).getLecturer_name());
-					System.out.println(welcome);
-					Helper.line(140, "-");
-					System.out.println("1. Add CCA");
-					System.out.println("2. View CCA");
-					System.out.println("3. Delete CCA");
-					System.out.println("9. Logout\n");
-					Helper.line(140, "-");
-					String choice = Helper.readString("Enter option: ");
+					int choice = 0;
+					while (choice != 9) {
+						adminMenu(Lecturer, adminId);
+						choice = Helper.readInt("Enter option: ");
+					}
+					
+					
+					
 				} else {
 					System.out.print("Invalid Id and Password");
 				}
+				
+			} else if (option == 4) { 
 				// Parent details (Nicole)
 				if (parentList.size() != 0) {
 					while (option2 != 9) {
@@ -166,6 +166,23 @@ public class C206_CaseStudy {
 				} else { System.out.println("There are no registered parents."); }
 			} else { System.out.println("Invalid option"); }
 		} System.out.println("Bye bye, have a nice day"); }
+
+
+	/**
+	 * @param Lecturer
+	 * @param adminId
+	 */
+	private static void adminMenu(ArrayList<Administrator> Lecturer, int adminId) {
+		Helper.line(140, "-");
+		String welcome = String.format("Instrutor page\nWelcome %s",Lecturer.get(adminId).getLecturer_name());
+		System.out.println(welcome);
+		Helper.line(140, "-");
+		System.out.println("1. Add CCA");
+		System.out.println("2. View CCA");
+		System.out.println("3. Delete CCA");
+		System.out.println("9. Logout\n");
+		Helper.line(140, "-");
+	}
 
 
 	/**
@@ -263,6 +280,7 @@ public class C206_CaseStudy {
 		System.out.println("1. Login");
 		System.out.println("2. Register");
 		System.out.println("3. Staff Login");
+		System.out.println("4. Parent details");
 		System.out.println("9. Exit \n");
 	}
 
