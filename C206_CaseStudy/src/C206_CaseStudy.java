@@ -192,8 +192,14 @@ public class C206_CaseStudy {
 				} else {
 					System.out.print("Invalid Id and Password");
 				}
-			} else { System.out.println("Invalid option"); }
-		} System.out.println("Bye bye, have a nice day"); }
+			}else if(option==9){
+				System.out.println("Bye bye, have a nice day");
+			} else { 
+				System.out.println("Invalid option");
+			}
+				 
+		}  
+}
 
 
 	/**
@@ -202,8 +208,9 @@ public class C206_CaseStudy {
 	private static void displayCCAName(ArrayList<CCA> CCAList) {
 		String display = "";
 		for (int num = 0;num<CCAList.size();num++) {
-			display += String.format("%d: %s ", num+1, CCAList.get(num).getCca_title());
+			display += String.format("%d: %s\n ", num+1, CCAList.get(num).getCca_title());
 		}
+		System.out.println(display);
 	}
 
 
@@ -215,13 +222,13 @@ public class C206_CaseStudy {
 		for(int v =0 ; v<CCAList.size();v++) {
 			Helper.line(140, "+");
 			String viewCCA = String.format("Category: %s\n", CCAList.get(v).getCat_title());
-			viewCCA += String.format("Category ID: %d", CCAList.get(v).getCat_id());
-			viewCCA += String.format("CCA: %s", CCAList.get(v).getCca_title());
-			viewCCA += String.format("Desciption: %s", CCAList.get(v).getDescription());
-			viewCCA += String.format("Class Size: %d", CCAList.get(v).getClass_size());
-			viewCCA += String.format("Day of the week: %s", CCAList.get(v).getCca_day_of_the_week());
-			viewCCA += String.format("Time: ", CCAList.get(v).getTime());
-			viewCCA += String.format("Venue: ", CCAList.get(v).getVenue());
+			viewCCA += String.format("Category ID: %d\n", CCAList.get(v).getCat_id());
+			viewCCA += String.format("CCA: %s\n", CCAList.get(v).getCca_title());
+			viewCCA += String.format("Desciption: %s\n", CCAList.get(v).getDescription());
+			viewCCA += String.format("Class Size: %d\n", CCAList.get(v).getClass_size());
+			viewCCA += String.format("Day of the week: %s\n", CCAList.get(v).getCca_day_of_the_week());
+			viewCCA += String.format("Time: %d\n", CCAList.get(v).getTime());
+			viewCCA += String.format("Venue: %s\n", CCAList.get(v).getVenue());
 			System.out.println(viewCCA);
 			Helper.line(140, "+");
 		}
@@ -253,7 +260,7 @@ public class C206_CaseStudy {
 							if(!day.equalsIgnoreCase("saturaday") || !day.equalsIgnoreCase("sunday") && !day.isEmpty()) {
 								int time = 0;
 								time = Helper.readInt("Enter what time the CCA will occur(24HR): ");
-								if(time!=0) {
+								if(time!=0 && time < 2401 && time > 999) {
 									
 									String venue = Helper.readString("Enter where the CCA will occur(weekdays): ");
 									
