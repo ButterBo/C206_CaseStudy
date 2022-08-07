@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.Random;
 
+import ga.Student;
+
 public class C206_CaseStudy {
 
 	public static void main(String[] args) {
@@ -497,15 +499,15 @@ public class C206_CaseStudy {
 	
 //	yulong
 	public static void viewAllStudent(ArrayList<Student> StudentList) { 
-		String output2 = String.format("%-15s %-15s %-15s %-15s %-20s %-15s %-25s %-15s \n", "STUDENT ID", "REGISTER ID");
+		String output = String.format("%-15s %-15s %-15s %-15s %-20s %-15s %-25s %-15s \n", "STUDENT ID", "REGISTER ID");
 
 		for (int i = 0; i < StudentList.size(); i++) {
-			output2 += StudentList.get(i).toString();
+			output += StudentList.get(i).toString();
 		}
-		System.out.println(output2);
+		System.out.println(output);
 	}
 
-	public static String viewAllParents(ArrayList<Parent> parentList) { // Made by Nicole
+	public static String viewAllParent(ArrayList<Parent> parentList) { // Made by Nicole
 		String output = String.format("%-15s %-15s %-15s %-15s %-20s %-15s %-25s %-15s \n", "STUDENT ID", "REGISTER ID",
 				"STUDENT NAME", "CLASSROOM", "TEACHER", "PARENT NAME", "PARENT EMAIL", "CONTACT NO");
 
@@ -513,6 +515,32 @@ public class C206_CaseStudy {
 			output += parentList.get(i).toString();
 		}
 		return output;
+	}
+	
+//	yulong (student register(add))
+	public static void addStudent(ArrayList<Student> StudentList) {
+		int studentID = Helper.readInt("Enter student ID > ");
+		int registerID = Helper.readInt("Enter register ID > ");
+			
+		boolean exists = false;
+		
+		for (int i = 0; i < StudentList.size(); i++) {
+			if (StudentList.get(i).getStudentID() == studentID) {
+				exists = true;
+				break;
+			}
+		}
+		
+		if (exists) {
+			System.out.println("You have already registered using this student ID!");
+		} else {
+				Random rand = new Random();
+				registerID = 10000 + rand.nextInt(90000);
+				System.out.println("Your register ID is " + registerID);
+				
+				Student studentNew = new Student(studentID, registerID);
+				StudentList.add(studentNew);
+			}
 	}
 	
 	public static Parent inputParent() { //Registration for parent -Nicole
