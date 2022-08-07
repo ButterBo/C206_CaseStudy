@@ -119,8 +119,10 @@ public class C206_CaseStudy {
 				}
 
 			} else if (option == 2) {
-				// (Register Codes) (yulong)
-				
+				// Registration for parent (Yulong)
+				Parent studentNew = inputStudent();
+				C206_CaseStudy.addParent(parentList, studentNew);
+				System.out.println("You have successfully registered!");
 				
 				// Registration for parent (Nicole)
 				Parent parentNew = inputParent();
@@ -209,6 +211,14 @@ public class C206_CaseStudy {
 		}  
 }
 	
+/**
+	 * @return
+	 */
+	private static Parent inputStudent() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 //	yulong
 	public static void deleteStudent(ArrayList<Student> StudentList, int option) {
 		for (int i = 0; i < StudentList.size(); i++) {
