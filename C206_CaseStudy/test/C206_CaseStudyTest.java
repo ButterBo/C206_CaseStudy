@@ -10,6 +10,10 @@ public class C206_CaseStudyTest {
 
 	private Administrator admin1;
 	private CCA cca1;
+
+	private Category c1;
+	private Category c2;
+
 	
 	private ArrayList<Administrator> lectureList;
 	private ArrayList<CCA> ccaList;
@@ -18,13 +22,25 @@ public class C206_CaseStudyTest {
 	private Parent p2;
 
 	private ArrayList<Parent> parentList;
+<<<<<<< HEAD
+
+	private ArrayList<Administrator> lectureList;
+	private ArrayList<CCA> ccaList;
+	private ArrayList<Category> ccaCategoryList;
+=======
 	
 <<<<<<< HEAD
 =======
+>>>>>>> branch 'master' of https://github.com/ButterBo/C206_CaseStudy.git
 
 	
+<<<<<<< HEAD
+	
+
+=======
 >>>>>>> branch 'master' of https://github.com/ButterBo/C206_CaseStudy.git
 	@Before
+>>>>>>> branch 'master' of https://github.com/ButterBo/C206_CaseStudy.git
 	public void setUp() throws Exception {
 
 		admin1 = new Administrator("Sports", 0, "Football", "Play with our feet is fun", 1,
@@ -36,9 +52,12 @@ public class C206_CaseStudyTest {
 
 		p1 = new Parent(123, 123, "Sponge", "C123", "Mr. Sqaurepants", "Bob", "spongebob@gmail.com", 1234578);
 		p2 = new Parent(234, 432, "John", "C234", "Mr. Cena", "Nathan", "johnathan@gmail.com", 87654321);
+<<<<<<< HEAD
+=======
 		
 <<<<<<< HEAD
 =======
+>>>>>>> branch 'master' of https://github.com/ButterBo/C206_CaseStudy.git
 
 >>>>>>> branch 'master' of https://github.com/ButterBo/C206_CaseStudy.git
 	}
@@ -125,4 +144,15 @@ public class C206_CaseStudyTest {
 		assertEquals("Test that parent list size is now 0", 0, parentList.size());
 	}
 
+	@Test   //yongxuan
+	public void testDeleteCategory() {
+		//test if category list is not null but empty -boundary
+		assertNotNull ("test if there is valid category arrayList to retrieve item", ccaCategoryList);
+		
+		//given an empty list, after adding 2 items, test if the size of the list is 0 -normal
+		C206_CaseStudy.addCategory(ccaCategoryList, c1);
+		C206_CaseStudy.addCategory(ccaCategoryList, c2);
+		
+		assertEquals("check that categorylist size is 0", 0, ccaCategoryList.size());
+	}
 }
