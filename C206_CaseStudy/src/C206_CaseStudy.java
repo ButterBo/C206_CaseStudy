@@ -5,6 +5,7 @@ public class C206_CaseStudy {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		ArrayList<CCA> CCAList = new ArrayList<CCA>();
+        ArrayList<ccaCategory> ccaCategoryList = new ArrayList<ccaCategory>();
 		ArrayList<Student> StudentList = new ArrayList<Student>();
 		ArrayList<Parent> parentList = new ArrayList<Parent>();
 		ArrayList<Administrator> Lecturer = new ArrayList<Administrator>();
