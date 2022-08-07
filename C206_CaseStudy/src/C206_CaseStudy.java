@@ -272,8 +272,7 @@ public class C206_CaseStudy {
 										
 										if(allow==true) {
 											CCA newCCA = new CCA(category, categoryID, ccaName, description, size, day, time, venue);
-											CCAList.add(newCCA);
-											System.out.println(ccaName+" has been successfully added to database");
+											addCCA(CCAList, ccaName, newCCA);
 											leave = true;
 											loop = false;
 										} else {
@@ -304,6 +303,17 @@ public class C206_CaseStudy {
 			}
 		}
 		Helper.line(140, "-");
+	}
+
+
+	/**
+	 * @param CCAList
+	 * @param ccaName
+	 * @param newCCA
+	 */
+	static void addCCA(ArrayList<CCA> CCAList, String ccaName, CCA newCCA) {
+		CCAList.add(newCCA);
+		System.out.println(ccaName+" has been successfully added to database");
 	}
 
 
