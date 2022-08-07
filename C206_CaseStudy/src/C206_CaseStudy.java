@@ -53,7 +53,6 @@ public class C206_CaseStudy {
 					
 					if (StudentList.get(i).getStudentID() == studentIDInput && StudentList.get(i).getRegisterID() == registerIDInput) {
 						check = true;
-						Student s1 = new Student(studentIDInput, registerIDInput);
 						break;
 					}
 				}
@@ -106,7 +105,7 @@ public class C206_CaseStudy {
 
 								if (option4 == 1) {
 									// Register CCA for student(Zahid)
-									C206_CaseStudy.registerStudent(CCAList,s1,ccaOption);
+									C206_CaseStudy.registerStudent(CCAList,StudentList,ccaOption,studentIDInput);
 								}
 
 								else if (option4 == 2){
@@ -419,7 +418,7 @@ public class C206_CaseStudy {
 		System.out.println("STUDENT PARENT DETAILS LIST");
 		Helper.line(140, "-");
 
-		System.out.println(C206_CaseStudy.viewAllParents(parentList));
+		System.out.println(C206_CaseStudy.viewAllParent(parentList));
 		Helper.line(140, "-");
 
 		System.out.println("\n1. Delete parent from list");
@@ -624,10 +623,15 @@ public class C206_CaseStudy {
 		}
 	}
 	
-	public static void registerStudent(ArrayList<CCA> CCAList,Student s1, int ccaOption) {
-		s1.setCCA(CCAList.get(ccaOption).getCca_title());
-		CCAList.get(ccaOption).setClass_size(CCAList.get(ccaOption).getClass_size() + 1);
-		System.out.println("CCA successfully Added");
+	public static void registerStudent(ArrayList<CCA> CCAList,ArrayList<Student> StudentList, int ccaOption, int studentID) {
+		String cca = CCAList.get(ccaOption).getCca_title();
+		
+		for(int i = 0; i < StudentList.size();i++) {
+			if(StudentList.get(i).getStudentID() == studentID) {
+				StudentList.get(i).setCCA(cca);
+			}
+		}
+		System.out.println("Succesfully Registered");
 	}
 	public static void viewStudentsCCA(ArrayList<Student> studentList,ArrayList<CCA> CCAList, int ccaOption) {
 		String CCA = CCAList.get(ccaOption).getCca_title();
