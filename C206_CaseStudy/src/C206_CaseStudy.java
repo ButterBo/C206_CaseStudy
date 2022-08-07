@@ -121,7 +121,9 @@ public class C206_CaseStudy {
 				
 				
 				// Registration for parent (Nicole)
-				C206_CaseStudy.addParent(parentList);
+				Parent parentNew = inputParent();
+				C206_CaseStudy.addParent(parentList, parentNew);
+				System.out.println("You have successfully registered!");
 				
 
 			} else if (option == 3) { 
@@ -366,7 +368,7 @@ public class C206_CaseStudy {
 		System.out.println("STUDENT PARENT DETAILS LIST");
 		Helper.line(140, "-");
 
-		C206_CaseStudy.viewAllParents(parentList);
+		System.out.println(C206_CaseStudy.viewAllParents(parentList));
 		Helper.line(140, "-");
 
 		System.out.println("\n1. Delete parent from list");
@@ -487,17 +489,17 @@ public class C206_CaseStudy {
 		System.out.println(output2);
 	}
 
-	public static void viewAllParents(ArrayList<Parent> parentList) { // Made by Nicole
+	public static String viewAllParents(ArrayList<Parent> parentList) { // Made by Nicole
 		String output = String.format("%-15s %-15s %-15s %-15s %-20s %-15s %-25s %-15s \n", "STUDENT ID", "REGISTER ID",
 				"STUDENT NAME", "CLASSROOM", "TEACHER", "PARENT NAME", "PARENT EMAIL", "CONTACT NO");
 
 		for (int i = 0; i < parentList.size(); i++) {
 			output += parentList.get(i).toString();
 		}
-		System.out.println(output);
+		return output;
 	}
 	
-	public static void addParent(ArrayList<Parent> parentList) { //Registration for parent -Nicole
+	public static Parent inputParent() { //Registration for parent -Nicole
 		int studentID = Helper.readInt("Please enter your child's studentID: ");
 		String studentName = Helper.readString("Please enter your child's name: ");
 		String classroom = Helper.readString("Please enter your child's classroom code: ");
@@ -505,11 +507,33 @@ public class C206_CaseStudy {
 		String parentName = Helper.readString("Please enter your name: ");
 		String parentEmail = Helper.readString("Please enter your email address: ");
 		int contactNo = Helper.readInt("Please enter your contact number: ");
-			
+
+		boolean done = false;
+		
+		while (done == false) {
+			String contact = contactNo + "";
+			if (contact.length() == 8) {
+				done = true;
+			} else {
+				System.out.println("Please enter a valid contact number!");
+				contactNo = Helper.readInt("Please enter your contact number: ");
+			}
+		}
+		Random rand = new Random();
+		int registrationID = 10000 + rand.nextInt(90000);
+		System.out.println("Your registration ID is " + registrationID);
+		
+		Parent parentNew = new Parent(studentID, registrationID, studentName, classroom, teacher, parentName, parentEmail, contactNo);
+		return parentNew;
+		
+	}
+	
+	public static void addParent(ArrayList<Parent> parentList, Parent parentNew) { //Registration for parent -Nicole
+					
 		boolean exists = false;
 		
 		for (int i = 0; i < parentList.size(); i++) {
-			if (parentList.get(i).getStudentID() == studentID) {
+			if (parentList.get(i).getStudentID() == parentNew.getStudentID()) {
 				exists = true;
 				break;
 			}
@@ -518,15 +542,8 @@ public class C206_CaseStudy {
 		if (exists) {
 			System.out.println("You have already registered using this student ID!");
 		} else {
-			String contact = contactNo + "";
-			if (contact.length() == 8) {
-				Random rand = new Random();
-				int registrationID = 10000 + rand.nextInt(90000);
-				System.out.println("Your registration ID is " + registrationID);
-				
-				Parent parentNew = new Parent(studentID, registrationID, studentName, classroom, teacher, parentName, parentEmail, contactNo);
 				parentList.add(parentNew);
-			}
+			
 		}
 	}
 }
