@@ -5,6 +5,7 @@ public class C206_CaseStudy {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		ArrayList<CCA> CCAList = new ArrayList<CCA>();
+        ArrayList<ccaCategory> ccaCategoryList = new ArrayList<ccaCategory>();
 		ArrayList<Student> StudentList = new ArrayList<Student>();
 		ArrayList<Parent> parentList = new ArrayList<Parent>();
 		ArrayList<Administrator> Lecturer = new ArrayList<Administrator>();
@@ -200,6 +201,7 @@ public class C206_CaseStudy {
 							
 						} else if (choice == 3) {
 							
+
 						} else if (choice == 4) {
 							// Parent details (Nicole)
 							if (parentList.size() != 0) {
@@ -344,6 +346,9 @@ public class C206_CaseStudy {
 		CCAList.add(cca1);
 		CCAList.add(cca2);
 	}
+
+	
+
 		
 
 	public static void startmenu() {
