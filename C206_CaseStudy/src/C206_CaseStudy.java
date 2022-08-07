@@ -9,28 +9,13 @@ public class C206_CaseStudy {
 		ArrayList<Parent> parentList = new ArrayList<Parent>();
 		ArrayList<Administrator> Lecturer = new ArrayList<Administrator>();
 
-		// Test CCA variable (Zahid)
-		CCA cca1 = new CCA("Sports", 0, "Football", "Play with our feet is fun", 1, "Mondays and Wednesdays", 1600,
-				"Field");
-		CCA cca2 = new CCA("Sports", 1, "Bouldering", "Climbing is fun!", 1, "Tuesdays and Thursdays", 1600,
-				"Rock Wall");
-		CCAList.add(cca1);
-		CCAList.add(cca2);
+		generateRandomCCA(CCAList);
 
-		// for Login Testing (Zahid)
-		Student s1 = new Student(123, 321);
-		s1.setCCA("Football");
-		StudentList.add(s1);
+		Student s1 = generateRandomStudent(StudentList);
 
-		// for Login Testing (Nicole)
-		Parent p1 = new Parent(123, 123, "Sponge", "C123", "Mr. Sqaurepants", "Bob", "spongebob@gmail.com", 1234578);
-		p1.setCCA("Basketball");
-		parentList.add(p1);
+		generateRandomParent(parentList);
 
-		// For CCA lecturer (Sean)
-		Administrator admin1 = new Administrator("Sports", 0, "Football", "Play with our feet is fun", 1,
-				"Mondays and Wednesdays", 1600, "Field", "2104", "David", "I wanna sleep.");
-		Lecturer.add(admin1);
+		generateRandomLecturer(Lecturer);
 
 		// variables for choices in option(menu) option2(loggedInMenu) option3(ccaMenu)
 		// option(ccaDetailsMenu)(Zahid)
@@ -59,13 +44,7 @@ public class C206_CaseStudy {
 				boolean check = false; // Added this and for loop for checking, and also made changes to if statement
 										// (Nicole)
 
-				for (int i = 0; i < StudentList.size(); i++) {
-					if ((studentIDInput == StudentList.get(i).getStudentID())
-							&& (registerIDInput == StudentList.get(i).getRegisterID())) {
-						check = true;
-						break;
-					}
-				}
+				check = studentLogin(StudentList, studentIDInput, registerIDInput, check);
 
 				if (check) {
 
@@ -135,19 +114,39 @@ public class C206_CaseStudy {
 			} else if (option == 2) {
 				// (Register Codes) pls do
 
-			} else if (option == 3) { // Parent details (Nicole)
+			} else if (option == 3) { 
+				String lecId = Helper.readString("Enter administrator ID: ");
+				String lecPassword = Helper.readString("Enter Password: ");
+				int adminId = 0;
+				boolean status = false;
+				
+				for(int x = 0; x<Lecturer.size();x++) {
+					if (lecId.equals(Lecturer.get(x).getAdministratorId()) && (lecPassword.equals(Lecturer.get(x).getPassword()))) {
+						status = true;
+						adminId = x;
+						break;
+					}
+				}
+				
+				if (status == true) {
+					Helper.line(140, "-");
+					String welcome = String.format("Instrutor page\nWelcome %s",Lecturer.get(adminId).getLecturer_name());
+					System.out.println(welcome);
+					Helper.line(140, "-");
+					System.out.println("1. Add CCA");
+					System.out.println("2. View CCA");
+					System.out.println("3. Delete CCA");
+					System.out.println("9. Logout\n");
+					Helper.line(140, "-");
+					String choice = Helper.readString("Enter option: ");
+				} else {
+					System.out.print("Invalid Id and Password");
+				}
+				// Parent details (Nicole)
 				if (parentList.size() != 0) {
 					while (option2 != 9) {
 						if (parentList.size() != 0) {
-							Helper.line(140, "-");
-							System.out.println("STUDENT PARENT DETAILS LIST");
-							Helper.line(140, "-");
-
-							C206_CaseStudy.viewAllParents(parentList);
-							Helper.line(140, "-");
-
-							System.out.println("\n1. Delete parent from list");
-							System.out.println("9. Exit\n");
+							parentMenu(parentList);
 
 							option2 = Helper.readInt("Enter an option: ");
 
@@ -167,6 +166,95 @@ public class C206_CaseStudy {
 				} else { System.out.println("There are no registered parents."); }
 			} else { System.out.println("Invalid option"); }
 		} System.out.println("Bye bye, have a nice day"); }
+
+
+	/**
+	 * @param parentList
+	 */
+	private static void parentMenu(ArrayList<Parent> parentList) {
+		Helper.line(140, "-");
+		System.out.println("STUDENT PARENT DETAILS LIST");
+		Helper.line(140, "-");
+
+		C206_CaseStudy.viewAllParents(parentList);
+		Helper.line(140, "-");
+
+		System.out.println("\n1. Delete parent from list");
+		System.out.println("9. Exit\n");
+	}
+
+
+	/**
+	 * @param StudentList
+	 * @param studentIDInput
+	 * @param registerIDInput
+	 * @param check
+	 * @return
+	 */
+	private static boolean studentLogin(ArrayList<Student> StudentList, int studentIDInput, int registerIDInput,
+			boolean check) {
+		for (int i = 0; i < StudentList.size(); i++) {
+			
+			int studentID = StudentList.get(i).getStudentID();
+			int registerID = StudentList.get(i).getRegisterID();
+			
+			if ((studentIDInput == studentID)
+					&& (registerIDInput == registerID)) {
+				check = true;
+				break;
+			}
+		}
+		return check;
+	}
+
+
+	/**
+	 * @param Lecturer
+	 */
+	private static void generateRandomLecturer(ArrayList<Administrator> Lecturer) {
+		// For CCA lecturer (Sean)
+		Administrator admin1 = new Administrator("Sports", 0, "Football", "Play with our feet is fun", 1,
+				"Mondays and Wednesdays", 1600, "Field", "2104", "David", "I wanna sleep.");
+		Lecturer.add(admin1);
+	}
+
+
+	/**
+	 * @param parentList
+	 */
+	private static void generateRandomParent(ArrayList<Parent> parentList) {
+		// for Login Testing (Nicole)
+		Parent p1 = new Parent(123, 123, "Sponge", "C123", "Mr. Sqaurepants", "Bob", "spongebob@gmail.com", 1234578);
+		p1.setCCA("Basketball");
+		parentList.add(p1);
+	}
+
+
+	/**
+	 * @param StudentList
+	 * @return
+	 */
+	private static Student generateRandomStudent(ArrayList<Student> StudentList) {
+		// for Login Testing (Zahid)
+		Student s1 = new Student(123, 321);
+		s1.setCCA("Football");
+		StudentList.add(s1);
+		return s1;
+	}
+
+
+	/**
+	 * @param CCAList
+	 */
+	private static void generateRandomCCA(ArrayList<CCA> CCAList) {
+		// Test CCA variable (Zahid)
+		CCA cca1 = new CCA("Sports", 0, "Football", "Play with our feet is fun", 1, "Mondays and Wednesdays", 1600,
+				"Field");
+		CCA cca2 = new CCA("Sports", 1, "Bouldering", "Climbing is fun!", 1, "Tuesdays and Thursdays", 1600,
+				"Rock Wall");
+		CCAList.add(cca1);
+		CCAList.add(cca2);
+	}
 		
 
 	public static void startmenu() {
@@ -178,17 +266,6 @@ public class C206_CaseStudy {
 		System.out.println("9. Exit \n");
 	}
 
-	public static void staffLogin() {
-		// Sean
-		Helper.line(140, "-");
-		System.out.println("Staff Login");
-		Helper.line(140, "-");
-		String name = Helper.readString("Enter Staff ID (or enter 9 to return to previous page)");
-		if (name.equals("9")) {
-
-		}
-		Helper.line(80, "-");
-	}
 
 	public static String toDoStaff(String yeet) {
 
