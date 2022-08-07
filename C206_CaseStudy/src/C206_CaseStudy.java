@@ -190,7 +190,7 @@ public class C206_CaseStudy {
 							choice = Helper.readInt("Enter option: ");
 						}
 					}
-					
+				
 					
 					
 				} else {
@@ -356,6 +356,9 @@ public class C206_CaseStudy {
 		System.out.println("2. View CCA");
 		System.out.println("3. Delete CCA");
 		System.out.println("4. Parent details");
+		System.out.println("5. Add CCA category");
+		System.out.println("6. View CCA category");
+		System.out.println("7. Delete CCA category");
 		System.out.println("9. Logout\n");
 		Helper.line(140, "-");
 	}
