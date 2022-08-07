@@ -7,34 +7,34 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class C206_CaseStudyTest {
-<<<<<<< HEAD
+
 	private Administrator admin1;
 	private CCA cca1;
 	
 	private ArrayList<Administrator> lectureList;
 	private ArrayList<CCA> ccaList;
-=======
+
 	private Parent p1;
 	private Parent p2;
 
 	private ArrayList<Parent> parentList;
 	
->>>>>>> branch 'master' of https://github.com/ButterBo/C206_CaseStudy.git
+
 	
 	@Before
 	public void setUp() throws Exception {
-<<<<<<< HEAD
+
 		admin1 = new Administrator("Sports", 0, "Football", "Play with our feet is fun", 1,
 				"Mondays and Wednesdays", 1600, "Field", "2104", "David", "I wanna sleep.");
 		cca1 = new CCA("Sports", 1, "Bouldering", "Climbing is fun!", 1, "Tuesdays and Thursdays", 1600,
 				"Rock Wall");
 		lectureList = new ArrayList<Administrator>();
 		ccaList = new ArrayList<CCA>();
-=======
+
 		p1 = new Parent(123, 123, "Sponge", "C123", "Mr. Sqaurepants", "Bob", "spongebob@gmail.com", 1234578);
 		p2 = new Parent(234, 432, "John", "C234", "Mr. Cena", "Nathan", "johnathan@gmail.com", 87654321);
 		
->>>>>>> branch 'master' of https://github.com/ButterBo/C206_CaseStudy.git
+
 	}
 
 	@Test
@@ -73,7 +73,7 @@ public class C206_CaseStudyTest {
 
 		assertNotNull("Check that there is parentList to add to", parentList);
 
-		String allParents = C206_CaseStudy.viewAllParents(parentList);
+		String allParents = C206_CaseStudy.viewAllParent(parentList);
 		String testOutput = "";
 		assertEquals("Check that the list of parents retrieved from C206_CaseStudy is empty", testOutput, allParents);
 		
@@ -83,7 +83,7 @@ public class C206_CaseStudyTest {
 		
 		
 
-		allParents = C206_CaseStudy.viewAllParents(parentList);
+		allParents = C206_CaseStudy.viewAllParent(parentList);
 		
 		testOutput = String.format("%-15s %-15s %-15s %-15s %-20s %-15s %-25s %-15s \n", 123, 123, "Sponge", "C123", "Mr. Sqaurepants", "Bob", "spongebob@gmail.com", 1234578);
 		testOutput += String.format("%-15s %-15s %-15s %-15s %-20s %-15s %-25s %-15s \n", 234, 432, "John", "C234", "Mr. Cena", "Nathan", "johnathan@gmail.com", 87654321);
