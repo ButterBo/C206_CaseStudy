@@ -100,7 +100,8 @@ public class C206_CaseStudy {
 								}
 
 								else if (option4 == 2){
-									
+									// View Students in CCA
+									C206_CaseStudy.viewStudentsCCA(StudentList, CCAList, ccaOption);
 								}
 							}
 
