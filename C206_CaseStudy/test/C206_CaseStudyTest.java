@@ -31,7 +31,7 @@ public class C206_CaseStudyTest {
 	}
 	
 	@Test
-	public void testAddParent() {
+	public void testAddParent() { // Nicole
 		assertNotNull("Test if there is valid Parent arraylist to add to", parentList);
 
 		C206_CaseStudy.addParent(parentList, p1);
@@ -45,7 +45,7 @@ public class C206_CaseStudyTest {
 	}
 	
 	@Test
-	public void testViewAllParent() {
+	public void testViewAllParent() { // Nicole
 
 		assertNotNull("Check that there is parentList to add to", parentList);
 
@@ -62,16 +62,38 @@ public class C206_CaseStudyTest {
 		allParents = C206_CaseStudy.viewAllParents(parentList);
 		
 		testOutput = String.format("%-15s %-15s %-15s %-15s %-20s %-15s %-25s %-15s \n", 123, 123, "Sponge", "C123", "Mr. Sqaurepants", "Bob", "spongebob@gmail.com", 1234578);
-		testOutput = String.format("%-15s %-15s %-15s %-15s %-20s %-15s %-25s %-15s \n", 234, 432, "John", "C234", "Mr. Cena", "Nathan", "johnathan@gmail.com", 87654321);
+		testOutput += String.format("%-15s %-15s %-15s %-15s %-20s %-15s %-25s %-15s \n", 234, 432, "John", "C234", "Mr. Cena", "Nathan", "johnathan@gmail.com", 87654321);
 		
 		assertEquals("Test if the expected output is the same as the list of Parents retrieved from C206_CaseStudy", testOutput, allParents);
-
+	}
 	
+	@Test
+	public void testDeleteParent() { // Nicole
 
-				
+		// boundary
+		assertNotNull("Test if there is Parent arraylist to delete from", parentList);
 
-	
+		C206_CaseStudy.addParent(parentList, p1);
+
+		// normal
+		boolean deleted = C206_CaseStudy.deleteParent(parentList, 1);
+		assertTrue("Test if parent has been deleted", deleted);
+		assertEquals("Test that parent list size is now 1 after deleting", 1, parentList.size());
 		
+
+		// error condition
+		deleted = C206_CaseStudy.deleteParent(parentList, 3);
+		assertFalse("Test if non-existing parent is not deleted", deleted);
+		assertEquals("Test that parent list size is still 1", 1, parentList.size());
+
+		// error condition
+		deleted = C206_CaseStudy.deleteParent(parentList, 1);
+		assertFalse("Test that parent was deleted", deleted);
+		assertEquals("Test that parent list size is now 0", 0, parentList.size());
+
+		// error condition
+		deleted = C206_CaseStudy.deleteParent(parentList, 1);
+		assertFalse("Test that non-existing item is NOT ok to loan?", deleted);
 	}
 
 }
