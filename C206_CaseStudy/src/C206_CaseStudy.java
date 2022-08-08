@@ -186,6 +186,7 @@ public class C206_CaseStudy {
 								System.out.println("There are no registered students.");
 							}
 						} else if (adminMenuchoice == 6) {
+							//yongxuan
 							ccaCategory newCategory = inputCategory();
 							addCategory(ccaCategoryList, newCategory);
 
@@ -537,8 +538,8 @@ public class C206_CaseStudy {
 		}
 	}
 
-
-	public static String viewAllCategories(ArrayList<ccaCategory> ccaCategoryList) {
+//yongxuan
+	public static String viewAllCategories(ArrayList<ccaCategory> ccaCategoryList) {  
 		String output = String.format("%-15s %-15s\n", "CATEGORY ID", "CATEGORY TITLE");
 
 		for (int i = 0; i < ccaCategoryList.size(); i++) {
