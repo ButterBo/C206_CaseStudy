@@ -22,6 +22,7 @@ public class C206_CaseStudy {
 		adminList.add(new Administrator("Sports", 0, "Football", "Play with our feet is fun", 1,
 				"Mondays and Wednesdays", 1600, "Field", "2104", "David", "I wanna sleep."));
 
+		ccaCategoryList.add(new ccaCategory("sports", 1));
 		// variables for choices in option(menu) option2(loggedInMenu) option3(ccaMenu)
 		// option(ccaDetailsMenu)(Zahid)
 
@@ -124,11 +125,7 @@ public class C206_CaseStudy {
 							viewAllCCAs(ccaList);
 							int removeCCA = Helper.readInt("Enter CCA number from table (or -1 to exit): ");
 
-							if (removeCCA != -1) {
-								if (removeCCA > -1) {
-									ccaList.remove(removeCCA - 1);
-								}
-							}
+							delCCA(ccaList, removeCCA);
 
 						} else if (adminMenuchoice == 4) {
 							// Parent details (Nicole)
@@ -207,6 +204,18 @@ public class C206_CaseStudy {
 				}
 			} else {
 				System.out.println("Invalid option, please try again");
+			}
+		}
+	}
+
+	/**
+	 * @param ccaList
+	 * @param removeCCA
+	 */
+	public static void delCCA(ArrayList<CCA> ccaList, int removeCCA) {
+		if (removeCCA != -1) {
+			if (removeCCA > -1) {
+				ccaList.remove(removeCCA - 1);
 			}
 		}
 	}
@@ -528,7 +537,8 @@ public class C206_CaseStudy {
 		}
 	}
 
-	public static void viewAllCategories(ArrayList<ccaCategory> ccaCategoryList) {
+
+	public static String viewAllCategories(ArrayList<ccaCategory> ccaCategoryList) {
 		String output = String.format("%-15s %-15s\n", "CATEGORY ID", "CATEGORY TITLE");
 
 		for (int i = 0; i < ccaCategoryList.size(); i++) {
@@ -536,7 +546,9 @@ public class C206_CaseStudy {
 					ccaCategoryList.get(i).getCat_title());
 		}
 		System.out.println(output);
+		return output;
 	}
+		      
 
 	public static void deleteCategory(ArrayList<ccaCategory> ccaCategoryList) {
 		int deleteCategory = Helper.readInt("Please enter a category ID (or -1 to exit): ");
