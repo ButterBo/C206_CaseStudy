@@ -18,7 +18,7 @@ public class C206_CaseStudy {
 		studentList.add(new Student(123, 321, "Football"));
 		parentList.add(new Parent(123, 123, "Basketball", "Sponge", "C123", "Mr. Sqaurepants", "Bob",
 				"spongebob@gmail.com", 1234578));
-		;
+		
 		adminList.add(new Administrator("Sports", 0, "Football", "Play with our feet is fun", 1,
 				"Mondays and Wednesdays", 1600, "Field", "2104", "David", "I wanna sleep."));
 
