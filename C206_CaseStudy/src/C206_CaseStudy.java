@@ -2,6 +2,8 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class C206_CaseStudy {
+	//test
+}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -218,11 +220,72 @@ public class C206_CaseStudy {
 				       
 					else if(choice==7) {
 
+
 						deleteCategory(ccaCategoryList);
 				    
 					}
 				        
 				       else if (option==9) {
+
+				        public static ccaCategory inputCategory() {
+
+				          String categoryName = Helper.readString("Enter new CCA Category : ");
+				          int categoryID = Helper.readInt("Enter new ID: ");
+				          ccaCategory category = new ccaCategory(categoryName, categoryID);
+				          return category;
+				        }
+
+				        public static void addCategory(ArrayList<ccaCategory> ccaCategoryList, ccaCategory category) {
+
+				          ccaCategoryList.add(category);
+				        }
+
+				      } else if(choice==6) {
+
+				        public static String retrieveAllCategory(ArrayList<ccaCategory> ccaCategoryList) {
+				          String output = "";
+
+				          for (int i = 0; i < ccaCategoryList.size(); i++) {
+
+				            output += String.format("%-84s\n", ccaCategoryList.get(i).toString());
+
+				          }
+				          return output;
+				        }
+
+
+
+				        public static String viewAllCategory(ArrayList<ccaCategory> ccaCategoryList) {
+				          System.out.println("CCA CATEGORY LIST");
+				          String output = String.format("%-10s %-30d\n", "CATEGORY NAME", "CATEGORY ID");
+				          output += retrieveAllCategory(ccaCategoryList);
+				          System.out.println(output);
+				        }
+
+				      } else if(choice==7) {
+
+				        public static void deleteCategory(ArrayList<ccaCategory> ccaCategoryList) {
+				          C206_CaseStudy.viewAllCategory(ccaCategoryList);
+				          int delete = Helper.readInt("Enter ID to delete > ");
+
+
+
+				          for (int i = 0; i < ccaCategoryList.size(); i++) {
+				            int id = ccaCategoryList.get(i).getCat_id();
+
+				            if (id == delete) {
+				              ccaCategoryList.remove(i);
+				              System.out.println("Category deleted");
+				            } else {
+				              System.out.println("Invalid Category ID");
+				            }                      
+
+				          }
+
+
+				        } 
+				      } else if (option==9) {
+
 				        System.out.println("Bye bye, have a nice day");
 				       
 				      } else {
@@ -458,7 +521,7 @@ public class C206_CaseStudy {
 		}
 		return allow;
 	}
-
+//test
 
 	/**
 	 * @param Lecturer
