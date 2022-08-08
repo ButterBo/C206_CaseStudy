@@ -2,7 +2,12 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class C206_CaseStudy {
+<<<<<<< HEAD
 
+=======
+	//test
+}
+>>>>>>> branch 'master' of https://github.com/ButterBo/C206_CaseStudy.git
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		ArrayList<CCA> CCAList = new ArrayList<CCA>();
@@ -239,7 +244,7 @@ public class C206_CaseStudy {
 				        choice = Helper.readInt("Enter option: ");
 				      }
 			
-					
+					//yeet
 	
 	
 /**
@@ -278,9 +283,9 @@ public class C206_CaseStudy {
 	            } else {
 	              System.out.println("Invalid Category ID");
 	            }                      
+	          }
+        }
 	          
-	          
-
 //	yulong
 	public static boolean deleteStudent(ArrayList<Student> StudentList, int option) {
 		for (int i = 0; i < StudentList.size(); i++) {
@@ -303,7 +308,7 @@ public class C206_CaseStudy {
         return output;
       }
 
-      public static void viewAllCategory(ArrayList<ccaCategory> ccaCategoryList) {
+      public static String viewAllCategory(ArrayList<ccaCategory> ccaCategoryList) {
         System.out.println("CCA CATEGORY LIST");
         String output = String.format("%-10s %-30d\n", "CATEGORY NAME", "CATEGORY ID");
         output += retrieveAllCategory(ccaCategoryList);

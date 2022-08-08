@@ -41,9 +41,13 @@ public class C206_CaseStudyTest {
 				"Rock Wall");
 		lectureList1 = new ArrayList<Administrator>();
 		ccaList = new ArrayList<CCA>();
+		
+		s1 = new Student(123, 123);
+		s2 = new Student(234, 432);
 
 		p1 = new Parent(123, 123, "Sponge", "C123", "Mr. Sqaurepants", "Bob", "spongebob@gmail.com", 1234578);
 		p2 = new Parent(234, 432, "John", "C234", "Mr. Cena", "Nathan", "johnathan@gmail.com", 87654321);
+		
 
 	}
 
@@ -87,10 +91,10 @@ public class C206_CaseStudyTest {
 		
 		
 
-		allStudent = C206_CaseStudy.viewAllParent(parentList);
+		allStudent = C206_CaseStudy.viewAllStudent(studentList);
 		
-		testOutput = String.format("%-15s %-15s %-15s %-15s %-20s %-15s %-25s %-15s \n", 123, 123, "Sponge", "C123", "Mr. Sqaurepants", "Bob", "spongebob@gmail.com", 1234578);
-		testOutput += String.format("%-15s %-15s %-15s %-15s %-20s %-15s %-25s %-15s \n", 234, 432, "John", "C234", "Mr. Cena", "Nathan", "johnathan@gmail.com", 87654321);
+		testOutput = String.format("%-15s %-15s %-15s %-15s %-20s %-15s %-25s %-15s \n", 123, 123);
+		testOutput += String.format("%-15s %-15s %-15s %-15s %-20s %-15s %-25s %-15s \n", 234, 432);
 		
 		assertEquals("Test if the expected output is the same as the list of Student retrieved from C206_CaseStudy", testOutput, allStudent);
 	}
@@ -112,10 +116,10 @@ public class C206_CaseStudyTest {
 		
 		
 
-		allStudent = C206_CaseStudy.viewAllParent(parentList);
+		allStudent = C206_CaseStudy.viewAllStudent(studentList);
 		
-		testOutput = String.format("%-15s %-15s %-15s %-15s %-20s %-15s %-25s %-15s \n", 123, 123, "Sponge", "C123", "Mr. Sqaurepants", "Bob", "spongebob@gmail.com", 1234578);
-		testOutput += String.format("%-15s %-15s %-15s %-15s %-20s %-15s %-25s %-15s \n", 234, 432, "John", "C234", "Mr. Cena", "Nathan", "johnathan@gmail.com", 87654321);
+		testOutput = String.format("%-15s %-15s %-15s %-15s %-20s %-15s %-25s %-15s \n", 123, 123);
+		testOutput += String.format("%-15s %-15s %-15s %-15s %-20s %-15s %-25s %-15s \n", 234, 432);
 		
 		assertEquals("Test if the expected output is the same as the list of Student retrieved from C206_CaseStudy", testOutput, allStudent);
 	}
