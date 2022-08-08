@@ -25,7 +25,7 @@ public class C206_CaseStudyTest {
 
 
 	private ArrayList<Administrator> lectureList;
-	private ArrayList<CCA> ccaList;
+	private ArrayList<CCA> ccaList1;
 	private ArrayList<ccaCategory> CategoryList;
 
 

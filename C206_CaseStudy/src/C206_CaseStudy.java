@@ -140,6 +140,7 @@ public class C206_CaseStudy {
 				
 
 			} else if (option == 3) { 
+				//Made by Sean
 				String lecId = Helper.readString("Enter administrator ID: ");
 				String lecPassword = Helper.readString("Enter Password: ");
 				int adminId = 0;
@@ -323,6 +324,7 @@ public class C206_CaseStudy {
 	 * @param CCAList
 	 */
 	private static void displayCCAName(ArrayList<CCA> CCAList) {
+		//Made by Sean
 		String display = "";
 		for (int num = 0;num<CCAList.size();num++) {
 			display += String.format("%d: %s\n ", num+1, CCAList.get(num).getCca_title());
@@ -335,6 +337,7 @@ public class C206_CaseStudy {
 	 * @param CCAList
 	 */
 	public static void viewCCAList(ArrayList<CCA> CCAList) {
+		//Made by Sean
 		Helper.line(140, "-");
 		for(int v =0 ; v<CCAList.size();v++) {
 			Helper.line(140, "+");
@@ -358,6 +361,7 @@ public class C206_CaseStudy {
 	 * @param loop
 	 */
 	private static void addCCA(ArrayList<CCA> CCAList, boolean loop) {
+		//Made my Sean
 		Helper.line(140, "-");
 		while(loop != false) {
 			boolean leave = false;
@@ -429,6 +433,7 @@ public class C206_CaseStudy {
 	 * @param newCCA
 	 */
 	static void addCCA(ArrayList<CCA> CCAList, String ccaName, CCA newCCA) {
+		//Made by Seab
 		CCAList.add(newCCA);
 		System.out.println(ccaName+" has been successfully added to database");
 	}
@@ -441,6 +446,7 @@ public class C206_CaseStudy {
 	 * @return
 	 */
 	private static boolean checkCategoryID(ArrayList<CCA> CCAList, int categoryID, boolean allow) {
+		//Made by Sean
 		for (int s =0;s<CCAList.size();s++) {
 			if(CCAList.get(s).getCat_id()!=categoryID) {
 				allow = true;
@@ -456,6 +462,7 @@ public class C206_CaseStudy {
 	 * @param adminId
 	 */
 	private static void adminMenu(ArrayList<Administrator> Lecturer, int adminId) {
+		//made by Sean 
 		Helper.line(140, "-");
 		String welcome = String.format("Instrutor page\nWelcome %s",Lecturer.get(adminId).getLecturer_name());
 		System.out.println(welcome);
