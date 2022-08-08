@@ -127,7 +127,7 @@ public class C206_CaseStudy {
 				}
 
 			} else if (option == 2) {
-				// Registration for parent (Yulong)
+				// Registration for student (Yulong)
 				Parent studentNew = inputStudent();
 				C206_CaseStudy.addParent(parentList, studentNew);
 				System.out.println("You have successfully registered!");
