@@ -18,7 +18,7 @@ public class C206_CaseStudy {
 		studentList.add(new Student(123, 321, "Football"));
 		parentList.add(new Parent(123, 123, "Basketball", "Sponge", "C123", "Mr. Sqaurepants", "Bob",
 				"spongebob@gmail.com", 1234578));
-		
+
 		adminList.add(new Administrator("Sports", 0, "Football", "Play with our feet is fun", 1,
 				"Mondays and Wednesdays", 1600, "Field", "2104", "David", "I wanna sleep."));
 
@@ -150,14 +150,52 @@ public class C206_CaseStudy {
 								System.out.println("There are no registered parents.");
 							}
 
+						} else if (adminMenuchoice == 4) {
+							// Parent details (Nicole)
+							if (parentList.size() != 0) {
+								parentMenu(parentList);
+								int parentMenuOption = Helper.readInt("Please enter an option: ");
+
+								if (parentMenuOption == 1) {
+									int deleteStudent = Helper.readInt("Enter student ID to delete from parent list: ");
+									boolean deleteParent = deleteParent(parentList, deleteStudent);
+
+									if (deleteParent) {
+										System.out.println("\nParent has been remove from list.");
+									} else {
+										System.out.println("\nInvalid student ID.");
+									}
+								}
+							} else {
+								System.out.println("There are no registered parents.");
+							}
 						} else if (adminMenuchoice == 5) {
+							// Student details (Nicole)
+							if (studentList.size() != 0) {
+								studentMenu(studentList);
+								int studentMenuOption = Helper.readInt("Please enter an option: ");
+
+								if (studentMenuOption == 1) {
+									int deleteStudent = Helper.readInt("Enter student ID to delete from parent list: ");
+									boolean deleteStudentCheck = deleteStudent(studentList, deleteStudent);
+
+									if (deleteStudentCheck) {
+										System.out.println("\nStudent has been remove from list.");
+									} else {
+										System.out.println("\nInvalid student ID.");
+									}
+								}
+							} else {
+								System.out.println("There are no registered students.");
+							}
+						} else if (adminMenuchoice == 6) {
 							ccaCategory newCategory = inputCategory();
 							addCategory(ccaCategoryList, newCategory);
 
-						} else if (adminMenuchoice == 6) {
+						} else if (adminMenuchoice == 7) {
 							viewAllCategories(ccaCategoryList);
 
-						} else if (adminMenuchoice == 7) {
+						} else if (adminMenuchoice == 8) {
 							viewAllCategories(ccaCategoryList);
 							deleteCategory(ccaCategoryList);
 
@@ -260,12 +298,13 @@ public class C206_CaseStudy {
 
 		Random rand = new Random();
 		int registrationID = 10000 + rand.nextInt(90000);
-		
+
 		Student newStudent = new Student(studentID, registrationID, "");
 		return newStudent;
 	}
 
-	public static void addStudent(ArrayList<Student> studentList, Student newStudent) { // Registration for student -Nicole
+	public static void addStudent(ArrayList<Student> studentList, Student newStudent) { // Registration for student
+																						// -Nicole
 
 		boolean exists = false;
 
@@ -296,7 +335,8 @@ public class C206_CaseStudy {
 		Random rand = new Random();
 		int registrationID = 10000 + rand.nextInt(90000);
 
-		Parent newParent = new Parent(studentID, registrationID, "", studentName, classroom, teacher, parentName, parentEmail, contactNo);
+		Parent newParent = new Parent(studentID, registrationID, "", studentName, classroom, teacher, parentName,
+				parentEmail, contactNo);
 		return newParent;
 	}
 
@@ -330,9 +370,10 @@ public class C206_CaseStudy {
 		System.out.println("2. View CCA");
 		System.out.println("3. Delete CCA");
 		System.out.println("4. Parent details");
-		System.out.println("5. Add CCA category");
-		System.out.println("6. View CCA category");
-		System.out.println("7. Delete CCA category");
+		System.out.println("5. Student details");
+		System.out.println("6. Add CCA category");
+		System.out.println("7. View CCA category");
+		System.out.println("8. Delete CCA category");
 		System.out.println("9. Logout");
 		Helper.line(140, "-");
 	}
@@ -356,13 +397,13 @@ public class C206_CaseStudy {
 					String venue = Helper.readString("Enter where the CCA will occur(weekdays): ");
 					String category = Helper.readString("Enter CCA category: ");
 					int categoryID = Helper.readInt("Enter CCA category ID: ");
-					
+
 					boolean exists = checkCategoryID(ccaList, categoryID);
 
 					if (exists) {
 						CCA newCCA = new CCA(category, categoryID, ccaName, description, size, day, time, venue);
 						ccaList.add(newCCA);
-						
+
 					} else {
 						System.out.println("There was an error adding the CCA, please try again");
 					}
@@ -420,6 +461,40 @@ public class C206_CaseStudy {
 		for (int i = 0; i < parentList.size(); i++) {
 			if (parentList.get(i).getStudentID() == (option - 1)) {
 				parentList.remove(i);
+				deleted = true;
+				break;
+			}
+		}
+		return deleted;
+	}
+	
+	private static void studentMenu(ArrayList<Student> studentList) { //Nicole
+		Helper.line(140, "-");
+		System.out.println("STUDENT DETAILS LIST");
+		Helper.line(140, "-");
+
+		System.out.println(C206_CaseStudy.viewAllStudent(studentList));
+		Helper.line(140, "-");
+
+		System.out.println("\n1. Delete student from list");
+		System.out.println("9. Exit\n");
+	}
+	
+	public static String viewAllStudent(ArrayList<Student> studentList) { // Made by Nicole
+		String output = String.format("%-15d %-15d %-15s \n", "STUDENT ID", "REGISTER ID", "REGISTERED CCA");
+
+		for (int i = 0; i < studentList.size(); i++) {
+			output += studentList.get(i).toString();
+		}
+		return output;
+	}
+	
+	public static boolean deleteStudent(ArrayList<Student> studentList, int option) { // Made by Nicole
+
+		boolean deleted = false;
+		for (int i = 0; i < studentList.size(); i++) {
+			if (studentList.get(i).getStudentID() == (option - 1)) {
+				studentList.remove(i);
 				deleted = true;
 				break;
 			}
