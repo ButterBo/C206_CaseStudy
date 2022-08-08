@@ -15,7 +15,7 @@ public class C206_CaseStudyTest {
 	private ccaCategory c2;
 
 	
-	private ArrayList<Administrator> lectureList;
+	private ArrayList<Administrator> lectureList1;
 	private ArrayList<CCA> ccaList;
 
 	private Parent p1;
@@ -39,7 +39,7 @@ public class C206_CaseStudyTest {
 				"Mondays and Wednesdays", 1600, "Field", "2104", "David", "I wanna sleep.");
 		cca1 = new CCA("Sports", 1, "Bouldering", "Climbing is fun!", 1, "Tuesdays and Thursdays", 1600,
 				"Rock Wall");
-		lectureList = new ArrayList<Administrator>();
+		lectureList1 = new ArrayList<Administrator>();
 		ccaList = new ArrayList<CCA>();
 
 		p1 = new Parent(123, 123, "Sponge", "C123", "Mr. Sqaurepants", "Bob", "spongebob@gmail.com", 1234578);
