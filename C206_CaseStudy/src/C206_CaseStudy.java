@@ -2,8 +2,6 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class C206_CaseStudy {
-	//test
-}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -181,6 +179,8 @@ public class C206_CaseStudy {
 								int removeCCA = Helper.readInt("Enter CCA number from table : ");
 								if(removeCCA>-1) {
 									CCAList.remove(removeCCA-1);
+								} else {
+									System.out.print("Invalid index");
 								}
 							}
 						} else if (choice == 4) {
