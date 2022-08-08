@@ -20,8 +20,11 @@ public class C206_CaseStudyTest {
 
 	private Parent p1;
 	private Parent p2;
+	private Student s1;
+	private Student s2;
 
 	private ArrayList<Parent> parentList;
+	private ArrayList<Student> studentList;
 
 
 	private ArrayList<Administrator> lectureList;
@@ -196,5 +199,45 @@ public class C206_CaseStudyTest {
 		C206_CaseStudy.addCategory(CategoryList, c2);
 		assertEquals("Check that Category arraylist size is 2", 2, CategoryList.size());
 		assertSame("Check that Category is added", c2, CategoryList.get(1));
+	}
+	
+	@Test //Zahid
+	public void testStudentLogin() {
+		// Test if list is not null -boundary
+		assertNotNull("Check if there is a valid student list to retrieve details",studentList );
+		
+		// Test that Login ID can be retrieved and compared
+		int loginInput;
+		assertSame(loginInput, studentList.get(0).getStudentID());
+		
+		//Test that Registration ID can be retrieved and compared
+		assertSame(loginInput, studentList.get(0).getRegisterID());
+	}
+	
+	public void testRegisterStudent() {
+		// Test if list is not null -boundary
+		assertNotNull(ccaList);
+		
+		// Test that when 1 student registers for CCA, the CCA size is increased by 1
+		String cca = ccaList.get(0).getCca_title();
+		s1.setStudentID(123);
+		s1.setRegisterID(321);
+		s1.setCCA(cca);
+		studentList.add(s1);
+		cca1.setClass_size(cca1.getClass_size() + 1);
+		
+		assertEquals(1, cca1.getClass_size());
+		assertSame(cca, s1.getCCA());
+		
+		// Test that another student can be added
+		s2.setStudentID(321);
+		s2.setRegisterID(123);
+		s2.setCCA(cca);
+		studentList.add(s2);
+		cca1.setClass_size(cca1.getClass_size() + 1);
+		
+		assertEquals(2, cca1.getClass_size());
+		assertSame(cca, s2.getCCA());
+		
 	}
 }
