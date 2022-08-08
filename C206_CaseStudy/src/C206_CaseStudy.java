@@ -26,8 +26,6 @@ public class C206_CaseStudy {
 		// option(ccaDetailsMenu)(Zahid)
 
 		int mainMenuOption = 0;// menu
-		int option3 = 0;// cca menu
-		int option4 = 0;
 
 		while (mainMenuOption != 9) {
 			C206_CaseStudy.startMenu();
