@@ -10,6 +10,7 @@ public class C206_CaseStudyTest {
 
 	private Administrator admin1;
 	private CCA cca1;
+	private CCA cca2;
 
 	private ccaCategory c1;
 	private ccaCategory c2;
@@ -53,16 +54,49 @@ public class C206_CaseStudyTest {
 
 	@Test
 	public void testAddCCA() {
+		ccaList.add(cca1);
+		C206_CaseStudy.addCCA(ccaList);
 		assertNotNull("Check if CCA arraylist is not empty", ccaList);
 		
-		C206_CaseStudy.addCCA(ccaList, "Yeet", cca1 );
-		assertEquals("Check that CCA arraylist size is 1", 1, ccaList.size());
-		assertSame("Check if cca is addedd", cca1, ccaList.get(0));
+		cca2 = new CCA("Art", 2, "Water paint", "Art is great", 2, "Thursdays", 100,
+				"Rock Wall");
+		ccaList.add(cca2);
+		assertEquals("Check that CCA arraylist size is 2", 2, ccaList.size());
+		assertSame("Check if cca the 1st CCA matches the 1st element", cca1, ccaList.get(0));
+		
+		assertEquals("Check that CCA arraylist size is 2", 2, ccaList.size());
+		assertSame("Check if cca the 2nd CCA matches the 2nd element", cca2, ccaList.get(1));
 	}
 	
 	@Test
 	public void viewCCA() {
+		ccaList.add(cca1);
+		C206_CaseStudy.addCCA(ccaList);
 		assertNotNull("Check if CCA arraylist is not empty", ccaList);
+		String testing = "";
+		for (int i = 0; i < ccaList.size(); i++) {
+			testing = (i + 1) + ". " + ccaList.get(i).getCca_title();
+		}
+		assertEquals("Test if expected CCA is equal to the ccalist in CaseStudy", testing, 1 +". "+ccaList.get(0).getCat_title());
+		
+	}
+	
+	@Test
+	public void delCCA() {
+		ccaList.add(cca1);
+		C206_CaseStudy.addCCA(ccaList);
+		cca2 = new CCA("Art", 2, "Water paint", "Art is great", 2, "Thursdays", 100,
+				"Rock Wall");
+		ccaList.add(cca2);
+		
+		assertNotNull("Check if CCA arraylist is not empty", ccaList);
+		assertEquals("Test for size of ccaList", 2, ccaList);
+		
+		C206_CaseStudy.delCCA(ccaList,0);
+		
+		assertEquals("Test that size of ccaList decrease to 1", 1, ccaList);
+		assertSame("Test that cca2 is now equal to 1st element", cca2, ccaList.get(0));
+		
 	}
 	
 	@After

@@ -124,11 +124,7 @@ public class C206_CaseStudy {
 							viewAllCCAs(ccaList);
 							int removeCCA = Helper.readInt("Enter CCA number from table (or -1 to exit): ");
 
-							if (removeCCA != -1) {
-								if (removeCCA > -1) {
-									ccaList.remove(removeCCA - 1);
-								}
-							}
+							delCCA(ccaList, removeCCA);
 
 						} else if (adminMenuchoice == 4) {
 							// Parent details (Nicole)
@@ -169,6 +165,18 @@ public class C206_CaseStudy {
 				}
 			} else {
 				System.out.println("Invalid option, please try again");
+			}
+		}
+	}
+
+	/**
+	 * @param ccaList
+	 * @param removeCCA
+	 */
+	public static void delCCA(ArrayList<CCA> ccaList, int removeCCA) {
+		if (removeCCA != -1) {
+			if (removeCCA > -1) {
+				ccaList.remove(removeCCA - 1);
 			}
 		}
 	}
