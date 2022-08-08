@@ -462,7 +462,8 @@ public class C206_CaseStudy {
 		}
 	}
 
-	public static void viewAllCategories(ArrayList<ccaCategory> ccaCategoryList) {
+
+	public static String viewAllCategories(ArrayList<ccaCategory> ccaCategoryList) {
 		String output = String.format("%-15s %-15s\n", "CATEGORY ID", "CATEGORY TITLE");
 
 		for (int i = 0; i < ccaCategoryList.size(); i++) {
@@ -470,7 +471,9 @@ public class C206_CaseStudy {
 					ccaCategoryList.get(i).getCat_title());
 		}
 		System.out.println(output);
+		return output;
 	}
+		      
 
 	public static void deleteCategory(ArrayList<ccaCategory> ccaCategoryList) {
 		int deleteCategory = Helper.readInt("Please enter a category ID (or -1 to exit): ");
