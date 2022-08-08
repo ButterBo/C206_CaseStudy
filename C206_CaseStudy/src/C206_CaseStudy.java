@@ -235,7 +235,7 @@ public class C206_CaseStudy {
 
 
 
-				        public static void viewAllCategory(ArrayList<ccaCategory> ccaCategoryList) {
+				        public static String viewAllCategory(ArrayList<ccaCategory> ccaCategoryList) {
 				          System.out.println("CCA CATEGORY LIST");
 				          String output = String.format("%-10s %-30d\n", "CATEGORY NAME", "CATEGORY ID");
 				          output += retrieveAllCategory(ccaCategoryList);
@@ -290,7 +290,7 @@ public class C206_CaseStudy {
 	}
 
 //	yulong
-	public static void deleteStudent(ArrayList<Student> StudentList, int option) {
+	public static boolean deleteStudent(ArrayList<Student> StudentList, int option) {
 		for (int i = 0; i < StudentList.size(); i++) {
 			if (StudentList.get(i).getStudentID() == option) {
 				StudentList.remove(i);
@@ -598,7 +598,7 @@ public class C206_CaseStudy {
 	}
 	
 //	yulong
-	public static void viewAllStudent(ArrayList<Student> StudentList) { 
+	public static String viewAllStudent(ArrayList<Student> StudentList) { 
 		String output = String.format("%-15s %-15s %-15s %-15s %-20s %-15s %-25s %-15s \n", "STUDENT ID", "REGISTER ID");
 
 		for (int i = 0; i < StudentList.size(); i++) {
