@@ -43,11 +43,11 @@ public class C206_CaseStudyTest {
 		lectureList1 = new ArrayList<Administrator>();
 		ccaList = new ArrayList<CCA>();
 		
-		s1 = new Student(123, 123);
-		s2 = new Student(234, 432);
+		s1 = new Student(123, 123, "");
+		s2 = new Student(234, 432, "");
 
-		p1 = new Parent(123, 123, "Sponge", "C123", "Mr. Sqaurepants", "Bob", "spongebob@gmail.com", 1234578);
-		p2 = new Parent(234, 432, "John", "C234", "Mr. Cena", "Nathan", "johnathan@gmail.com", 87654321);
+		p1 = new Parent(123, 123, "", "Sponge", "C123", "Mr. Sqaurepants", "Bob", "spongebob@gmail.com", 1234578);
+		p2 = new Parent(234, 432, "", "John", "C234", "Mr. Cena", "Nathan", "johnathan@gmail.com", 87654321);
 		
 
 	}
@@ -119,16 +119,16 @@ public class C206_CaseStudyTest {
 		String testOutput = "";
 		assertEquals("Check that the list of Student retrieved from C206_CaseStudy is empty", testOutput, allStudent);
 		
-		C206_CaseStudy.addStudent(studentList);
-		C206_CaseStudy.addStudent(studentList);
+		C206_CaseStudy.addStudent(studentList, s1);
+		C206_CaseStudy.addStudent(studentList, s2);
 		assertEquals("Test if after adding s1 and s2 to StudentList, the size is now 2", 2, studentList.size());
 		
 		
 
 		allStudent = C206_CaseStudy.viewAllStudent(studentList);
 		
-		testOutput = String.format("%-15s %-15s %-15s %-15s %-20s %-15s %-25s %-15s \n", 123, 123);
-		testOutput += String.format("%-15s %-15s %-15s %-15s %-20s %-15s %-25s %-15s \n", 234, 432);
+		testOutput = String.format("%-15d %-15d %-15s \n", 123, 123, "");
+		testOutput += String.format("%-15d %-15d %-15s \n", 234, 432, "");
 		
 		assertEquals("Test if the expected output is the same as the list of Student retrieved from C206_CaseStudy", testOutput, allStudent);
 	}
@@ -138,7 +138,7 @@ public class C206_CaseStudyTest {
 	public void testDeleteStudent() {
 		assertNotNull("Test if there is Student arraylist to delete from", studentList);
 
-		C206_CaseStudy.addStudent(studentList);
+		C206_CaseStudy.addStudent(studentList, s1);
 
 		boolean deleted = C206_CaseStudy.deleteStudent(studentList, 1);
 		assertTrue("Test if Student has been deleted", deleted);
