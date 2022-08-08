@@ -111,31 +111,6 @@ public class C206_CaseStudyTest {
 	
 //	yulong
 	@Test
-	public void testViewAllstudent() { 
-
-		assertNotNull("Check that there is StudentList to add to", studentList);
-
-		String allStudent = C206_CaseStudy.viewAllStudent(studentList);
-		String testOutput = "";
-		assertEquals("Check that the list of Student retrieved from C206_CaseStudy is empty", testOutput, allStudent);
-		
-		C206_CaseStudy.addStudent(studentList);
-		C206_CaseStudy.addStudent(studentList);
-		assertEquals("Test if after adding s1 and s2 to StudentList, the size is now 2", 2, studentList.size());
-		
-		
-
-		allStudent = C206_CaseStudy.viewAllStudent(studentList);
-		
-		testOutput = String.format("%-15s %-15s %-15s %-15s %-20s %-15s %-25s %-15s \n", 123, 123);
-		testOutput += String.format("%-15s %-15s %-15s %-15s %-20s %-15s %-25s %-15s \n", 234, 432);
-		
-		assertEquals("Test if the expected output is the same as the list of Student retrieved from C206_CaseStudy", testOutput, allStudent);
-	}
-	
-
-//	yulong
-	@Test
 	public void testViewAllStudent() { 
 
 		assertNotNull("Check that there is StudentList to add to", studentList);
