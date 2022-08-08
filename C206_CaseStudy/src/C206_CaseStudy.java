@@ -167,7 +167,7 @@ public class C206_CaseStudy {
 								System.out.println("There are no registered parents.");
 							}
 						} else if (adminMenuchoice == 5) {
-							// Student details (Nicole)
+							//Student details (Nicole)
 							if (studentList.size() != 0) {
 								studentMenu(studentList);
 								int studentMenuOption = Helper.readInt("Please enter an option: ");
