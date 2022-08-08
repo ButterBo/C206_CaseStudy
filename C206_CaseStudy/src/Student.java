@@ -19,9 +19,10 @@ public class Student {
 	private int registerID;
 	private String CCA;
 	
-	public Student(int studentID, int registerID) {
+	public Student(int studentID, int registerID, String CCA) {
 		this.studentID = studentID;
 		this.registerID = registerID;
+		this.CCA = "";
 	}
 	
 	public int getStudentID() {

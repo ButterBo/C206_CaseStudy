@@ -2,46 +2,40 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class C206_CaseStudy {
-<<<<<<< HEAD
 
-=======
-	//test
-}
->>>>>>> branch 'master' of https://github.com/ButterBo/C206_CaseStudy.git
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		ArrayList<CCA> CCAList = new ArrayList<CCA>();
-        ArrayList<ccaCategory> ccaCategoryList = new ArrayList<ccaCategory>();
-		ArrayList<Student> StudentList = new ArrayList<Student>();
+		ArrayList<CCA> ccaList = new ArrayList<CCA>();
+		ArrayList<ccaCategory> ccaCategoryList = new ArrayList<ccaCategory>();
+		ArrayList<Student> studentList = new ArrayList<Student>();
 		ArrayList<Parent> parentList = new ArrayList<Parent>();
-		ArrayList<Administrator> Lecturer = new ArrayList<Administrator>();
+		ArrayList<Administrator> adminList = new ArrayList<Administrator>();
 
-		generateRandomCCA(CCAList);
-
-		generateRandomStudent(StudentList);
-
-		generateRandomParent(parentList);
-
-		generateRandomLecturer(Lecturer);
+		ccaList.add(new CCA("Sports", 0, "Football", "Play with our feet is fun", 1, "Mondays and Wednesdays", 1600,
+				"Field"));
+		ccaList.add(
+				new CCA("Sports", 1, "Bouldering", "Climbing is fun!", 1, "Tuesdays and Thursdays", 1600, "Rock Wall"));
+		studentList.add(new Student(123, 321, "Football"));
+		parentList.add(new Parent(123, 123, "Basketball", "Sponge", "C123", "Mr. Sqaurepants", "Bob",
+				"spongebob@gmail.com", 1234578));
+		;
+		adminList.add(new Administrator("Sports", 0, "Football", "Play with our feet is fun", 1,
+				"Mondays and Wednesdays", 1600, "Field", "2104", "David", "I wanna sleep."));
 
 		// variables for choices in option(menu) option2(loggedInMenu) option3(ccaMenu)
 		// option(ccaDetailsMenu)(Zahid)
 
-		int option = 0;// menu
-		int option2 = 0;// logged in menu
+		int mainMenuOption = 0;// menu
 		int option3 = 0;// cca menu
 		int option4 = 0;
 
-		while (option != 9) {
-			C206_CaseStudy.startmenu();
-			option = Helper.readInt("Enter an option: ");
+		while (mainMenuOption != 9) {
+			C206_CaseStudy.startMenu();
+			mainMenuOption = Helper.readInt("Enter an option: ");
 
-			if (option == 1) {
-
+			if (mainMenuOption == 1) {
 				System.out.println("");
-				Helper.line(140, "-");
-				System.out.println("LOGIN");
-				Helper.line(140, "-");
+				C206_CaseStudy.setHeader("LOGIN");
 
 				// User Input
 				int studentIDInput = Helper.readInt("Student ID: ");
@@ -50,436 +44,292 @@ public class C206_CaseStudy {
 				// Check if login details correct (Zahid)
 				boolean check = false; // Added this and for loop for checking, and also made changes to if statement
 										// (Nicole)
+				check = studentLoginCheck(studentList, studentIDInput, registerIDInput);
+				Student s1 = new Student(studentIDInput, registerIDInput, "");
 
-				check = studentLogin(StudentList, studentIDInput, registerIDInput, check);
-				
-				
-				for(int i = 0; i<StudentList.size();i++) {
-					
-					if (StudentList.get(i).getStudentID() == studentIDInput && StudentList.get(i).getRegisterID() == registerIDInput) {
-						check = true;
-						break;
-					}
-				}
-					
 				if (check) {
-
 					// This is the login menu yall add your menu items here(Zahid)
 					C206_CaseStudy.loggedinmenu();
+					int loggedInMenuOption = 0;
 
-					while (option2 != 9) {
-						option2 = Helper.readInt("Enter an option: ");
+					while (loggedInMenuOption != 9) {
 
-						if (option2 == 1) {
+						loggedInMenuOption = Helper.readInt("Enter an option (or 9 to exit): ");
 
+						if (loggedInMenuOption == 1) {
 							// view/register CCA menu(Zahid)
-							Helper.line(140, "-");
-							System.out.println("CCA");
-							Helper.line(140, "-");
+							viewAllCCAs(ccaList);
 
-							// Added for loops (Nicole)
-							for (int i = 0; i < CCAList.size(); i++) {
-								System.out.println((i + 1) + ". " + CCAList.get(i).getCca_title());
+							int ccaMenuInput = Helper.readInt("\nEnter a CCA option to view (or 9 to exit): ");
+
+							while (ccaMenuInput != 9) {
+								viewCCADetails(ccaList, s1, ccaMenuInput);
+								viewAllCCAs(ccaList);
+								ccaMenuInput = Helper.readInt("\nEnter a CCA option to view (or 9 to exit): ");
 							}
-
-							System.out.println("");
-							option3 = Helper.readInt("Enter an option: ");
-
-							int ccaOption = 0;
-
-							for (int i = 0; i < CCAList.size(); i++) {
-								if (option3 == (i + 1)) {
-									Helper.line(140, "-");
-									System.out.println("Description: " + CCAList.get(i).getDescription());
-									System.out.println("CCA vacancy: " + CCAList.get(i).getClass_size() + "/50");
-									System.out.println("Days: " + CCAList.get(i).getCca_day_of_the_week());
-									System.out.println("Time: " + CCAList.get(i).getTime());
-									System.out.println("Venue: " + CCAList.get(i).getVenue());
-									ccaOption = option3 - 1;
-								}
-							}
-
-							System.out.println("\n1. Register for CCA");
-							System.out.println("\n2. View Students in CCA");
-							System.out.println("9. Exit\n");
-
-							option4 = Helper.readInt("Enter an option: ");
-
-							if (option4 == 1) {
-								// CCA Description(Zahid)
-
-								if (option4 == 1) {
-									// Register CCA for student(Zahid)
-									C206_CaseStudy.registerStudent(CCAList,StudentList,ccaOption,studentIDInput);
-								}
-
-								else if (option4 == 2){
-									// View Students in CCA
-									C206_CaseStudy.viewStudentsCCA(StudentList, CCAList, ccaOption);
-								}
-							}
-
-						} else if (option2 == 2) {
-							// add other menu item
-							
-							
-
 						}
 					}
-
 				} else {
 					System.out.println("Student ID or Register ID is incorrect, please try again.");
 				}
 
-			} else if (option == 2) {
-				// Registration for parent (Yulong)
-				Parent studentNew = inputStudent();
-				C206_CaseStudy.addParent(parentList, studentNew);
-				System.out.println("You have successfully registered!");
-				
-				// Registration for parent (Nicole)
-				Parent parentNew = inputParent();
-				C206_CaseStudy.addParent(parentList, parentNew);
-				System.out.println("You have successfully registered!");
-				
+			} else if (mainMenuOption == 2) {
+				Helper.line(140, "-");
+				System.out.println("1. Register as student");
+				System.out.println("2. Register as parent");
+				System.out.println("9. Exit \n");
 
-			} else if (option == 3) { 
-				//Made by Sean
-				String lecId = Helper.readString("Enter administrator ID: ");
-				String lecPassword = Helper.readString("Enter Password: ");
+				int registerOption = Helper.readInt("Please enter an option: ");
+
+				if (registerOption == 1) {
+					// Registration for student (Yulong)
+					Student studentNew = inputStudent();
+					C206_CaseStudy.addStudent(studentList, studentNew);
+
+				} else if (registerOption == 2) {
+					// Registration for parent (Nicole)
+					Parent newParent = inputParent();
+					C206_CaseStudy.addParent(parentList, newParent);
+				}
+
+			} else if (mainMenuOption == 3) {
+				String adminID = Helper.readString("Enter administrator ID: ");
+				String adminPassword = Helper.readString("Enter Password: ");
 				int adminId = 0;
 				boolean status = false;
-				
-				for(int x = 0; x<Lecturer.size();x++) {
-					if (lecId.equals(Lecturer.get(x).getAdministratorId()) && (lecPassword.equals(Lecturer.get(x).getPassword()))) {
+
+				for (int x = 0; x < adminList.size(); x++) {
+					if ((adminID.equals(adminList.get(x).getAdministratorId()))
+							&& (adminPassword.equals(adminList.get(x).getPassword()))) {
 						status = true;
 						adminId = x;
 						break;
 					}
 				}
-				
+
 				if (status == true) {
-					int choice = 0;
-					while (choice != 9) {
-						adminMenu(Lecturer, adminId);
-						choice = Helper.readInt("Enter option: ");
-						if(choice == 1) {
-							boolean loop = true;
-							addCCA(CCAList, loop);
-												
-						} else if (choice == 2) {
-							
-							viewCCAList(CCAList);
-							
-						} else if (choice == 3) {
-							
-							Helper.line(140, ".");
-							System.out.println("Delete CCA");
-							Helper.line(140, ".");
-							displayCCAName(CCAList);
-							String del = Helper.readString("Do you want to remove a CCA (Y/N): ");
-							if (del.equalsIgnoreCase("n")) {
-								break;
-							} else {
-								int removeCCA = Helper.readInt("Enter CCA number from table : ");
-								if(removeCCA>-1) {
-									CCAList.remove(removeCCA-1);
-								} else {
-									System.out.print("Invalid CCA index");
+					int adminMenuchoice = 0;
+
+					while (adminMenuchoice != 9) {
+						adminMenu(adminList, adminId);
+						adminMenuchoice = Helper.readInt("Please enter an option: ");
+
+						if (adminMenuchoice == 1) {
+							addCCA(ccaList);
+
+						} else if (adminMenuchoice == 2) {
+							viewAllCCAs(ccaList);
+
+						} else if (adminMenuchoice == 3) {
+
+							C206_CaseStudy.setHeader("DELETE CCA");
+							viewAllCCAs(ccaList);
+							int removeCCA = Helper.readInt("Enter CCA number from table (or -1 to exit): ");
+
+							if (removeCCA != -1) {
+								if (removeCCA > -1) {
+									ccaList.remove(removeCCA - 1);
 								}
 							}
-						} else if (choice == 4) {
+
+						} else if (adminMenuchoice == 4) {
 							// Parent details (Nicole)
 							if (parentList.size() != 0) {
-								while (option2 != 9) {
-									if (parentList.size() != 0) {
-										parentMenu(parentList);
-	
-										option2 = Helper.readInt("Enter an option: ");
-	
-										if (option2 == 1) {
-											option3 = Helper.readInt("Enter student ID to delete from parent list: ");
-	
-											deleteParent(parentList, option3);
-											
-										} else { System.out.println("Invalid option"); }
-									} else { break; }
-								}
-							} else { System.out.println("There are no registered parents."); 
-							}
-						
-						}
-					
-					else if (choice == 5) { //add category Yong Xuan
-					
-						addCategory(ccaCategoryList,null);
-						
-					}
-					
-					
-				       else if(choice==6) {
-				    	   viewAllCategory(ccaCategoryList);
-				 
-				       }
-					
-				       
-					else if(choice==7) {
+								parentMenu(parentList);
+								int parentMenuOption = Helper.readInt("Please enter an option: ");
 
+								if (parentMenuOption == 1) {
+									int deleteStudent = Helper.readInt("Enter student ID to delete from parent list: ");
+									boolean deleteParent = deleteParent(parentList, deleteStudent);
 
-						deleteCategory(ccaCategoryList);
-				    
-					}
-				        
-				  
-
-					}
-				      } else if (option==9) {
-
-				        System.out.println("Bye bye, have a nice day");
-				       
-				      } else {
-
-				      
-				        System.out.println("Invalid option, please try again");
-				        choice = Helper.readInt("Enter option: ");
-				      }
-			
-					//yeet
-	
-	
-/**
-	 * @return
-	 */
-	private static Parent inputStudent() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	//yongxuan
-	  public static ccaCategory inputCategory() {
-
-          String categoryName = Helper.readString("Enter new CCA Category : ");
-          int categoryID = Helper.readInt("Enter new ID: ");
-          ccaCategory category = new ccaCategory(categoryName, categoryID);
-          return category;
-        }
-	
-        public static void addCategory(ArrayList<ccaCategory> ccaCategoryList, ccaCategory category) {
-
-          ccaCategoryList.add(category);
-        }
-        //yong xuan
-        public static void deleteCategory(ArrayList<ccaCategory> ccaCategoryList) {
-	          C206_CaseStudy.viewAllCategory(ccaCategoryList);
-	          int delete = Helper.readInt("Enter ID to delete > ");
-
-
-
-	          for (int i = 0; i < ccaCategoryList.size(); i++) {
-	            int id = ccaCategoryList.get(i).getCat_id();
-	          
-	            if (id == delete) {
-	              ccaCategoryList.remove(i);
-	              System.out.println("Category deleted");
-	            } else {
-	              System.out.println("Invalid Category ID");
-	            }                      
-	          }
-        }
-	          
-//	yulong
-	public static boolean deleteStudent(ArrayList<Student> StudentList, int option) {
-		for (int i = 0; i < StudentList.size(); i++) {
-			if (StudentList.get(i).getStudentID() == option) {
-				StudentList.remove(i);
-				System.out.println("\nStudent has been remove from the list.");
-				break;
-			}
-		}
-	}
-// yong xuan 
-    public static String retrieveAllCategory(ArrayList<ccaCategory> ccaCategoryList) {
-        String output = "";
-
-        for (int i = 0; i < ccaCategoryList.size(); i++) {
-
-          output += String.format("%-84s\n", ccaCategoryList.get(i).toString());
-
-        }
-        return output;
-      }
-
-      public static String viewAllCategory(ArrayList<ccaCategory> ccaCategoryList) {
-        System.out.println("CCA CATEGORY LIST");
-        String output = String.format("%-10s %-30d\n", "CATEGORY NAME", "CATEGORY ID");
-        output += retrieveAllCategory(ccaCategoryList);
-        System.out.println(output);
-      }
-	
-
-	/**
-	 * @param parentList
-	 * @param option3
-	 */
-	public static boolean deleteParent(ArrayList<Parent> parentList, int option) {
-		
-		boolean deleted = false;
-		for (int i = 0; i < parentList.size(); i++) {
-			if (parentList.get(i).getStudentID() == (option-1)) {
-				parentList.remove(i);
-				System.out.println("\nParent has been remove from list.");
-				deleted = true;
-				break;
-			}
-		}
-		return deleted;
-	}
-
-
-	/**
-	 * @param CCAList
-	 */
-	private static void displayCCAName(ArrayList<CCA> CCAList) {
-		//Made by Sean
-		String display = "";
-		for (int num = 0;num<CCAList.size();num++) {
-			display += String.format("%d: %s\n ", num+1, CCAList.get(num).getCca_title());
-		}
-		System.out.println(display);
-	}
-
-
-	/**
-	 * @param CCAList
-	 */
-	public static void viewCCAList(ArrayList<CCA> CCAList) {
-		//Made by Sean
-		Helper.line(140, "-");
-		for(int v =0 ; v<CCAList.size();v++) {
-			Helper.line(140, "+");
-			String viewCCA = String.format("Category: %s\n", CCAList.get(v).getCat_title());
-			viewCCA += String.format("Category ID: %d\n", CCAList.get(v).getCat_id());
-			viewCCA += String.format("CCA: %s\n", CCAList.get(v).getCca_title());
-			viewCCA += String.format("Desciption: %s\n", CCAList.get(v).getDescription());
-			viewCCA += String.format("Class Size: %d\n", CCAList.get(v).getClass_size());
-			viewCCA += String.format("Day of the week: %s\n", CCAList.get(v).getCca_day_of_the_week());
-			viewCCA += String.format("Time: %d\n", CCAList.get(v).getTime());
-			viewCCA += String.format("Venue: %s\n", CCAList.get(v).getVenue());
-			System.out.println(viewCCA);
-			Helper.line(140, "+");
-		}
-		Helper.line(140, "-");
-	}
-
-
-	/**
-	 * @param CCAList
-	 * @param loop
-	 */
-	private static void addCCA(ArrayList<CCA> CCAList, boolean loop) {
-		//Made my Sean
-		Helper.line(140, "-");
-		while(loop != false) {
-			boolean leave = false;
-			String ccaName = Helper.readString("Enter new CCA name: ");
-			String leaveAdd = Helper.readString("Do you want to exit adding CCA (Y/N): ");
-			if(leaveAdd.equalsIgnoreCase("y")) {
-				loop = false;
-			} else {
-				if(!ccaName.isEmpty()) {
-					String description = Helper.readString("Enter CCA's description: ");
-					
-					if(!description.isEmpty()) {
-						int size = Helper.readInt("Enter CCA's class size: ");
-						
-						if(size!=0) {
-							String day = Helper.readString("Enter when the CCA will occur(weekdays): ");
-							if(!day.equalsIgnoreCase("saturaday") || !day.equalsIgnoreCase("sunday") && !day.isEmpty()) {
-								int time = 0;
-								time = Helper.readInt("Enter what time the CCA will occur(24HR): ");
-								if(time!=0 && time < 2401 && time > 999) {
-									
-									String venue = Helper.readString("Enter where the CCA will occur(weekdays): ");
-									
-									if(!venue.isEmpty()) {
-										String category = Helper.readString("Enter CCA category: ");
-										int categoryID = Helper.readInt("Enter CCA category ID: ");
-										boolean allow = false;
-										allow = checkCategoryID(CCAList, categoryID, allow);
-										
-										if(allow==true) {
-											CCA newCCA = new CCA(category, categoryID, ccaName, description, size, day, time, venue);
-											addCCA(CCAList, ccaName, newCCA);
-											leave = true;
-											loop = false;
-										} else {
-											System.out.println("Category ID has already been taken");
-										}
-										
+									if (deleteParent) {
+										System.out.println("\nParent has been remove from list.");
 									} else {
-										System.out.println("CCA venue is empty, please try again");
+										System.out.println("\nInvalid student ID.");
 									}
-									
-								} else {
-									System.out.println("CCA time is empty, please try again");
 								}
-									
 							} else {
-								System.out.println("CCA cannot be empty and cannot occur during the weekend, Please try again");
+								System.out.println("There are no registered parents.");
 							}
-								
+
+						} else if (adminMenuchoice == 5) {
+							ccaCategory newCategory = inputCategory();
+							addCategory(ccaCategoryList, newCategory);
+
+						} else if (adminMenuchoice == 6) {
+							viewAllCategories(ccaCategoryList);
+
+						} else if (adminMenuchoice == 7) {
+							viewAllCategories(ccaCategoryList);
+							deleteCategory(ccaCategoryList);
+
 						} else {
-							System.out.println("CCA description is empty, please try again");
+							System.out.println("Invalid option, please try again");
+							adminMenuchoice = Helper.readInt("Enter option: ");
 						}
-					} else {
-						System.out.println("CCA description is empty, please try again");
 					}
-				} else {
-					System.out.println("CCA name is empty, please try again");
+				}
+
+				// ================================= Fixed
+				// ==========================================================================================
+
+			} else {
+
+			}
+		}
+	}
+
+	public static void setHeader(String header) {
+		Helper.line(140, "-");
+		System.out.println(header);
+		Helper.line(140, "-");
+	}
+
+	public static void startMenu() {
+		C206_CaseStudy.setHeader("RESOURCE CENTRE APP");
+		System.out.println("1. Login");
+		System.out.println("2. Register");
+		System.out.println("3. Staff Login");
+		System.out.println("9. Exit \n");
+	}
+
+	// ================================= Option 1 - Login
+	// =================================
+	private static boolean studentLoginCheck(ArrayList<Student> studentList, int studentIDInput, int registerIDInput) {
+		boolean check = false;
+		for (int i = 0; i < studentList.size(); i++) {
+			int studentID = studentList.get(i).getStudentID();
+			int registerID = studentList.get(i).getRegisterID();
+
+			if ((studentIDInput == studentID) && (registerIDInput == registerID)) {
+				check = true;
+				break;
+			}
+		}
+		return check;
+	}
+
+	public static void loggedinmenu() {
+		// Add more options for the log in menu(Zahid)
+		Helper.line(140, "-");
+		System.out.println("1. View CCA");
+		System.out.println("9. Exit \n");
+	}
+
+	public static void ccaDetails(ArrayList<CCA> ccaList, int ccaMenuInput) {
+		for (int i = 0; i < ccaList.size(); i++) {
+			if (ccaMenuInput == (i + 1)) {
+				Helper.line(140, "-");
+				System.out.println("Description: " + ccaList.get(i).getDescription());
+				System.out.println("CCA vacancy: " + ccaList.get(i).getClass_size() + "/50");
+				System.out.println("Days: " + ccaList.get(i).getCca_day_of_the_week());
+				System.out.println("Time: " + ccaList.get(i).getTime());
+				System.out.println("Venue: " + ccaList.get(i).getVenue());
+			}
+		}
+	}
+
+	public static void viewCCADetails(ArrayList<CCA> ccaList, Student s1, int ccaMenuInput) {
+		for (int i = 0; i < ccaList.size(); i++) {
+			if ((i + 1) == ccaMenuInput) {
+				// View CCA details(Zahid)
+				C206_CaseStudy.ccaDetails(ccaList, ccaMenuInput);
+				char option = Helper.readChar("\nWould you like to register for this cca? (y/n):");
+
+				if (option == 'y') {
+					C206_CaseStudy.registerStudent(ccaList, s1, ccaMenuInput - 1);
+					break;
 				}
 			}
 		}
-		Helper.line(140, "-");
 	}
 
+	public static void viewAllCCAs(ArrayList<CCA> ccaList) {
+		C206_CaseStudy.setHeader("All CCAs List");
 
-	/**
-	 * @param CCAList
-	 * @param ccaName
-	 * @param newCCA
-	 */
-	static void addCCA(ArrayList<CCA> CCAList, String ccaName, CCA newCCA) {
-		//Made by Seab
-		CCAList.add(newCCA);
-		System.out.println(ccaName+" has been successfully added to database");
+		// Added for loops (Nicole)
+		for (int i = 0; i < ccaList.size(); i++) {
+			System.out.println((i + 1) + ". " + ccaList.get(i).getCca_title());
+		}
 	}
 
+	public static void registerStudent(ArrayList<CCA> CCAList, Student s1, int ccaOption) {
+		s1.setCCA(CCAList.get(ccaOption).getCca_title());
+		CCAList.get(ccaOption).setClass_size(CCAList.get(ccaOption).getClass_size() + 1);
+		System.out.println("You have successfully registered for this CCA!");
+	}
 
-	/**
-	 * @param CCAList
-	 * @param categoryID
-	 * @param allow
-	 * @return
-	 */
-	private static boolean checkCategoryID(ArrayList<CCA> CCAList, int categoryID, boolean allow) {
-		//Made by Sean
-		for (int s =0;s<CCAList.size();s++) {
-			if(CCAList.get(s).getCat_id()!=categoryID) {
-				allow = true;
+	// ================================= Option 2 - Register
+	// =================================
+	public static Student inputStudent() { // Registration for student -Nicole
+		int studentID = Helper.readInt("Please enter your child's studentID: ");
+
+		Random rand = new Random();
+		int registrationID = 10000 + rand.nextInt(90000);
+		
+		Student newStudent = new Student(studentID, registrationID, "");
+		return newStudent;
+	}
+
+	public static void addStudent(ArrayList<Student> studentList, Student newStudent) { // Registration for student -Nicole
+
+		boolean exists = false;
+
+		for (int i = 0; i < studentList.size(); i++) {
+			if (studentList.get(i).getStudentID() == newStudent.getStudentID()) {
+				exists = true;
 				break;
 			}
 		}
-		return allow;
+		if (exists) {
+			System.out.println("You have already registered using this student ID!");
+		} else {
+			studentList.add(newStudent);
+			System.out.println("You have successfully registered!");
+			System.out.println("Your new registration ID is: " + newStudent.getRegisterID());
+		}
 	}
-//test
 
-	/**
-	 * @param Lecturer
-	 * @param adminId
-	 */
-	private static void adminMenu(ArrayList<Administrator> Lecturer, int adminId) {
-		//made by Sean 
+	public static Parent inputParent() { // Registration for parent -Nicole
+		int studentID = Helper.readInt("Please enter your child's studentID: ");
+		String studentName = Helper.readString("Please enter your child's name: ");
+		String classroom = Helper.readString("Please enter your child's classroom code: ");
+		String teacher = Helper.readString("Please enter your child's teacher name: ");
+		String parentName = Helper.readString("Please enter your name: ");
+		String parentEmail = Helper.readString("Please enter your email address: ");
+		int contactNo = Helper.readInt("Please enter your contact number: ");
+
+		Random rand = new Random();
+		int registrationID = 10000 + rand.nextInt(90000);
+
+		Parent newParent = new Parent(studentID, registrationID, "", studentName, classroom, teacher, parentName, parentEmail, contactNo);
+		return newParent;
+	}
+
+	public static void addParent(ArrayList<Parent> parentList, Parent newParent) { // Registration for parent -Nicole
+
+		boolean exists = false;
+
+		for (int i = 0; i < parentList.size(); i++) {
+			if (parentList.get(i).getStudentID() == newParent.getStudentID()) {
+				exists = true;
+				break;
+			}
+		}
+		if (exists) {
+			System.out.println("You have already registered using this student ID!");
+			System.out.println("Your new registration ID is: " + newParent.getRegisterID());
+		} else {
+			parentList.add(newParent);
+			System.out.println("You have successfully registered!");
+		}
+	}
+
+	// ================================= Option 3 - Staff Login
+	// =================================
+	private static void adminMenu(ArrayList<Administrator> adminList, int adminId) {
 		Helper.line(140, "-");
-		String welcome = String.format("Instrutor page\nWelcome %s",Lecturer.get(adminId).getLecturer_name());
+		String welcome = String.format("Instrutor page\nWelcome %s", adminList.get(adminId).getLecturer_name());
 		System.out.println(welcome);
 		Helper.line(140, "-");
 		System.out.println("1. Add CCA");
@@ -489,14 +339,64 @@ public class C206_CaseStudy {
 		System.out.println("5. Add CCA category");
 		System.out.println("6. View CCA category");
 		System.out.println("7. Delete CCA category");
-		System.out.println("9. Logout\n");
+		System.out.println("9. Logout");
 		Helper.line(140, "-");
 	}
 
+	public static void addCCA(ArrayList<CCA> ccaList) {
+		Helper.line(140, "-");
 
-	/**
-	 * @param parentList
-	 */
+		String ccaName = Helper.readString("Enter new CCA name: ");
+		String description = Helper.readString("Enter CCA's description: ");
+		int size = Helper.readInt("Enter CCA's class size (more than 0): ");
+
+		if (size != 0) {
+			String day = Helper.readString("Enter when the CCA will occur (weekday): ");
+			day = day.toLowerCase();
+
+			if (!day.equalsIgnoreCase("saturday") || !day.equalsIgnoreCase("sunday")) {
+				int time = 0;
+				time = Helper.readInt("Enter what time the CCA will occur (24HR): ");
+
+				if (time >= 1000 && time <= 1800) {
+					String venue = Helper.readString("Enter where the CCA will occur(weekdays): ");
+					String category = Helper.readString("Enter CCA category: ");
+					int categoryID = Helper.readInt("Enter CCA category ID: ");
+					
+					boolean exists = checkCategoryID(ccaList, categoryID);
+
+					if (exists) {
+						CCA newCCA = new CCA(category, categoryID, ccaName, description, size, day, time, venue);
+						ccaList.add(newCCA);
+						
+					} else {
+						System.out.println("There was an error adding the CCA, please try again");
+					}
+
+				} else {
+					System.out.println("CCA can only occur from 10:00 to 18:00");
+				}
+
+			} else {
+				System.out.println("CCA can only occur during weekdays, please try again");
+			}
+
+		} else {
+			System.out.println("CCA class size cannot be 0, please try again");
+		}
+	}
+
+	private static boolean checkCategoryID(ArrayList<CCA> ccaList, int categoryID) {
+		boolean exists = false;
+		for (int i = 0; i < ccaList.size(); i++) {
+			if (ccaList.get(i).getCat_id() == categoryID) {
+				exists = true;
+				break;
+			}
+		}
+		return exists;
+	}
+
 	private static void parentMenu(ArrayList<Parent> parentList) {
 		Helper.line(140, "-");
 		System.out.println("STUDENT PARENT DETAILS LIST");
@@ -509,219 +409,77 @@ public class C206_CaseStudy {
 		System.out.println("9. Exit\n");
 	}
 
-
-	/**
-	 * @param StudentList
-	 * @param studentIDInput
-	 * @param registerIDInput
-	 * @param check
-	 * @return
-	 */
-	private static boolean studentLogin(ArrayList<Student> StudentList, int studentIDInput, int registerIDInput,
-			boolean check) {
-		for (int i = 0; i < StudentList.size(); i++) {
-			
-			int studentID = StudentList.get(i).getStudentID();
-			int registerID = StudentList.get(i).getRegisterID();
-			
-			if ((studentIDInput == studentID)
-					&& (registerIDInput == registerID)) {
-				check = true;
-				break;
-			}
-		}
-		return check;
-	}
-
-
-	/**
-	 * @param Lecturer
-	 */
-	private static void generateRandomLecturer(ArrayList<Administrator> Lecturer) {
-		// For CCA lecturer (Sean)
-		Administrator admin1 = new Administrator("Sports", 0, "Football", "Play with our feet is fun", 1,
-				"Mondays and Wednesdays", 1600, "Field", "2104", "David", "I wanna sleep.");
-		Lecturer.add(admin1);
-	}
-
-
-	/**
-	 * @param parentList
-	 */
-	private static void generateRandomParent(ArrayList<Parent> parentList) {
-		// for Login Testing (Nicole)
-		Parent p1 = new Parent(123, 123, "Sponge", "C123", "Mr. Sqaurepants", "Bob", "spongebob@gmail.com", 1234578);
-		p1.setCCA("Basketball");
-		parentList.add(p1);
-	}
-
-
-	/**
-	 * @param StudentList
-	 */
-	private static void generateRandomStudent(ArrayList<Student> studentList) {
-		// for Login Testing (Zahid)
-		Student s1 = new Student(123, 321);
-		s1.setCCA("Football");
-		studentList.add(s1);
-	}
-
-
-	/**
-	 * @param CCAList
-	 */
-	private static void generateRandomCCA(ArrayList<CCA> CCAList) {
-		// Test CCA variable (Zahid)
-		CCA cca1 = new CCA("Sports", 0, "Football", "Play with our feet is fun", 1, "Mondays and Wednesdays", 1600,
-				"Field");
-		CCA cca2 = new CCA("Sports", 1, "Bouldering", "Climbing is fun!", 1, "Tuesdays and Thursdays", 1600,
-				"Rock Wall");
-		CCAList.add(cca1);
-		CCAList.add(cca2);
-	}
-
-	public static void startmenu() {
-		// Sean
-		C206_CaseStudy.setHeader("RESOURCE CENTRE APP");
-		System.out.println("1. Login");
-		System.out.println("2. Register");
-		System.out.println("3. Staff Login");
-		System.out.println("4. Parent details");
-		System.out.println("9. Exit \n");
-	}
-
-
-	public static String toDoStaff(String yeet) {
-
-		return "";
-	}
-
-	public static void loggedinmenu() {
-		// Add more options for the log in menu(Zahid)
-		Helper.line(140, "-");
-		System.out.println("1. View/Register for CCA");
-		System.out.println("2. ?");
-		System.out.println("9. Exit \n");
-	}
-
-	public static void setHeader(String header) {
-		Helper.line(140, "-");
-		System.out.println(header);
-		Helper.line(140, "-");
-	}
-	
-//	yulong
-	public static String viewAllStudent(ArrayList<Student> StudentList) { 
-		String output = String.format("%-15s %-15s %-15s %-15s %-20s %-15s %-25s %-15s \n", "STUDENT ID", "REGISTER ID");
-
-		for (int i = 0; i < StudentList.size(); i++) {
-			output += StudentList.get(i).toString();
-		}
-		System.out.println(output);
-	}
-
 	public static String viewAllParent(ArrayList<Parent> parentList) { // Made by Nicole
-		String output = String.format("%-15s %-15s %-15s %-15s %-20s %-15s %-25s %-15s \n", "STUDENT ID", "REGISTER ID",
-				"STUDENT NAME", "CLASSROOM", "TEACHER", "PARENT NAME", "PARENT EMAIL", "CONTACT NO");
+		String output = String.format("%-15s %-15s %-15s %-15s %-15s %-20s %-15s %-25s %-15s \n", "STUDENT ID",
+				"REGISTER ID", "REGISTERED CCA", "STUDENT NAME", "CLASSROOM", "TEACHER", "PARENT NAME", "PARENT EMAIL",
+				"CONTACT NO");
 
 		for (int i = 0; i < parentList.size(); i++) {
 			output += parentList.get(i).toString();
 		}
 		return output;
 	}
-	
-//	yulong (student register(add))
-	public static void addStudent(ArrayList<Student> StudentList) {
-		int studentID = Helper.readInt("Enter student ID > ");
-		int registerID = Helper.readInt("Enter register ID > ");
-			
-		boolean exists = false;
-		
-		for (int i = 0; i < StudentList.size(); i++) {
-			if (StudentList.get(i).getStudentID() == studentID) {
-				exists = true;
-				break;
-			}
-		}
-		
-		if (exists) {
-			System.out.println("You have already registered using this student ID!");
-		} else {
-				Random rand = new Random();
-				registerID = 10000 + rand.nextInt(90000);
-				System.out.println("Your register ID is " + registerID);
-				
-				Student studentNew = new Student(studentID, registerID);
-				StudentList.add(studentNew);
-			}
-	}
-	
-	public static Parent inputParent() { //Registration for parent -Nicole
-		int studentID = Helper.readInt("Please enter your child's studentID: ");
-		String studentName = Helper.readString("Please enter your child's name: ");
-		String classroom = Helper.readString("Please enter your child's classroom code: ");
-		String teacher = Helper.readString("Please enter your child's teacher name: ");
-		String parentName = Helper.readString("Please enter your name: ");
-		String parentEmail = Helper.readString("Please enter your email address: ");
-		int contactNo = Helper.readInt("Please enter your contact number: ");
 
-		boolean done = false;
-		
-		while (done == false) {
-			String contact = contactNo + "";
-			if (contact.length() == 8) {
-				done = true;
-			} else {
-				System.out.println("Please enter a valid contact number!");
-				contactNo = Helper.readInt("Please enter your contact number: ");
-			}
-		}
-		Random rand = new Random();
-		int registrationID = 10000 + rand.nextInt(90000);
-		System.out.println("Your registration ID is " + registrationID);
-		
-		Parent parentNew = new Parent(studentID, registrationID, studentName, classroom, teacher, parentName, parentEmail, contactNo);
-		return parentNew;
-		
-	}
-	
-	public static void addParent(ArrayList<Parent> parentList, Parent parentNew) { //Registration for parent -Nicole
-					
-		boolean exists = false;
-		
+	public static boolean deleteParent(ArrayList<Parent> parentList, int option) { // Made by Nicole
+
+		boolean deleted = false;
 		for (int i = 0; i < parentList.size(); i++) {
-			if (parentList.get(i).getStudentID() == parentNew.getStudentID()) {
+			if (parentList.get(i).getStudentID() == (option - 1)) {
+				parentList.remove(i);
+				deleted = true;
+				break;
+			}
+		}
+		return deleted;
+	}
+
+	public static ccaCategory inputCategory() { // Nicole
+		String categoryName = Helper.readString("Enter new CCA Category : ");
+		int categoryID = Helper.readInt("Enter new ID: ");
+
+		ccaCategory newCategory = new ccaCategory(categoryName, categoryID);
+		return newCategory;
+	}
+
+	public static void addCategory(ArrayList<ccaCategory> ccaCategoryList, ccaCategory newCategory) { // Nicole
+		boolean exists = false;
+		for (int i = 0; i < ccaCategoryList.size(); i++) {
+			if (ccaCategoryList.get(i).getCat_title().equals(newCategory.getCat_title())
+					|| ccaCategoryList.get(i).getCat_id() == newCategory.getCat_id()) {
 				exists = true;
 				break;
 			}
 		}
-		
-		if (exists) {
-			System.out.println("You have already registered using this student ID!");
-		} else {
-				parentList.add(parentNew);
-			
-		}
-	}
-	
-	public static void registerStudent(ArrayList<CCA> CCAList,ArrayList<Student> StudentList, int ccaOption, int studentID) {
-		String cca = CCAList.get(ccaOption).getCca_title();
-		
-		for(int i = 0; i < StudentList.size();i++) {
-			if(StudentList.get(i).getStudentID() == studentID) {
-				StudentList.get(i).setCCA(cca);
-			}
-		}
-		System.out.println("Succesfully Registered");
-	}
-	public static void viewStudentsCCA(ArrayList<Student> studentList,ArrayList<CCA> CCAList, int ccaOption) {
-		String CCA = CCAList.get(ccaOption).getCca_title();
-		
-		for(int i = 0; i < studentList.size();i++) {
-			if(studentList.get(i).getCCA().equals(CCA)) {
-				System.out.println((i+1) + ": "+studentList.get(i).getStudentID()+"\n");
-			}
-		}
-	}
-}
 
+		if (exists) {
+			System.out.println("This category already exists!");
+		} else {
+			ccaCategoryList.add(newCategory);
+			System.out.println("The new category has been created!");
+		}
+	}
+
+	public static void viewAllCategories(ArrayList<ccaCategory> ccaCategoryList) {
+		String output = String.format("%-15s %-15s\n", "CATEGORY ID", "CATEGORY TITLE");
+
+		for (int i = 0; i < ccaCategoryList.size(); i++) {
+			output += String.format("%-15d %-15s\n", ccaCategoryList.get(i).getCat_id(),
+					ccaCategoryList.get(i).getCat_title());
+		}
+		System.out.println(output);
+	}
+
+	public static void deleteCategory(ArrayList<ccaCategory> ccaCategoryList) {
+		int deleteCategory = Helper.readInt("Please enter a category ID (or -1 to exit): ");
+
+		if (deleteCategory != -1) {
+			for (int i = 0; i < ccaCategoryList.size(); i++) {
+				if (ccaCategoryList.get(i).getCat_id() == deleteCategory) {
+					ccaCategoryList.remove(i);
+					break;
+				}
+			}
+		}
+	}
+
+}

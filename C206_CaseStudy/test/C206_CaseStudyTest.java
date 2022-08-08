@@ -223,14 +223,14 @@ public class C206_CaseStudyTest {
 		assertEquals("Check that Category arraylist size is 1", 1, ccaCategoryList.size());
 		assertSame("Check that category is added", c1, ccaCategoryList.get(0));
 		
-		//Add another item. test The size of the list is 2? -normal
+		//Add another item. test The size of the list is 2? -nortegoryList.get(1));
+	}
+	@Test
+	public void testViewAllCategory() { // yong xuanmal
 	
 		C206_CaseStudy.addCategory(ccaCategoryList, c2);
 		assertEquals("Check that Category arraylist size is 2", 2, ccaCategoryList.size());
-		assertSame("Check that Category is added", c2, ccaCategoryList.get(1));
-	}
-	@Test
-	public void testViewAllCategory() { // yong xuan
+		assertSame("Check that Category is added", c2, ccaCa
 
 		assertNotNull("Check that there is categoryList to add to", ccaCategoryList);
 

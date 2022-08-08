@@ -23,8 +23,8 @@ public class Parent extends Student {
 	private String parentEmail;
 	private int contactNo;
 	
-	public Parent(int studentID, int registerID, String studentName, String classroom, String classroomTeacher, String parentName, String parentEmail, int contactNo) {
-		super(studentID, registerID);
+	public Parent(int studentID, int registerID, String CCA, String studentName, String classroom, String classroomTeacher, String parentName, String parentEmail, int contactNo) {
+		super(studentID, registerID, CCA);
 		this.studentName = studentName;
 		this.classroom = classroom;
 		this.classroomTeacher = classroomTeacher;
@@ -82,7 +82,7 @@ public class Parent extends Student {
 	}
 	
 	public String toString() {
-		String output = String.format("%-15s %-15s %-15s %-15s %-20s %-15s %-25s %-15d", this.getStudentID(), this.getRegisterID(), this.studentName, this.classroom, this.classroomTeacher, this.parentName, this.parentEmail, this.contactNo);
+		String output = String.format("%-15s %-15s %-15s %-15s %-15s %-20s %-15s %-25s %-15d", this.getStudentID(), this.getRegisterID(), this.getCCA(), this.studentName, this.classroom, this.classroomTeacher, this.parentName, this.parentEmail, this.contactNo);
 		return output;
 	}
 }
