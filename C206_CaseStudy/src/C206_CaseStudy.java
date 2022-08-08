@@ -22,6 +22,7 @@ public class C206_CaseStudy {
 		adminList.add(new Administrator("Sports", 0, "Football", "Play with our feet is fun", 1,
 				"Mondays and Wednesdays", 1600, "Field", "2104", "David", "I wanna sleep."));
 
+		ccaCategoryList.add(new ccaCategory("sports", 1));
 		// variables for choices in option(menu) option2(loggedInMenu) option3(ccaMenu)
 		// option(ccaDetailsMenu)(Zahid)
 

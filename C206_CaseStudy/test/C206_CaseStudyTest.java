@@ -236,7 +236,7 @@ public class C206_CaseStudyTest {
 		
 		assertNotNull("Check that there is categoryList to add to", ccaCategoryList);
 
-		String allCategory = C206_CaseStudy.viewAllCategories(ccaCategoryList);
+		String allCategory = C206_CaseStudy.viewAllCategory(ccaCategoryList);
 		String testOutput = "";
 		assertEquals("Check that the list of category retrieved from C206_CaseStudy is empty", testOutput, allCategory);
 		
@@ -246,7 +246,7 @@ public class C206_CaseStudyTest {
 		
 		
 
-		allCategory = C206_CaseStudy.viewAllCategories(ccaCategoryList);
+		allCategory = C206_CaseStudy.viewAllCategory(ccaCategoryList);
 		
 		testOutput = String.format("");
 		testOutput += String.format("%-15s %-15d \n", "sports", 1);
