@@ -224,17 +224,19 @@ public class C206_CaseStudyTest {
 		assertSame("Check that category is added", c1, ccaCategoryList.get(0));
 		
 		//Add another item. test The size of the list is 2? -nortegoryList.get(1));
-	}
-	@Test
-	public void testViewAllCategory() { // yong xuanmal
+	
 	
 		C206_CaseStudy.addCategory(ccaCategoryList, c2);
 		assertEquals("Check that Category arraylist size is 2", 2, ccaCategoryList.size());
-		assertSame("Check that Category is added", c2, ccaCa
-
+		assertSame("Check that Category is added", c2, ccaCategoryList.get(1));
+	
+	}
+		@Test
+		public void testViewAllCategory() { // yong xuan
+		
 		assertNotNull("Check that there is categoryList to add to", ccaCategoryList);
 
-		String allCategory = C206_CaseStudy.viewAllCategory(ccaCategoryList);
+		String allCategory = C206_CaseStudy.viewAllCategories(ccaCategoryList);
 		String testOutput = "";
 		assertEquals("Check that the list of category retrieved from C206_CaseStudy is empty", testOutput, allCategory);
 		
@@ -244,7 +246,7 @@ public class C206_CaseStudyTest {
 		
 		
 
-		allCategory = C206_CaseStudy.viewAllCategory(ccaCategoryList);
+		allCategory = C206_CaseStudy.viewAllCategories(ccaCategoryList);
 		
 		testOutput = String.format("");
 		testOutput += String.format("%-15s %-15d \n", "sports", 1);
