@@ -259,11 +259,14 @@ public class C206_CaseStudyTest {
 		assertNotNull("Check if there is a valid student list to retrieve details",studentList );
 		
 		// Test that Login ID can be retrieved and compared
-		int loginInput;
+		int loginInput = 123;
+		int registrationInput = 321;
+		studentList.get(0).setStudentID(123);
+		studentList.get(0).setRegisterID(321);
 		assertSame(loginInput, studentList.get(0).getStudentID());
 		
 		//Test that Registration ID can be retrieved and compared
-		assertSame(loginInput, studentList.get(0).getRegisterID());
+		assertSame(registrationInput, studentList.get(0).getRegisterID());
 	}
 	
 
