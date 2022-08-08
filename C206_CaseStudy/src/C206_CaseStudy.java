@@ -127,7 +127,7 @@ public class C206_CaseStudy {
 				}
 
 			} else if (option == 2) {
-				// Registration for student (Yulong)
+				// Registration for parent (Yulong)
 				Parent studentNew = inputStudent();
 				C206_CaseStudy.addParent(parentList, studentNew);
 				System.out.println("You have successfully registered!");
@@ -202,84 +202,43 @@ public class C206_CaseStudy {
 								}
 							} else { System.out.println("There are no registered parents."); 
 							}
-						} else {
-							System.out.println("Invalid option, please try again");
-							choice = Helper.readInt("Enter option: ");
+						
 						}
-					}
+					
 					else if (choice == 5) { //add category Yong Xuan
-
-				        public static ccaCategory inputCategory() {
-
-				          String categoryName = Helper.readString("Enter new CCA Category : ");
-				          int categoryID = Helper.readInt("Enter new ID: ");
-				          ccaCategory category = new ccaCategory(categoryName, categoryID);
-				          return category;
-				        }
-
-				        public static void addCategory(ArrayList<ccaCategory> ccaCategoryList, ccaCategory category) {
-
-				          ccaCategoryList.add(category);
-				        }
-
-				      } else if(choice==6) {
-
-				        public static String retrieveAllCategory(ArrayList<ccaCategory> ccaCategoryList) {
-				          String output = "";
-
-				          for (int i = 0; i < ccaCategoryList.size(); i++) {
-
-				            output += String.format("%-84s\n", ccaCategoryList.get(i).toString());
-
-				          }
-				          return output;
-				        }
+					
+						addCategory(ccaCategoryList,null);
+						
+					}
+					
+					
+				       else if(choice==6) {
+				    	   viewAllCategory(ccaCategoryList);
+				 
+				       }
+					
+				       
+					else if(choice==7) {
 
 
+						deleteCategory(ccaCategoryList);
+				    
+					}
+				        
+				  
 
-				        public static String viewAllCategory(ArrayList<ccaCategory> ccaCategoryList) {
-				          System.out.println("CCA CATEGORY LIST");
-				          String output = String.format("%-10s %-30d\n", "CATEGORY NAME", "CATEGORY ID");
-				          output += retrieveAllCategory(ccaCategoryList);
-				          System.out.println(output);
-				        }
-
-				      } else if(choice==7) {
-
-				        public static void deleteCategory(ArrayList<ccaCategory> ccaCategoryList) {
-				          C206_CaseStudy.viewAllCategory(ccaCategoryList);
-				          int delete = Helper.readInt("Enter ID to delete > ");
-
-
-
-				          for (int i = 0; i < ccaCategoryList.size(); i++) {
-				            int id = ccaCategoryList.get(i).getCat_id();
-
-				            if (id == delete) {
-				              ccaCategoryList.remove(i);
-				              System.out.println("Category deleted");
-				            } else {
-				              System.out.println("Invalid Category ID");
-				            }                      
-
-				          }
-
-
-				        } 
+					}
 				      } else if (option==9) {
-				        System.out.println("Bye bye, have a nice day");
 
+				        System.out.println("Bye bye, have a nice day");
+				       
 				      } else {
 
 				      
 				        System.out.println("Invalid option, please try again");
 				        choice = Helper.readInt("Enter option: ");
 				      }
-
-				    }
-				  }
-				}
-					
+			
 					
 	
 	
@@ -290,6 +249,37 @@ public class C206_CaseStudy {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	//yongxuan
+	  public static ccaCategory inputCategory() {
+
+          String categoryName = Helper.readString("Enter new CCA Category : ");
+          int categoryID = Helper.readInt("Enter new ID: ");
+          ccaCategory category = new ccaCategory(categoryName, categoryID);
+          return category;
+        }
+	
+        public static void addCategory(ArrayList<ccaCategory> ccaCategoryList, ccaCategory category) {
+
+          ccaCategoryList.add(category);
+        }
+        //yong xuan
+        public static void deleteCategory(ArrayList<ccaCategory> ccaCategoryList) {
+	          C206_CaseStudy.viewAllCategory(ccaCategoryList);
+	          int delete = Helper.readInt("Enter ID to delete > ");
+
+
+
+	          for (int i = 0; i < ccaCategoryList.size(); i++) {
+	            int id = ccaCategoryList.get(i).getCat_id();
+	          
+	            if (id == delete) {
+	              ccaCategoryList.remove(i);
+	              System.out.println("Category deleted");
+	            } else {
+	              System.out.println("Invalid Category ID");
+	            }                      
+	          
+	          
 
 //	yulong
 	public static boolean deleteStudent(ArrayList<Student> StudentList, int option) {
@@ -301,6 +291,25 @@ public class C206_CaseStudy {
 			}
 		}
 	}
+// yong xuan 
+    public static String retrieveAllCategory(ArrayList<ccaCategory> ccaCategoryList) {
+        String output = "";
+
+        for (int i = 0; i < ccaCategoryList.size(); i++) {
+
+          output += String.format("%-84s\n", ccaCategoryList.get(i).toString());
+
+        }
+        return output;
+      }
+
+      public static void viewAllCategory(ArrayList<ccaCategory> ccaCategoryList) {
+        System.out.println("CCA CATEGORY LIST");
+        String output = String.format("%-10s %-30d\n", "CATEGORY NAME", "CATEGORY ID");
+        output += retrieveAllCategory(ccaCategoryList);
+        System.out.println(output);
+      }
+	
 
 	/**
 	 * @param parentList
@@ -573,9 +582,6 @@ public class C206_CaseStudy {
 		System.out.println("2. Register");
 		System.out.println("3. Staff Login");
 		System.out.println("4. Parent details");
-		System.out.println("5. Add CCA category");
-		System.out.println("6. View CCA category");
-		System.out.println("7. Delete CCA category");
 		System.out.println("9. Exit \n");
 	}
 
