@@ -180,7 +180,7 @@ public class C206_CaseStudy {
 								if(removeCCA>-1) {
 									CCAList.remove(removeCCA-1);
 								} else {
-									System.out.print("Invalid index");
+									System.out.print("Invalid CCA index");
 								}
 							}
 						} else if (choice == 4) {
