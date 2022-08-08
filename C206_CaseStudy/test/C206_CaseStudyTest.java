@@ -29,7 +29,7 @@ public class C206_CaseStudyTest {
 
 	private ArrayList<Administrator> lectureList;
 	private ArrayList<CCA> ccaList1;
-	private ArrayList<ccaCategory> CategoryList;
+	private ArrayList<ccaCategory> ccaCategoryList;
 
 
 
@@ -73,17 +73,42 @@ public class C206_CaseStudyTest {
 	
 //	yulong
 	@Test
-	public void testViewAllStudent() { 
+	public void testViewAllstudent() { 
 
-		assertNotNull("Check that there is StudentList to add to", StudentList);
+		assertNotNull("Check that there is StudentList to add to", studentList);
 
-		String allStudent = C206_CaseStudy.viewAllStudent(StudentList);
+		String allStudent = C206_CaseStudy.viewAllStudent(studentList);
 		String testOutput = "";
 		assertEquals("Check that the list of Student retrieved from C206_CaseStudy is empty", testOutput, allStudent);
 		
-		C206_CaseStudy.addStudent(StudentList);
-		C206_CaseStudy.addStudent(StudentList);
-		assertEquals("Test if after adding s1 and s2 to StudentList, the size is now 2", 2, StudentList.size());
+		C206_CaseStudy.addStudent(studentList);
+		C206_CaseStudy.addStudent(studentList);
+		assertEquals("Test if after adding s1 and s2 to StudentList, the size is now 2", 2, studentList.size());
+		
+		
+
+		allStudent = C206_CaseStudy.viewAllParent(parentList);
+		
+		testOutput = String.format("%-15s %-15s %-15s %-15s %-20s %-15s %-25s %-15s \n", 123, 123, "Sponge", "C123", "Mr. Sqaurepants", "Bob", "spongebob@gmail.com", 1234578);
+		testOutput += String.format("%-15s %-15s %-15s %-15s %-20s %-15s %-25s %-15s \n", 234, 432, "John", "C234", "Mr. Cena", "Nathan", "johnathan@gmail.com", 87654321);
+		
+		assertEquals("Test if the expected output is the same as the list of Student retrieved from C206_CaseStudy", testOutput, allStudent);
+	}
+	
+
+//	yulong
+	@Test
+	public void testViewAllStudent() { 
+
+		assertNotNull("Check that there is StudentList to add to", studentList);
+
+		String allStudent = C206_CaseStudy.viewAllStudent(studentList);
+		String testOutput = "";
+		assertEquals("Check that the list of Student retrieved from C206_CaseStudy is empty", testOutput, allStudent);
+		
+		C206_CaseStudy.addStudent(studentList);
+		C206_CaseStudy.addStudent(studentList);
+		assertEquals("Test if after adding s1 and s2 to StudentList, the size is now 2", 2, studentList.size());
 		
 		
 
@@ -98,23 +123,24 @@ public class C206_CaseStudyTest {
 //	yulong
 	@Test   
 	public void testDeleteStudent() {
-		assertNotNull("Test if there is Student arraylist to delete from", StudentList);
+		assertNotNull("Test if there is Student arraylist to delete from", studentList);
 
-		C206_CaseStudy.addStudent(StudentList);
+		C206_CaseStudy.addStudent(studentList);
 
-		boolean deleted = C206_CaseStudy.deleteStudent(StudentList, 1);
+		boolean deleted = C206_CaseStudy.deleteStudent(studentList, 1);
 		assertTrue("Test if Student has been deleted", deleted);
-		assertEquals("Test that Student list size is now 1 after deleting", 1, StudentList.size());
+		assertEquals("Test that Student list size is now 1 after deleting", 1, studentList.size());
 		
 
-		deleted = C206_CaseStudy.deleteStudent(StudentList, 3);
+		deleted = C206_CaseStudy.deleteStudent(studentList, 3);
 		assertFalse("Test if non-existing Student is not deleted", deleted);
-		assertEquals("Test that Student list size is still 1", 1, StudentList.size());
+		assertEquals("Test that Student list size is still 1", 1, studentList.size());
 
-		deleted = C206_CaseStudy.deleteStudent(StudentList, 1);
+		deleted = C206_CaseStudy.deleteStudent(studentList, 1);
 		assertFalse("Test that Student was deleted", deleted);
-		assertEquals("Test that Student list size is now 0", 0, StudentList.size());
+		assertEquals("Test that Student list size is now 0", 0, studentList.size());
 	}
+
 	@Test
 	public void testAddParent() { //Nicole
 		assertNotNull("Test if there is valid Parent arraylist to add to", parentList);
@@ -172,35 +198,57 @@ public class C206_CaseStudyTest {
 		assertFalse("Test that parent was deleted", deleted);
 		assertEquals("Test that parent list size is now 0", 0, parentList.size());
 	}
-
 	@Test   //yongxuan
 	public void testDeleteCategory() {
 		//test if category list is not null but empty -boundary
-		assertNotNull ("test if there is valid category arrayList to retrieve item", CategoryList);
+		assertNotNull ("test if there is valid category arrayList to retrieve item", ccaCategoryList);
 		
 		//given an empty list, after adding 2 items, test if the size of the list is 0 -normal
-		C206_CaseStudy.addCategory(CategoryList, c1);
-		C206_CaseStudy.addCategory(CategoryList, c2);
+		C206_CaseStudy.addCategory(ccaCategoryList, c1);
+		C206_CaseStudy.addCategory(ccaCategoryList, c2);
 		
-		assertEquals("check that categorylist size is 0", 0, CategoryList.size());
+		assertEquals("check that categorylist size is 0", 0, ccaCategoryList.size());
 	}
 	
 	@Test
-	public void testAddCategory() {
+	public void testAddCategory() {   //yongxuan
 		// Item list is not null, so that can add a new item - boundary
-		assertNotNull("Check if there is valid category arraylist to add to", CategoryList);
+		assertNotNull("Check if there is valid category arraylist to add to", ccaCategoryList);
 	
-		C206_CaseStudy.addCategory(CategoryList, c1);
-		assertEquals("Check that Category arraylist size is 1", 1, CategoryList.size());
-		assertSame("Check that category is added", c1, CategoryList.get(0));
+		C206_CaseStudy.addCategory(ccaCategoryList, c1);
+		assertEquals("Check that Category arraylist size is 1", 1, ccaCategoryList.size());
+		assertSame("Check that category is added", c1, ccaCategoryList.get(0));
 		
 		//Add another item. test The size of the list is 2? -normal
 	
-		C206_CaseStudy.addCategory(CategoryList, c2);
-		assertEquals("Check that Category arraylist size is 2", 2, CategoryList.size());
-		assertSame("Check that Category is added", c2, CategoryList.get(1));
+		C206_CaseStudy.addCategory(ccaCategoryList, c2);
+		assertEquals("Check that Category arraylist size is 2", 2, ccaCategoryList.size());
+		assertSame("Check that Category is added", c2, ccaCategoryList.get(1));
 	}
-	
+	@Test
+	public void testViewAllCategory() { // yong xuan
+
+		assertNotNull("Check that there is categoryList to add to", ccaCategoryList);
+
+		String allCategory = C206_CaseStudy.viewAllCategory(ccaCategoryList);
+		String testOutput = "";
+		assertEquals("Check that the list of category retrieved from C206_CaseStudy is empty", testOutput, allCategory);
+		
+		C206_CaseStudy.addCategory(ccaCategoryList, c1);
+		C206_CaseStudy.addCategory(ccaCategoryList, c2);
+		assertEquals("Test if after adding c1 and c2 to categoryList, the size is now 2", 2, ccaCategoryList.size());
+		
+		
+
+		allCategory = C206_CaseStudy.viewAllCategory(ccaCategoryList);
+		
+		testOutput = String.format("");
+		testOutput += String.format("%-15s %-15d \n", "sports", 1);
+		
+		assertEquals("Test if the expected output is the same as the list of Category retrieved from C206_CaseStudy", testOutput, allCategory);
+	}
+
+
 	@Test //Zahid
 	public void testStudentLogin() {
 		// Test if list is not null -boundary
@@ -213,6 +261,8 @@ public class C206_CaseStudyTest {
 		//Test that Registration ID can be retrieved and compared
 		assertSame(loginInput, studentList.get(0).getRegisterID());
 	}
+	
+
 	
 	public void testRegisterStudent() {
 		// Test if list is not null -boundary
