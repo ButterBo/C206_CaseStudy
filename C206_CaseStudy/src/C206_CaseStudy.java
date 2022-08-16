@@ -186,6 +186,8 @@ public class C206_CaseStudy {
 							adminMenuchoice = Helper.readInt("Enter option: ");
 						}
 					}
+				} else {
+					System.out.println("Invalid login details provided!");
 				}
 			} else if (mainMenuOption == 9) {
 				System.out.println("You have exited from the Resource Centre App!");
