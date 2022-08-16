@@ -88,6 +88,9 @@ public class C206_CaseStudy {
 					// Registration for parent (Nicole)
 					Parent newParent = inputParent();
 					C206_CaseStudy.addParent(parentList, newParent);
+					
+				} else {
+					System.out.println("Please enter a valid option!");
 				}
 
 			} else if (mainMenuOption == 3) {
