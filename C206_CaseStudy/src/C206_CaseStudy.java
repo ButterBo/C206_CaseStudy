@@ -547,7 +547,7 @@ public class C206_CaseStudy {
 		}
 	}
 
-//yongxuan
+//yongxuan 
 	public static String viewAllCategories(ArrayList<ccaCategory> ccaCategoryList) {  
 		String output = String.format("%-15s %-15s\n", "CATEGORY ID", "CATEGORY TITLE");
 
