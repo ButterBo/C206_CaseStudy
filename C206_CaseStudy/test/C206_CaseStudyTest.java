@@ -55,7 +55,7 @@ public class C206_CaseStudyTest {
 	@Test
 	public void testAddCCA() {
 		ccaList.add(cca1);
-		C206_CaseStudy.addCCA(ccaList);
+		C206_CaseStudy.addCCA(ccaList, ccaCategoryList);
 		assertNotNull("Check if CCA arraylist is not empty", ccaList);
 		
 		cca2 = new CCA("Art", 2, "Water paint", "Art is great", 2, "Thursdays", 100,
@@ -71,7 +71,7 @@ public class C206_CaseStudyTest {
 	@Test
 	public void viewCCA() {
 		ccaList.add(cca1);
-		C206_CaseStudy.addCCA(ccaList);
+		C206_CaseStudy.addCCA(ccaList, ccaCategoryList);
 		assertNotNull("Check if CCA arraylist is not empty", ccaList);
 		String testing = "";
 		for (int i = 0; i < ccaList.size(); i++) {
@@ -84,7 +84,7 @@ public class C206_CaseStudyTest {
 	@Test
 	public void delCCA() {
 		ccaList.add(cca1);
-		C206_CaseStudy.addCCA(ccaList);
+		C206_CaseStudy.addCCA(ccaList, ccaCategoryList);
 		cca2 = new CCA("Art", 2, "Water paint", "Art is great", 2, "Thursdays", 100,
 				"Rock Wall");
 		ccaList.add(cca2);
