@@ -52,7 +52,7 @@ public class C206_CaseStudy {
 					int loggedInMenuOption = 0;
 
 					while (loggedInMenuOption != 9) {
-
+						C206_CaseStudy.loggedinmenu();
 						loggedInMenuOption = Helper.readInt("Enter an option (or 9 to exit): ");
 
 						if (loggedInMenuOption == 1) {
