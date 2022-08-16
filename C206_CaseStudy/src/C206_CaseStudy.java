@@ -134,13 +134,26 @@ public class C206_CaseStudy {
 
 								if (parentMenuOption == 1) {
 									int deleteStudent = Helper.readInt("Enter student ID to delete from parent list: ");
-									boolean deleteParent = deleteParent(parentList, deleteStudent);
-
-									if (deleteParent) {
-										System.out.println("\nParent has been remove from list.");
-									} else {
-										System.out.println("\nInvalid student ID.");
+									
+									boolean exists = false;
+									for (int i = 0; i < studentList.size(); i ++) {
+										if (studentList.get(i).getStudentID() == deleteStudent) {
+											exists = true;
+										}
 									}
+									
+									if (exists = false) {
+										boolean deleteParent = deleteParent(parentList, deleteStudent);
+
+										if (deleteParent) {
+											System.out.println("\nParent has been remove from list.");
+										} else {
+											System.out.println("\nInvalid student ID.");
+										}
+									} else {
+										System.out.println("You have already registered using this student ID!");
+									}
+									
 								}
 							} else {
 								System.out.println("There are no registered parents.");
@@ -468,7 +481,7 @@ public class C206_CaseStudy {
 
 		boolean deleted = false;
 		for (int i = 0; i < parentList.size(); i++) {
-			if (parentList.get(i).getStudentID() == (option)) {
+			if (parentList.get(i).getStudentID() == option) {
 				parentList.remove(i);
 				deleted = true;
 				break;
