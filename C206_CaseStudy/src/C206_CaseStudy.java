@@ -221,7 +221,7 @@ public class C206_CaseStudy {
 	 */
 	public static void delCCA(ArrayList<CCA> ccaList, int removeCCA) {
 		if (removeCCA != -1) {
-			if (removeCCA > -1) {
+			if (removeCCA > -1 && removeCCA <= ccaList.size()) {
 				ccaList.remove(removeCCA - 1);
 			}
 		}
