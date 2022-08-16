@@ -564,13 +564,19 @@ public class C206_CaseStudy {
 		int deleteCategory = Helper.readInt("Please enter a category ID (or -1 to exit): ");
 
 		if (deleteCategory != -1) {
-			for (int i = 0; i < ccaCategoryList.size(); i++) {
-				if (ccaCategoryList.get(i).getCat_id() == deleteCategory) {
-					ccaCategoryList.remove(i);
-					System.out.println("The CCA category has been removed!");
-					break;
+			if (deleteCategory <= ccaCategoryList.size()) {
+				for (int i = 0; i < ccaCategoryList.size(); i++) {
+					if (ccaCategoryList.get(i).getCat_id() == deleteCategory) {
+						ccaCategoryList.remove(i);
+						System.out.println("The CCA category has been removed!");
+						break;
+					}
 				}
+			} else {
+				System.out.println("Please enter a valid CCA category!");
 			}
+		} else {
+			System.out.println("Please enter a valid CCA category!"); 
 		}
 	}
 
