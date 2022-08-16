@@ -48,7 +48,6 @@ public class C206_CaseStudy {
 
 				if (check) {
 					// This is the login menu yall add your menu items here(Zahid)
-					C206_CaseStudy.loggedinmenu();
 					int loggedInMenuOption = 0;
 
 					while (loggedInMenuOption != 9) {
