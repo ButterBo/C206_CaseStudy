@@ -139,10 +139,11 @@ public class C206_CaseStudy {
 									for (int i = 0; i < studentList.size(); i ++) {
 										if (studentList.get(i).getStudentID() == deleteStudent) {
 											exists = true;
+											break;
 										}
 									}
 									
-									if (exists = false) {
+									if (exists) {
 										boolean deleteParent = deleteParent(parentList, deleteStudent);
 
 										if (deleteParent) {
@@ -151,7 +152,7 @@ public class C206_CaseStudy {
 											System.out.println("\nInvalid student ID.");
 										}
 									} else {
-										System.out.println("You have already registered using this student ID!");
+										System.out.println("This student ID doesn't exist!");
 									}
 									
 								}
