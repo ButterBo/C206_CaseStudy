@@ -147,25 +147,6 @@ public class C206_CaseStudy {
 								System.out.println("There are no registered parents.");
 							}
 
-						} else if (adminMenuchoice == 4) {
-							// Parent details (Nicole)
-							if (parentList.size() != 0) {
-								parentMenu(parentList);
-								int parentMenuOption = Helper.readInt("Please enter an option: ");
-
-								if (parentMenuOption == 1) {
-									int deleteStudent = Helper.readInt("Enter student ID to delete from parent list: ");
-									boolean deleteParent = deleteParent(parentList, deleteStudent);
-
-									if (deleteParent) {
-										System.out.println("\nParent has been remove from list.");
-									} else {
-										System.out.println("\nInvalid student ID.");
-									}
-								}
-							} else {
-								System.out.println("There are no registered parents.");
-							}
 						} else if (adminMenuchoice == 5) {
 							//Student details (Nicole)
 							if (studentList.size() != 0) {
@@ -414,10 +395,18 @@ public class C206_CaseStudy {
 					
 					C206_CaseStudy.viewAllCategories(ccaCategories);
 					
-					String category = Helper.readString("Enter CCA category: ");
+//					String category = Helper.readString("Enter CCA category: ");
 					int categoryID = Helper.readInt("Enter CCA category ID: ");
 
-					boolean exists = checkCategoryID(ccaList, categoryID);
+					boolean exists = false;
+					String category = "";
+					
+					for (int i = 0; i < ccaCategories.size(); i++) {
+						if (ccaCategories.get(i).getCat_id() == categoryID) {
+							category = ccaCategories.get(i).getCat_title();
+							exists = true;
+						}
+					}
 
 					if (exists) {
 						CCA newCCA = new CCA(category, categoryID, ccaName, description, size, day, time, venue);
