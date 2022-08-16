@@ -114,7 +114,7 @@ public class C206_CaseStudy {
 						adminMenuchoice = Helper.readInt("Please enter an option: ");
 
 						if (adminMenuchoice == 1) {
-							addCCA(ccaList);
+							addCCA(ccaList, ccaCategoryList);
 
 						} else if (adminMenuchoice == 2) {
 							viewAllCCAs(ccaList);
@@ -196,12 +196,18 @@ public class C206_CaseStudy {
 							viewAllCategories(ccaCategoryList);
 							deleteCategory(ccaCategoryList);
 
+						} else if (adminMenuchoice == 9) {
+							System.out.println("You have logged out!");
+
 						} else {
 							System.out.println("Invalid option, please try again");
 							adminMenuchoice = Helper.readInt("Enter option: ");
 						}
 					}
 				}
+			} else if (mainMenuOption == 9) {
+				System.out.println("You have exited from the Resource Centre App!");
+				
 			} else {
 				System.out.println("Invalid option, please try again");
 			}
@@ -387,7 +393,7 @@ public class C206_CaseStudy {
 		Helper.line(140, "-");
 	}
 
-	public static void addCCA(ArrayList<CCA> ccaList) {
+	public static void addCCA(ArrayList<CCA> ccaList, ArrayList<ccaCategory> ccaCategories) {
 		Helper.line(140, "-");
 
 		String ccaName = Helper.readString("Enter new CCA name: ");
@@ -404,6 +410,9 @@ public class C206_CaseStudy {
 
 				if (time >= 1000 && time <= 1800) {
 					String venue = Helper.readString("Enter where the CCA will occur(weekdays): ");
+					
+					C206_CaseStudy.viewAllCategories(ccaCategories);
+					
 					String category = Helper.readString("Enter CCA category: ");
 					int categoryID = Helper.readInt("Enter CCA category ID: ");
 
@@ -468,7 +477,7 @@ public class C206_CaseStudy {
 
 		boolean deleted = false;
 		for (int i = 0; i < parentList.size(); i++) {
-			if (parentList.get(i).getStudentID() == (option - 1)) {
+			if (parentList.get(i).getStudentID() == (option)) {
 				parentList.remove(i);
 				deleted = true;
 				break;
@@ -490,7 +499,7 @@ public class C206_CaseStudy {
 	}
 	
 	public static String viewAllStudent(ArrayList<Student> studentList) { // Made by Nicole
-		String output = String.format("%-15d %-15d %-15s \n", "STUDENT ID", "REGISTER ID", "REGISTERED CCA");
+		String output = String.format("%-15d %-15d %-15s\n", "STUDENT ID", "REGISTER ID", "REGISTERED CCA");
 
 		for (int i = 0; i < studentList.size(); i++) {
 			output += studentList.get(i).toString();
@@ -557,6 +566,7 @@ public class C206_CaseStudy {
 			for (int i = 0; i < ccaCategoryList.size(); i++) {
 				if (ccaCategoryList.get(i).getCat_id() == deleteCategory) {
 					ccaCategoryList.remove(i);
+					System.out.println("The CCA category has been removed!");
 					break;
 				}
 			}

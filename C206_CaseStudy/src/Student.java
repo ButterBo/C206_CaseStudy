@@ -50,7 +50,7 @@ public class Student {
 	}
 	
 	public String toString() { //Nicole
-		String output = String.format("%-15d %-15d %-15s \n", this.getStudentID(), this.getRegisterID(), this.getCCA());
+		String output = String.format("%-15d %-15d %-15s\n", this.getStudentID(), this.getRegisterID(), this.getCCA());
 		return output;
 	}
 }
